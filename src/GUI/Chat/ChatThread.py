@@ -1,5 +1,5 @@
 import threading
-
+from queue import Queue
 
 class ChatThread(threading.Thread):
     def __init__(self, channelChat):
@@ -8,7 +8,12 @@ class ChatThread(threading.Thread):
         self.messageProcessor = channelChat.messageProcessor
         self.userList = channelChat.chatTab.userList
         self.daemon = True
+        self.messageToBeProcessed = Queue()
 
+    def processMessage(self, message):
+        self.messageToBeProcessed.put(message)
 
-    def run(self, message):
-        self.messageProcessor.processMessage(message, self.channelChat, self.userList)
+    def run(self):
+        while True:
+            message = self.messageToBeProcessed.get()
+            self.messageProcessor.processMessage(message, self.channelChat, self.userList)

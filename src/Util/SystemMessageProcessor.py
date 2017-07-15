@@ -1,5 +1,6 @@
 import re
 import threading
+from queue import Queue
 
 class SystemMessageProcessor:
     HOST_MODE = re.compile('.*HOSTTARGET #([^ ]+) :([^ ]+)')
@@ -16,9 +17,10 @@ class SystemMessageProcessor:
         self.chatScreen = chatScreen
         self.jsonDecoderThread = chatScreen.jsonDecoder.jsonDecoderThread
         self.systemMessageThread = SystemMessageThread(self, self.chatScreen)
+        self.systemMessageThread.start()
+        self.jsonDecoderThread.start()
 
     def processMessage(self, message):
-        print(message)
         if ' HOSTTARGET ' in message:
             result = re.search(SystemMessageProcessor.HOST_MODE, message)
             print(result.group(1) + ' is hosting ' + result.group(2))
@@ -35,7 +37,9 @@ class SystemMessageProcessor:
             chatTab.setRoomState(result.group(1), result.group(2), result.group(3), result.group(4),
                                  result.group(5), result.group(6), result.group(7))
             #change later
-            self.jsonDecoderThread.run(['set_badges', chatTab.channelChat.messageProcessor, result.group(5)])
+            self.jsonDecoderThread.addJob(['set_badges', chatTab.channelChat.messageProcessor, result.group(5)])
+
+
         elif ' +o ' in message:
             result = re.search(SystemMessageProcessor.SYSTEM_MODDING, message)
             userList = self.chatScreen.tabs.get('#' + result.group(1)).userList
@@ -55,7 +59,16 @@ class SystemMessageThread(threading.Thread):
         super().__init__(target=self.run, args=('',))
         self.systemMessageProcessor = parent
         self.chatScreen = chatScreen
+        self.messageToBeProcessed = Queue()
         self.daemon = True
 
-    def run(self, message):
-        self.systemMessageProcessor.processMessage(message)
+    def newMessage(self, message):
+        self.messageToBeProcessed.put(message)
+
+    def run(self):
+        while True:
+            message = self.messageToBeProcessed.get()
+            self.systemMessageProcessor.processMessage(message)
+
+
+

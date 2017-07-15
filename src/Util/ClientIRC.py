@@ -62,12 +62,13 @@ class ClientIRC:
                     response = response[0:response.rfind('\r\n')]
 
                 for responses in response.split('\r\n'):
+                    print(responses)
                     if responses.startswith('PING'):
                         self.receiveSocket.send((responses.replace('PING', 'PONG') + '\r\n').encode('utf-8'))
                     else:
                         message = re.search(self.channelMessagePattern, responses)
                         if message is None:
-                            self.systemMessageThread.run(responses)
+                            self.systemMessageThread.newMessage(responses)
                         else:
                             self.chatScreen.newMessage(message.group(1), time.strftime('%H:%M:%S') + ' ' + responses)
             except OSError:

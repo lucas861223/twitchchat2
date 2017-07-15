@@ -1,5 +1,6 @@
 import requests
 import threading
+from queue import Queue
 
 class JSONDecoder:
     headers = {'Accept': 'application/vnd.twitchtv.v5+json'}
@@ -11,16 +12,23 @@ class JSONDecoder:
         self.jsonDecoderThread = JSONDecoderThread(JSONDecoder)
 
 
-
 class JSONDecoderThread(threading.Thread):
 
     def __init__(self, JSONDecoder):
-        super().__init__(target=self.run, args=('',))
+        super().__init__(target=self.run)
         self.jsonDecoder = JSONDecoder
-        self.daemon = True
+        self.queuedCall = Queue()
+        self.setDaemon(True)
+        self.setName('JSONDecoderThread')
 
-    def run(self, call):
-        if call[0] == 'set_badges':
-            call[1].setBadgesIcon(requests.get(self.jsonDecoder.channelBadge.replace('channelID', call[2]), headers=self.jsonDecoder.headers).json())
+    def addJob(self, call):
+        self.queuedCall.put(call)
 
-
+    def run(self):
+        while True:
+            event = self.queuedCall.get()
+            if event[0] == 'set_badges':
+                badges = requests.get(self.jsonDecoder.channelBadge.replace('channelID', event[2]),
+                                      headers=self.jsonDecoder.headers).json()
+                print(badges)
+                event[1].setBadgesIcon(badges)

@@ -1,5 +1,2 @@
-src\setting\clientID
-src\setting\default_channel
-src\setting\login
-src\setting\note
 *.pyc
+src/setting/*

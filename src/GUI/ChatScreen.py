@@ -37,8 +37,8 @@ class ChatScreen(QTabWidget):
             self.setCurrentIndex(index)
 
     def newMessage(self, channelName, message):
-        chatTab = self.tabs.get('#' + channelName, None)
-        chatTab.channelChat.chatThread.run(message)
+        chatTab = self.tabs.get(channelName, None)
+        chatTab.channelChat.chatThread.processMessage(message)
 
     def nextTab(self):
         if self.currentIndex() == self.count() - 1:
@@ -99,6 +99,7 @@ class ChannelChat(QTextBrowser):
         self.chatTab = chatTab
         self.messageProcessor = MessageProcessor(jsonDecoder)
         self.chatThread = ChatThread(self)
+        self.chatThread.start()
         self.setReadOnly(True)
         self.anchorClicked.connect(self.checkClick)
         self.setAcceptRichText(True)

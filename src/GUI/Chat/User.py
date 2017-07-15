@@ -15,37 +15,6 @@ class UserListEntry(QListWidgetItem):
         self.modSet = False
         self.badges = ''
 
-    def setUpUser(self, badges, color):
-        self.userName = self.nick
-        if 'turbo' in badges:
-            self.userName = '+' + self.userName
-        if 'premium' in badges:
-            self.userName = '+' + self.userName
-        if 'bits' in badges:
-            self.userName = '$' + self.userName
-        if 'subscriber' in badges:
-            self.userName = '%' + self.userName
-        if 'moderator' in badges:
-            self.userName = '@' + self.userName
-        if 'global_mod' in badges:
-            self.userName = '*' + self.userName
-        if 'admin' in badges:
-            self.userName = '!' + self.userName
-        if 'staff' in badges:
-            self.userName = '&' + self.userName
-        if 'broadcaster' in badges:
-            self.userName = '~' + self.userName
-        self.setText(self.userName)
-        self.calculatePoint()
-        self.badges = badges
-        self.hasSpoken = True
-        if color == '':
-            self.randomColor = True
-            self.color = random.choice(UserListEntry.DEFAULT_COLOR)
-        else:
-            self.randomColor = False
-            self.color = color
-
     def updateUserBadge(self, badges):
         self.userName = self.nick
         if 'turbo' in badges:

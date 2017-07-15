@@ -19,7 +19,7 @@ class UserList(QListWidget):
     def updateUser(self, nick, badges):
         user = self.nickList[nick]
         self.removeUser(user, False)
-        user.update(badges)
+        user.updateUserBadge(badges)
         self.insertItem(self.indexOfUserInsert(user), user)
 
     def removeUser(self, user, part):

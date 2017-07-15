@@ -19,7 +19,8 @@ class MessageProcessor:
                 userList.addUser(nameLink)
                 user = userList.nickList.get(nameLink)
             if user.hasSpoken == False:
-                userList.setUpUser(user.nick, message.group(2), message.group(5))
+                userList.updateUser(user.nick, message.group(2))
+                user.updateUserColor(message.group(5))
             else:
                 if user.badges != message.group(2):
                     userList.updateUser(user.nick, message.group(2))
