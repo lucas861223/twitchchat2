@@ -3,7 +3,6 @@ import ctypes
 from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.QtCore import QPoint
 from CentralWidget import CentralWidget
-from PyQt5.QtGui import QShortcutEvent
 from MenuBar import MenuBar
 
 

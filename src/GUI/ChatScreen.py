@@ -2,14 +2,15 @@ from PyQt5.QtWidgets import QShortcut, QTextBrowser, QSplitter, QMainWindow, QHB
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QKeySequence
 from UserList import UserList
-from ClientIRC import ClientIRC
-from MessageProcessor import MessageProcessor
+from Util.ClientIRC import ClientIRC
+from Util.MessageProcessor import MessageProcessor
 from Chat.ChatThread import *
-
+from Util.JSONDecoder import JSONDecoder
 
 class ChatScreen(QTabWidget):
     def __init__(self, parent):
         super(ChatScreen, self).__init__(parent)
+        self.jsonDecoder = JSONDecoder()
         self.tabs = {}
         self.clientIRC = ClientIRC(self)
         self.clientIRC.start()
@@ -24,7 +25,7 @@ class ChatScreen(QTabWidget):
     def joinChannel(self, channelName):
         chatTab = self.tabs.get('#' + channelName, None)
         if chatTab is None:
-            chatTab = ChatTab(channelName, self.clientIRC)
+            chatTab = ChatTab(channelName, self.clientIRC, self.jsonDecoder)
             self.tabs['#' + channelName] = chatTab
             self.addTab(chatTab, '#' + channelName)
             self.setCurrentIndex(self.count() - 1)
@@ -37,7 +38,7 @@ class ChatScreen(QTabWidget):
 
     def newMessage(self, channelName, message):
         chatTab = self.tabs.get('#' + channelName, None)
-        chatTab.channelChat.thread.run(message)
+        chatTab.channelChat.chatThread.run(message)
 
     def nextTab(self):
         if self.currentIndex() == self.count() - 1:
@@ -58,11 +59,11 @@ class ChatScreen(QTabWidget):
                 self.removeTab(self.currentIndex() + 1)
 
 class ChatTab(QWidget):
-    def __init__(self, channelName, clientIRC):
+    def __init__(self, channelName, clientIRC, jsonDecoder):
         super(ChatTab, self).__init__()
         userList = UserList(self)
         self.userList = userList
-        channelChat = ChannelChat(self, channelName)
+        channelChat = ChannelChat(self, channelName, jsonDecoder)
         layout = QHBoxLayout()
         layout.setContentsMargins(0, 0, 0, 0)
         splitter = QSplitter(Qt.Horizontal)
@@ -74,6 +75,7 @@ class ChatTab(QWidget):
         splitter.setStretchFactor(1, 1)
         splitter.setChildrenCollapsible(False)
         layout.addWidget(splitter)
+        self.jsonDecoder = jsonDecoder
         self.clientIRC = clientIRC
         self.clientIRC.joinChannel(channelName)
         self.setLayout(layout)
@@ -92,11 +94,11 @@ class ChatTab(QWidget):
 
 
 class ChannelChat(QTextBrowser):
-    def __init__(self, chatTab, channel):
+    def __init__(self, chatTab, channel, jsonDecoder):
         super(ChannelChat, self).__init__(chatTab)
         self.chatTab = chatTab
-        self.messageProcessor = MessageProcessor()
-        self.thread = ChatThread(self)
+        self.messageProcessor = MessageProcessor(jsonDecoder)
+        self.chatThread = ChatThread(self)
         self.setReadOnly(True)
         self.anchorClicked.connect(self.checkClick)
         self.setAcceptRichText(True)

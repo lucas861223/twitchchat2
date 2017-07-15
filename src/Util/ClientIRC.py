@@ -1,12 +1,11 @@
 import socket
-import re
-import threading
+import os.path
 import time
-from SystemMessageProcessor import *
+from Util.SystemMessageProcessor import *
 
 class ClientIRC:
     def __init__(self, chatScreen):
-        file = open('C:\\Users\\lucas\\Python Workspace\\TwitchChat\\src\\login', 'r')
+        file = open('../setting/login', 'r')
         self.nickname = file.readline()
         self.password = file.readline()
         file.close()
