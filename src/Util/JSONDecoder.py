@@ -4,7 +4,7 @@ from queue import Queue
 
 class JSONDecoder:
     headers = {'Accept': 'application/vnd.twitchtv.v5+json'}
-    channelBadge = 'https://api.twitch.tv/kraken/chat/channelID/badges'
+    channelBadge = 'https://badges.twitch.tv/v1/badges/channels/channelID/display'
     def __init__(self):
         file = open('../setting/clientID', 'r')
         JSONDecoder.headers['Client-ID'] = file.readline()

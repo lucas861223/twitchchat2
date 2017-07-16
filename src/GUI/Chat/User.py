@@ -17,24 +17,32 @@ class UserListEntry(QListWidgetItem):
 
     def updateUserBadge(self, badges):
         self.userName = self.nick
+        self.badgesImage = ''
         if 'turbo' in badges:
             self.userName = '+' + self.userName
+            self.badgesImage += '<img src="../Icon/turbo.png"> '
         if 'premium' in badges:
             self.userName = '+' + self.userName
+            self.badgesImage += '<img src="../Icon/premium.png"> '
         if 'bits' in badges:
             self.userName = '$' + self.userName
         if 'subscriber' in badges:
             self.userName = '%' + self.userName
         if 'moderator' in badges:
             self.userName = '@' + self.userName
+            self.badgesImage += '<img src="../Icon/moderator.png"> '
         if 'global_mod' in badges:
             self.userName = '*' + self.userName
+            self.badgesImage += '<img src="../Icon/globalmod.png"> '
         if 'admin' in badges:
             self.userName = '!' + self.userName
+            self.badgesImage += '<img src="../Icon/admin.png"> '
         if 'staff' in badges:
             self.userName = '&' + self.userName
+            self.badgesImage += '<img src="../Icon/staff.png"> '
         if 'broadcaster' in badges:
             self.userName = '~' + self.userName
+            self.badgesImage += '<img src="../Icon/broadcaster.png"> '
         self.setText(self.userName)
         self.calculatePoint()
         self.badges = badges

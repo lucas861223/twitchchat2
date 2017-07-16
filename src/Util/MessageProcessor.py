@@ -24,8 +24,7 @@ class MessageProcessor:
             else:
                 if user.badges != message.group(2):
                     userList.updateUser(user.nick, message.group(2))
-            #finalMessage += self.getBadgesIcon(message.group(2))
-            badges = 'group 2, to me done'
+            finalMessage += user.badgesImage
             bits = 'group 3, to be done'
             finalMessage += '<a href="' + nameLink + '" style="text-decoration:none" '
             if message.group(5) is not '':
@@ -47,13 +46,4 @@ class MessageProcessor:
             channelChat.newMessage(finalMessage)
 
     def setBadgesIcon(self, badges):
-        self.adminImage = badges['admin']['image']
-        self.broadcasterImage = badges['broadcaster']['image']
-        self.globalModImage = badges['global_mod']['image']
-        self.modImage = badges['mod']['image']
-        self.staffImage = badges['staff']['image']
-        self.turboImage = badges['turbo']['image']
-        if badges['subscriber'] is not None:
-            #change later
-            print(badges['subscriber'])
-
+        print('a')
