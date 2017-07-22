@@ -9,9 +9,8 @@ class SystemMessageProcessor:
     USERSTATE = re.compile('@badges=([^;]+);color=(#[^;]+);display-name=(#[^;]+);emote-sets=(#[^;]+);mod==(#[^;]+);subscriber==(#[^;]+);.*USERSTATE #(.*)')
     ROOMSTATE = re.compile('@broadcaster-lang=([^;]+)?;emote-only=([01]);followers-only=([^;]+);r9k=([01]);room-id=([^;]+);slow=([^;]+);subs-only=([01]).*ROOMSTATE #(.*)')
     NOTICE = re.compile('@msg-id=([^ ]+) .*NOTICE #([^ ]+) :(.*)')
-    NAME_LIST = re.compile('tmi.twitch.tv 353 .*=#([^ ]+) :(.*)')
-    SYSTEM_MODDING = re.compile(':jtv MODE #(.*) \+o (.*)')
     NAME_LIST = re.compile('.* 353 .* #(.*) :(.*)')
+    SYSTEM_MODDING = re.compile(':jtv MODE #(.*) \+o (.*)')
 
     def __init__(self, chatScreen):
         self.chatScreen = chatScreen
@@ -21,9 +20,10 @@ class SystemMessageProcessor:
         self.jsonDecoderThread.start()
 
     def processMessage(self, message):
-        if ' HOSTTARGET ' in message:
-            result = re.search(SystemMessageProcessor.HOST_MODE, message)
-            print(result.group(1) + ' is hosting ' + result.group(2))
+        if ' PART ' in message:
+            result = re.search(SystemMessageProcessor.PART_MESSAGE, message)
+            chatTab = self.chatScreen.tabs.get('#' + result.group(2))
+            chatTab.userList.removeUser(chatTab.userList.nickList[result.group(1)], True)
         elif ' JOIN ' in message:
             result = re.search(SystemMessageProcessor.JOIN_MESSAGE, message)
             chatTab = self.chatScreen.tabs.get('#' + result.group(2))
@@ -38,8 +38,6 @@ class SystemMessageProcessor:
                                  result.group(5), result.group(6), result.group(7))
             #change later
             self.jsonDecoderThread.addJob(['set_badges', chatTab.channelChat.messageProcessor, result.group(5)])
-
-
         elif ' +o ' in message:
             result = re.search(SystemMessageProcessor.SYSTEM_MODDING, message)
             userList = self.chatScreen.tabs.get('#' + result.group(1)).userList
@@ -50,6 +48,9 @@ class SystemMessageProcessor:
             for nick in result.group(2).split(' '):
                 if userList.nickList.get(nick, None) is None:
                     userList.addUser(nick)
+        elif ' HOSTTARGET ' in message:
+            result = re.search(SystemMessageProcessor.HOST_MODE, message)
+            print(result.group(1) + ' is hosting ' + result.group(2))
         else:
             print(message)
 
@@ -61,7 +62,7 @@ class SystemMessageThread(threading.Thread):
         self.chatScreen = chatScreen
         self.messageToBeProcessed = Queue()
         self.daemon = True
-
+        self.setName('SystemMesageThread')
     def newMessage(self, message):
         self.messageToBeProcessed.put(message)
 

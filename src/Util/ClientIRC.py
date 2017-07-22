@@ -39,9 +39,9 @@ class ClientIRC:
             self.stop()
             raise RuntimeError('Login authentication failed')
 
-
         self.receiveThread = threading.Thread(target=self.receivingMessage)
         self.receiveThread.setDaemon(True)
+        self.receiveThread.setName('receiveThread')
         self.receiveThread.start()
         self.sendSocket.setblocking(False)
 
@@ -62,14 +62,16 @@ class ClientIRC:
                     response = response[0:response.rfind('\r\n')]
 
                 for responses in response.split('\r\n'):
-                    print(responses)
+
                     if responses.startswith('PING'):
                         self.receiveSocket.send((responses.replace('PING', 'PONG') + '\r\n').encode('utf-8'))
                     else:
+
                         message = re.search(self.channelMessagePattern, responses)
                         if message is None:
                             self.systemMessageThread.newMessage(responses)
                         else:
+                            print(responses)
                             self.chatScreen.newMessage(message.group(1), time.strftime('%H:%M:%S') + ' ' + responses)
             except OSError:
                 pass

@@ -49,6 +49,7 @@ class ChatScreen(QTabWidget):
     def closeTab(self):
         if self.count() > 1:
             self.clientIRC.leaveChannel(self.widget(self.currentIndex()).channelName)
+            self.tabs.pop(self.widget(self.currentIndex()).channelName)
             if self.currentIndex() == 0:
                 self.setCurrentIndex(1)
                 self.widget(0).close()
@@ -94,11 +95,11 @@ class ChatTab(QWidget):
 
 
 class ChannelChat(QTextBrowser):
-    def __init__(self, chatTab, channel, jsonDecoder):
+    def __init__(self, chatTab, channelName, jsonDecoder):
         super(ChannelChat, self).__init__(chatTab)
         self.chatTab = chatTab
         self.messageProcessor = MessageProcessor(jsonDecoder)
-        self.chatThread = ChatThread(self)
+        self.chatThread = ChatThread(self, channelName)
         self.chatThread.start()
         self.setReadOnly(True)
         self.anchorClicked.connect(self.checkClick)

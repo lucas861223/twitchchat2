@@ -30,5 +30,4 @@ class JSONDecoderThread(threading.Thread):
             if event[0] == 'set_badges':
                 badges = requests.get(self.jsonDecoder.channelBadge.replace('channelID', event[2]),
                                       headers=self.jsonDecoder.headers).json()
-                print(badges)
                 event[1].setBadgesIcon(badges)

@@ -10,16 +10,19 @@ class UserList(QListWidget):
         self.nickList = {}
 
     def addUser(self, nick):
-        userListEntry = UserListEntry(nick)
-        if '#' + nick == self.chatTab.channelName:
-            userListEntry.setStreamer()
-        self.insertItem(self.indexOfUserInsert(userListEntry), userListEntry)
-        self.nickList[nick] = userListEntry
+        if self.nickList.get(nick, None) is None:
+            userListEntry = UserListEntry(nick)
+            if '#' + nick == self.chatTab.channelName:
+                userListEntry.setStreamer()
+            self.insertItem(self.indexOfUserInsert(userListEntry), userListEntry)
+            self.nickList[nick] = userListEntry
 
-    def updateUser(self, nick, badges):
+
+
+    def updateUser(self, nick, badges, subBadge, bitsBadge):
         user = self.nickList[nick]
         self.removeUser(user, False)
-        user.updateUserBadge(badges)
+        user.updateUserBadge(badges, subBadge, bitsBadge)
         self.insertItem(self.indexOfUserInsert(user), user)
 
     def removeUser(self, user, part):

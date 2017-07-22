@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QListWidgetItem
 import random
+import re
 
 class UserListEntry(QListWidgetItem):
     DEFAULT_COLOR = ['#FF0000', '#00FF00', '#0000FF', '#B22222', '#FF7F50', '#9ACD32', '#FF4500', '#2E8B57', '#DAA520', '#D2691E', '#5F9EA0', '#1E90FF', '#FF69B4', '#8A2BE2', '#00FF7F']
@@ -15,45 +16,56 @@ class UserListEntry(QListWidgetItem):
         self.modSet = False
         self.badges = ''
 
-    def updateUserBadge(self, badges):
+    def updateUserBadge(self, badges, subBadge, bitsBadge):
         self.userName = self.nick
         self.badgesImage = ''
         if 'turbo' in badges:
             self.userName = '+' + self.userName
-            self.badgesImage += '<img src="../Icon/turbo.png"> '
+            self.badgesImage = '<img src="../Icon/turbo.png">' + self.badgesImage
         if 'premium' in badges:
             self.userName = '+' + self.userName
-            self.badgesImage += '<img src="../Icon/premium.png"> '
+            self.badgesImage = '<img src="../Icon/premium.png">' + self.badgesImage
+        if 'partner' in badges:
+            self.badgesImage = '<img src="../Icon/partner.png">' + self.badgesImage
         if 'bits' in badges:
             self.userName = '$' + self.userName
+            amount = re.search(re.compile('bits/(\d+)'), badges).group(1)
+            if amount in bitsBadge:
+                self.badgesImage = '<img src="' + bitsBadge[amount] + '">' + self.badgesImage
+            else:
+                self.badgesImage = '<img src="../Icon/bits ' + amount + '.png">' + self.badgesImage
         if 'subscriber' in badges:
             self.userName = '%' + self.userName
+            if len(subBadge) > 0:
+                self.badgesImage = '<img src="' + subBadge[re.search(re.compile('subscriber/(\d+)'), badges).group(1)] + '">' + self.badgesImage
+            else:
+                self.badgesImage = '<img src="../Icon/subscriber.png">' + self.badgesImage
         if 'moderator' in badges:
             self.userName = '@' + self.userName
-            self.badgesImage += '<img src="../Icon/moderator.png"> '
+            self.badgesImage = '<img src="../Icon/moderator.png">' + self.badgesImage
         if 'global_mod' in badges:
             self.userName = '*' + self.userName
-            self.badgesImage += '<img src="../Icon/globalmod.png"> '
+            self.badgesImage = '<img src="../Icon/globalmod.png">' + self.badgesImage
         if 'admin' in badges:
             self.userName = '!' + self.userName
-            self.badgesImage += '<img src="../Icon/admin.png"> '
+            self.badgesImage = '<img src="../Icon/admin.png">' + self.badgesImage
         if 'staff' in badges:
             self.userName = '&' + self.userName
-            self.badgesImage += '<img src="../Icon/staff.png"> '
+            self.badgesImage = '<img src="../Icon/staff.png">' + self.badgesImage
         if 'broadcaster' in badges:
             self.userName = '~' + self.userName
-            self.badgesImage += '<img src="../Icon/broadcaster.png"> '
+            self.badgesImage = '<img src="../Icon/broadcaster.png">' + self.badgesImage
         self.setText(self.userName)
         self.calculatePoint()
         self.badges = badges
 
     def updateUserColor(self, color):
-        if color == '':
-            self.randomColor = True
-            self.color = random.choice(UserListEntry.DEFAULT_COLOR)
-        else:
+        if color:
             self.randomColor = False
             self.color = color
+        else:
+            self.randomColor = True
+            self.color = random.choice(UserListEntry.DEFAULT_COLOR)
 
     def setStreamer(self):
         self.userName = '~' + self.userName
