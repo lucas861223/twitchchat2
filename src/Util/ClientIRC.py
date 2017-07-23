@@ -1,5 +1,5 @@
 import socket
-import os.path
+import threading
 import time
 from Util.SystemMessageProcessor import *
 
@@ -66,12 +66,13 @@ class ClientIRC:
                     if responses.startswith('PING'):
                         self.receiveSocket.send((responses.replace('PING', 'PONG') + '\r\n').encode('utf-8'))
                     else:
-
                         message = re.search(self.channelMessagePattern, responses)
                         if message is None:
-                            self.systemMessageThread.newMessage(responses)
+                            if ' WHISPER ' in responses:
+                                self.systemMessageThread.newMessage(time.strftime('%H:%M:%S') + ' ' + responses)
+                            else:
+                                self.systemMessageThread.newMessage(responses)
                         else:
-                            print(responses)
                             self.chatScreen.newMessage(message.group(1), time.strftime('%H:%M:%S') + ' ' + responses)
             except OSError:
                 pass

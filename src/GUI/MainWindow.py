@@ -11,7 +11,6 @@ class MainWindow(QMainWindow):
         user32 = ctypes.windll.user32
         super().__init__()
         self.setWindowTitle('Twitch chat')
-        self.setStyleSheet('background: #ffffff')
         self.left = user32.GetSystemMetrics(0) - 900
         self.top = 40
         self.width = 500

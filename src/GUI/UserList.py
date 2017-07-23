@@ -32,9 +32,10 @@ class UserList(QListWidget):
 
     def reIndexUserForSystemModding(self, nick):
         user = self.nickList[nick]
-        self.removeUser(user, False)
-        user.setMod()
-        self.insertItem(self.indexOfUserInsert(user), user)
+        if '@' not in user.userName:
+            self.removeUser(user, False)
+            user.setMod()
+            self.insertItem(self.indexOfUserInsert(user), user)
 
     def indexOfUserInsert(self, user):
         first = 0

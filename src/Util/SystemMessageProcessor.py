@@ -1,6 +1,5 @@
 import re
-import threading
-from queue import Queue
+from SystemMessageThread import SystemMessageThread
 
 class SystemMessageProcessor:
     HOST_MODE = re.compile('.*HOSTTARGET #([^ ]+) :([^ ]+)')
@@ -22,12 +21,17 @@ class SystemMessageProcessor:
     def processMessage(self, message):
         if ' PART ' in message:
             result = re.search(SystemMessageProcessor.PART_MESSAGE, message)
-            chatTab = self.chatScreen.tabs.get('#' + result.group(2))
-            chatTab.userList.removeUser(chatTab.userList.nickList[result.group(1)], True)
+            if result.group(1) + '\n' != self.chatScreen.clientIRC.nickname:
+                print(result.group(1))
+                print(self.chatScreen.clientIRC.nickname)
+                chatTab = self.chatScreen.tabs.get('#' + result.group(2))
+                chatTab.userList.removeUser(chatTab.userList.nickList[result.group(1)], True)
         elif ' JOIN ' in message:
             result = re.search(SystemMessageProcessor.JOIN_MESSAGE, message)
             chatTab = self.chatScreen.tabs.get('#' + result.group(2))
             chatTab.userList.addUser(result.group(1))
+        elif ' WHISPER ' in message:
+            self.chatScreen.newWhisper(message)
         elif ' USERSTATE ' in message:
             result = re.search(SystemMessageProcessor.USERSTATE, message)
             print(message)
@@ -53,23 +57,6 @@ class SystemMessageProcessor:
             print(result.group(1) + ' is hosting ' + result.group(2))
         else:
             print(message)
-
-
-class SystemMessageThread(threading.Thread):
-    def __init__(self, parent, chatScreen):
-        super().__init__(target=self.run, args=('',))
-        self.systemMessageProcessor = parent
-        self.chatScreen = chatScreen
-        self.messageToBeProcessed = Queue()
-        self.daemon = True
-        self.setName('SystemMesageThread')
-    def newMessage(self, message):
-        self.messageToBeProcessed.put(message)
-
-    def run(self):
-        while True:
-            message = self.messageToBeProcessed.get()
-            self.systemMessageProcessor.processMessage(message)
 
 
 

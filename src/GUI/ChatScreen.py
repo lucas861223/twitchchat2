@@ -1,13 +1,13 @@
-from PyQt5.QtWidgets import QShortcut, QTextBrowser, QSplitter, QMainWindow, QHBoxLayout, QTextEdit, QWidget, QTabWidget, QVBoxLayout, QLineEdit, QGridLayout
-from PyQt5.QtCore import Qt
+import re
+from PyQt5.QtWidgets import QShortcut, QTabWidget
 from PyQt5.QtGui import QKeySequence
-from UserList import UserList
 from Util.ClientIRC import ClientIRC
-from Util.MessageProcessor import MessageProcessor
-from Chat.ChatThread import *
+from ChatTab import ChatTab
 from Util.JSONDecoder import JSONDecoder
+from WhisperChat import WhisperChat
 
 class ChatScreen(QTabWidget):
+    WHISPER = re.compile('(\d\d:\d\d:\d\d) .*color=([^;]*);display-name=(([^A-Za-z]+)|([^;]+));emotes=([^;]*);.*:([^!]+).*WHISPER.*:(.*)')
     def __init__(self, parent):
         super(ChatScreen, self).__init__(parent)
         self.jsonDecoder = JSONDecoder()
@@ -27,8 +27,7 @@ class ChatScreen(QTabWidget):
         if chatTab is None:
             chatTab = ChatTab(channelName, self.clientIRC, self.jsonDecoder)
             self.tabs['#' + channelName] = chatTab
-            self.addTab(chatTab, '#' + channelName)
-            self.setCurrentIndex(self.count() - 1)
+            self.setCurrentIndex(self.addTab(chatTab, '#' + channelName))
         else:
             index = 0
             for index in range(0, self.count()):
@@ -59,69 +58,28 @@ class ChatScreen(QTabWidget):
                 self.widget(self.currentIndex() + 1).close()
                 self.removeTab(self.currentIndex() + 1)
 
-class ChatTab(QWidget):
-    def __init__(self, channelName, clientIRC, jsonDecoder):
-        super(ChatTab, self).__init__()
-        userList = UserList(self)
-        self.userList = userList
-        channelChat = ChannelChat(self, channelName, jsonDecoder)
-        layout = QHBoxLayout()
-        layout.setContentsMargins(0, 0, 0, 0)
-        splitter = QSplitter(Qt.Horizontal)
-        splitter.addWidget(channelChat)
-        splitter.addWidget(userList)
-        splitter.setContentsMargins(0, 0, 0, 0)
-        splitter.setHandleWidth(0)
-        splitter.setStretchFactor(0, 7)
-        splitter.setStretchFactor(1, 1)
-        splitter.setChildrenCollapsible(False)
-        layout.addWidget(splitter)
-        self.jsonDecoder = jsonDecoder
-        self.clientIRC = clientIRC
-        self.clientIRC.joinChannel(channelName)
-        self.setLayout(layout)
-        self.channelChat = channelChat
-        self.channelName = '#' + channelName
-
-    def setRoomState(self, language, emotesOnly, followersOnly, r9k, roomID, slow, subsOnly):
-        self.language = language
-        self.emotesOnly = emotesOnly
-        self.followersOnly = followersOnly
-        self.r9k = r9k
-        self.roomID = roomID
-        self.slow = slow
-        self.subsOnly = subsOnly
-
-
-
-class ChannelChat(QTextBrowser):
-    def __init__(self, chatTab, channelName, jsonDecoder):
-        super(ChannelChat, self).__init__(chatTab)
-        self.chatTab = chatTab
-        self.messageProcessor = MessageProcessor(jsonDecoder)
-        self.chatThread = ChatThread(self, channelName)
-        self.chatThread.start()
-        self.setReadOnly(True)
-        self.anchorClicked.connect(self.checkClick)
-        self.setAcceptRichText(True)
-        self.setOpenLinks(False)
-        self.scrollToBottom = True
-        self.lastSent = ''
-        self.verticalScrollBar().rangeChanged.connect(self.scrollBar)
-        self.verticalScrollBar().sliderReleased.connect(self.shouldKeepScrolling)
-
-    def checkClick(self, link):
-        print(link.toString())
-
-    def newMessage(self, message):
-        self.append(message)
-
-    def shouldKeepScrolling(self):
-        if self.verticalScrollBar().value() == self.verticalScrollBar().maximum():
-            self.scrollToBottom = True
+    def newWhisper(self, message):
+        print(message)
+        result = re.search(ChatScreen.WHISPER, message)
+        whisperChat = self.tabs.get('$' + result.group(7), None)
+        if whisperChat is None:
+            whisperChat = WhisperChat(self, result.group(7), self.clientIRC)
+            self.setCurrentIndex(self.addTab(whisperChat, '$' + result.group(7)))
+            self.tabs['$' + result.group(7)] = whisperChat
+            whisperChat.setUpWhisperChat(result.group(2))
+        finalMessage = '[' + result.group(1) + '] <a href="' + result.group(7) + '" style="text-decoration:none" '
+        if result.group(2):
+            finalMessage += 'style="color:' + result.group(2) + '">'
         else:
-            self.scrollToBottom = False
-
-    def scrollBar(self):
-        if self.scrollToBottom:
-            self.verticalScrollBar().setValue(self.verticalScrollBar().maximum())
+            finalMessage += 'style="color:' + whisperChat.userColor + '">'
+        if result.group(3) is not None:
+            if result.group(4) is not None:
+                displayName = result.group(4) + ' (' + result.group(7) + ')'
+            else:
+                displayName = result.group(5)
+        else:
+            displayName = result.group(7)
+        #add emotes later
+        finalMessage += '<b>' + displayName + ': </b></a>' + result.group(8)
+        print(finalMessage)
+        whisperChat.newMessage(finalMessage)

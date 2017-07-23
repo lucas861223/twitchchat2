@@ -1,11 +1,9 @@
 import re
-import random
-from User import *
 
 class MessageProcessor:
 
     def __init__(self, jsonDecoder, ):
-        self.message_pattern = re.compile('(\d\d:\d\d:\d\d) @badges=([^;]*);(bits=(\d+);)?color=([^;]*);display-name=(([^A-Za-z]+)|([^;]+));.*subscriber=([01]);.*turbo=([01]);user-id=(\d+);user-type=([^ ]*) :([^!]+)!.*PRIVMSG[^:]*:( ACTION)?(.*)')
+        self.message_pattern = re.compile('(\d\d:\d\d:\d\d) @badges=([^;]*);(bits=(\d+);)?color=([^;]*);display-name=(([^A-Za-z]*)|([^;]*));.*subscriber=([01]);.*turbo=([01]);user-id=(\d+);user-type=([^ ]*) :([^!]+)!.*PRIVMSG[^:]*:( ACTION)?(.*)')
         self.jsonDecoder = jsonDecoder
         self.bitsBadge = {}
         self.subBadge = {}
@@ -33,8 +31,7 @@ class MessageProcessor:
             if message.group(5):
                 if user.color != message.group(5):
                     user.updateUserColor(message.group(5))
-            color = 'style="color:' + user.color + '"'
-            finalMessage += color + '>'
+            finalMessage += 'style="color:' + user.color + '">'
             if message.group(6) is not None:
                 if message.group(7) is not None:
                     displayName = message.group(7) + ' (' + message.group(13) + ')'
