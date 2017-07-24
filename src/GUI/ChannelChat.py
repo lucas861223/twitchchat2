@@ -2,7 +2,6 @@ from Util.MessageProcessor import MessageProcessor
 from Chat.ChatThread import ChatThread
 from PyQt5.QtWidgets import QTextBrowser
 
-
 class ChannelChat(QTextBrowser):
     def __init__(self, chatTab, channelName, jsonDecoder):
         super(ChannelChat, self).__init__(chatTab)
@@ -19,6 +18,7 @@ class ChannelChat(QTextBrowser):
         self.verticalScrollBar().rangeChanged.connect(self.scrollBar)
         self.verticalScrollBar().sliderReleased.connect(self.shouldKeepScrolling)
         #add wheel event
+
 
     def checkClick(self, link):
         print(link.toString())

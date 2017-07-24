@@ -1,7 +1,8 @@
 import socket
 import threading
 import time
-from Util.SystemMessageProcessor import *
+import re
+from Util.SystemMessageProcessor import SystemMessageProcessor
 
 class ClientIRC:
     def __init__(self, chatScreen):

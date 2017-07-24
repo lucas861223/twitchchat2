@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QTextBrowser
 import random
 from Chat.User import  UserListEntry
+import time
 
 class WhisperChat(QTextBrowser):
     def __init__(self, chatScreen, whisperer, clientIRC):
@@ -18,7 +19,7 @@ class WhisperChat(QTextBrowser):
         self.channelName = '$' + whisperer
         #add wheel event
 
-    def setUpWhisperChat(self, color):
+    def setUpWhisperChat(self):
         self.userColor = random.choice(UserListEntry.DEFAULT_COLOR)
 
     def checkClick(self, link):
@@ -26,6 +27,14 @@ class WhisperChat(QTextBrowser):
 
     def newMessage(self, message):
         self.append(message)
+    def newSentMessage(self, message):
+        finalMessage = '<font color="#00BFFF">[' + time.strftime('%H:%M:%S') + ']</font>'\
+                       + '<a href="' + self.clientIRC.nickname + '" style="text-decoration:none" '\
+                       + 'style="color:' + self.clientIRC.userColor + '">'\
+                       + '<b>' + self.clientIRC.userDisplayName + ': </b></a>'\
+                       +'<font color="#00BFFF">[' + message + ']</font>'
+        #add emotes later
+        self.append(finalMessage)
 
     def shouldKeepScrolling(self):
         if self.verticalScrollBar().value() == self.verticalScrollBar().maximum():

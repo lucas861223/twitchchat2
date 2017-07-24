@@ -1,5 +1,7 @@
 import re
 from SystemMessageThread import SystemMessageThread
+from User import UserListEntry
+import random
 
 class SystemMessageProcessor:
     HOST_MODE = re.compile('.*HOSTTARGET #([^ ]+) :([^ ]+)')
@@ -10,6 +12,7 @@ class SystemMessageProcessor:
     NOTICE = re.compile('@msg-id=([^ ]+) .*NOTICE #([^ ]+) :(.*)')
     NAME_LIST = re.compile('.* 353 .* #(.*) :(.*)')
     SYSTEM_MODDING = re.compile(':jtv MODE #(.*) \+o (.*)')
+    GLOBALUSERSTATE = re.compile('color=([^;]*);display-name=([^;]*).*user-id=([\d]+)')
 
     def __init__(self, chatScreen):
         self.chatScreen = chatScreen
@@ -31,7 +34,7 @@ class SystemMessageProcessor:
             chatTab = self.chatScreen.tabs.get('#' + result.group(2))
             chatTab.userList.addUser(result.group(1))
         elif ' WHISPER ' in message:
-            self.chatScreen.newWhisper(message)
+            self.chatScreen.newWhiserSignal.emit(message)
         elif ' USERSTATE ' in message:
             result = re.search(SystemMessageProcessor.USERSTATE, message)
             print(message)
@@ -55,6 +58,20 @@ class SystemMessageProcessor:
         elif ' HOSTTARGET ' in message:
             result = re.search(SystemMessageProcessor.HOST_MODE, message)
             print(result.group(1) + ' is hosting ' + result.group(2))
+        elif 'GLOBALUSERSTATE' in message:
+            result = re.search(SystemMessageProcessor.GLOBALUSERSTATE, message)
+            if result.group(1):
+                self.chatScreen.clientIRC.userColor = result.group(1)
+            else:
+                self.chatScreen.clientIRC.userColor = random.choice(UserListEntry.DEFAULT_COLOR)
+            if result.group(2):
+                if (any(not character.isalpha() and not character.isdigit() for character in result.group(2))):
+                    self.chatScreen.clientIRC.userDisplayName = result.group(2) + ' (' + self.chatScreen.clientIRC.nickname + ')'
+                else:
+                    self.chatScreen.clientIRC.userDisplayName = result.group(2)
+            else:
+                self.chatScreen.clientIRC.userDisplayName = self.chatScreen.clientIRC.nickname
+            self.chatScreen.clientIRC.userID = result.group(3)
         else:
             print(message)
 

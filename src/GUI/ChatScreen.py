@@ -5,8 +5,12 @@ from Util.ClientIRC import ClientIRC
 from ChatTab import ChatTab
 from Util.JSONDecoder import JSONDecoder
 from WhisperChat import WhisperChat
+import threading
+import sys
+from PyQt5.QtCore import pyqtSignal
 
 class ChatScreen(QTabWidget):
+    newWhiserSignal = pyqtSignal(str)
     WHISPER = re.compile('(\d\d:\d\d:\d\d) .*color=([^;]*);display-name=(([^A-Za-z]+)|([^;]+));emotes=([^;]*);.*:([^!]+).*WHISPER.*:(.*)')
     def __init__(self, parent):
         super(ChatScreen, self).__init__(parent)
@@ -21,6 +25,7 @@ class ChatScreen(QTabWidget):
         default_channel.close()
         QShortcut(QKeySequence('Ctrl+Tab'), self, self.nextTab)
         QShortcut(QKeySequence('Ctrl+W'), self, self.closeTab)
+        self.newWhiserSignal.connect(self.newWhisper)
 
     def joinChannel(self, channelName):
         chatTab = self.tabs.get('#' + channelName, None)
@@ -47,7 +52,8 @@ class ChatScreen(QTabWidget):
 
     def closeTab(self):
         if self.count() > 1:
-            self.clientIRC.leaveChannel(self.widget(self.currentIndex()).channelName)
+            if '#' in self.widget(self.currentIndex()).channelName:
+                self.clientIRC.leaveChannel(self.widget(self.currentIndex()).channelName)
             self.tabs.pop(self.widget(self.currentIndex()).channelName)
             if self.currentIndex() == 0:
                 self.setCurrentIndex(1)
@@ -58,15 +64,18 @@ class ChatScreen(QTabWidget):
                 self.widget(self.currentIndex() + 1).close()
                 self.removeTab(self.currentIndex() + 1)
 
+    def newWhisperChat(self, nick):
+        whisperChat = WhisperChat(self, nick, self.clientIRC)
+        whisperChat.setUpWhisperChat()
+        self.addTab(whisperChat, '$' + nick)
+        self.tabs['$' + nick] = whisperChat
+        return whisperChat
+
     def newWhisper(self, message):
-        print(message)
         result = re.search(ChatScreen.WHISPER, message)
         whisperChat = self.tabs.get('$' + result.group(7), None)
         if whisperChat is None:
-            whisperChat = WhisperChat(self, result.group(7), self.clientIRC)
-            self.setCurrentIndex(self.addTab(whisperChat, '$' + result.group(7)))
-            self.tabs['$' + result.group(7)] = whisperChat
-            whisperChat.setUpWhisperChat(result.group(2))
+            whisperChat = self.newWhisperChat(result.group(7))
         finalMessage = '[' + result.group(1) + '] <a href="' + result.group(7) + '" style="text-decoration:none" '
         if result.group(2):
             finalMessage += 'style="color:' + result.group(2) + '">'
@@ -81,5 +90,4 @@ class ChatScreen(QTabWidget):
             displayName = result.group(7)
         #add emotes later
         finalMessage += '<b>' + displayName + ': </b></a>' + result.group(8)
-        print(finalMessage)
         whisperChat.newMessage(finalMessage)
