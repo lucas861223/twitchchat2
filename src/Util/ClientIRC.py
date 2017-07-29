@@ -4,6 +4,7 @@ import time
 import re
 from Util.SystemMessageProcessor import SystemMessageProcessor
 
+
 class ClientIRC:
     def __init__(self, chatScreen):
         file = open('../setting/login', 'r')
@@ -14,9 +15,9 @@ class ClientIRC:
         self.sendSocket = socket.socket()
         self.receiveSocketRunning = False
         self.chatScreen = chatScreen
-        self.systemMessagePocessor = SystemMessageProcessor(self.chatScreen)
-        self.systemMessageThread = self.systemMessagePocessor.systemMessageThread
-        self.holdMessage = False
+        self.systemMessageProcessor = SystemMessageProcessor(self.chatScreen)
+        self.systemMessageThread = self.systemMessageProcessor.systemMessageThread
+        self.isHoldingMessage = False
         self.heldMessage = ''
         self.channelMessagePattern = re.compile('.*PRIVMSG (#[^ ]*) :')
 
@@ -54,11 +55,11 @@ class ClientIRC:
                     print('disconnected')
                     self.stop()
                 response = response.decode('utf-8')
-                if self.holdMessage:
+                if self.isHoldingMessage:
                     response = self.heldMessage + response
-                    self.holdMessage = False
+                    self.isHoldingMessage = False
                 if response.endswith('\r\n') == False:
-                    self.holdMessage = True
+                    self.isHoldingMessage = True
                     self.heldMessage = response[response.rfind('\r\n'):]
                     response = response[0:response.rfind('\r\n')]
 

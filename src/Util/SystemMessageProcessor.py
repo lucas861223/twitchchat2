@@ -7,8 +7,8 @@ class SystemMessageProcessor:
     HOST_MODE = re.compile('.*HOSTTARGET #([^ ]+) :([^ ]+)')
     JOIN_MESSAGE = re.compile(':([^!]+)!.* JOIN #(.*)$')
     PART_MESSAGE = re.compile(':([^!]+)!.* PART #(.*)$')
-    USERSTATE = re.compile('@badges=([^;]+);color=(#[^;]+);display-name=(#[^;]+);emote-sets=(#[^;]+);mod==(#[^;]+);subscriber==(#[^;]+);.*USERSTATE #(.*)')
-    ROOMSTATE = re.compile('@broadcaster-lang=([^;]+)?;emote-only=([01]);followers-only=([^;]+);r9k=([01]);room-id=([^;]+);slow=([^;]+);subs-only=([01]).*ROOMSTATE #(.*)')
+    USERSTATE = re.compile('@badges=([^;]+);.*color=(#[^;]+);.*display-name=(#[^;]+);.*emote-sets=(#[^;]+);.*mod==(#[^;]+);.*subscriber==(#[^;]+);.*USERSTATE #(.*)')
+    ROOMSTATE = re.compile('@broadcaster-lang=([^;]+)?;.*emote-only=([01]);.*followers-only=([^;]+);.*r9k=([01]);.*room-id=([^;]+);.*slow=([^;]+);.*subs-only=([01]).*ROOMSTATE #(.*)')
     NOTICE = re.compile('@msg-id=([^ ]+) .*NOTICE #([^ ]+) :(.*)')
     NAME_LIST = re.compile('.* 353 .* #(.*) :(.*)')
     SYSTEM_MODDING = re.compile(':jtv MODE #(.*) \+o (.*)')
@@ -25,8 +25,6 @@ class SystemMessageProcessor:
         if ' PART ' in message:
             result = re.search(SystemMessageProcessor.PART_MESSAGE, message)
             if result.group(1) + '\n' != self.chatScreen.clientIRC.nickname:
-                print(result.group(1))
-                print(self.chatScreen.clientIRC.nickname)
                 chatTab = self.chatScreen.tabs.get('#' + result.group(2))
                 chatTab.userList.removeUser(chatTab.userList.nickList[result.group(1)], True)
         elif ' JOIN ' in message:
@@ -39,6 +37,7 @@ class SystemMessageProcessor:
             result = re.search(SystemMessageProcessor.USERSTATE, message)
             print(message)
         elif ' ROOMSTATE ' in message:
+            print(message)
             result = re.search(SystemMessageProcessor.ROOMSTATE, message)
             chatTab = self.chatScreen.tabs.get('#' + result.group(8))
             chatTab.setRoomState(result.group(1), result.group(2), result.group(3), result.group(4),

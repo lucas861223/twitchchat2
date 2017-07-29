@@ -17,8 +17,6 @@ class UserList(QListWidget):
             self.insertItem(self.indexOfUserInsert(userListEntry), userListEntry)
             self.nickList[nick] = userListEntry
 
-
-
     def updateUser(self, nick, badges, subBadge, bitsBadge):
         user = self.nickList[nick]
         self.removeUser(user, False)
@@ -42,7 +40,7 @@ class UserList(QListWidget):
         last = self.count() - 1
         if last > 0:
             while first < last:
-                mid = (int)((first + last) / 2)
+                mid = (int) ((first + last) / 2)
                 if self.item(mid) < user:
                         first = mid + 1
                 else:
@@ -65,7 +63,7 @@ class UserList(QListWidget):
         first = 0
         last = self.count() - 1
         while first <= last:
-            mid = (int)((first + last) / 2)
+            mid = (int) ((first + last) / 2)
             if self.item(mid) == user:
                 return mid
             else:
@@ -76,5 +74,3 @@ class UserList(QListWidget):
                 else:
                     last = mid - 1
         return -1
-
-
