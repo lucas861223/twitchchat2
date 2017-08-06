@@ -16,10 +16,10 @@ class SystemMessageProcessor:
 
     def __init__(self, chatScreen):
         self.chatScreen = chatScreen
-        self.jsonDecoderThread = chatScreen.jsonDecoder.jsonDecoderThread
+        self.internetRelatedThread = chatScreen.jsonDecoder.internetRelatedThread
         self.systemMessageThread = SystemMessageThread(self, self.chatScreen)
         self.systemMessageThread.start()
-        self.jsonDecoderThread.start()
+        self.internetRelatedThread.start()
 
     def processMessage(self, message):
         if ' PART ' in message:
@@ -43,7 +43,7 @@ class SystemMessageProcessor:
             chatTab.setRoomState(result.group(1), result.group(2), result.group(3), result.group(4),
                                  result.group(5), result.group(6), result.group(7))
             #change later
-            self.jsonDecoderThread.addJob(['set_badges', chatTab.channelChat.messageProcessor, result.group(5)])
+            self.internetRelatedThread.addJob(['set_badges', chatTab.channelChat, result.group(5)])
         elif ' +o ' in message:
             result = re.search(SystemMessageProcessor.SYSTEM_MODDING, message)
             userList = self.chatScreen.tabs.get('#' + result.group(1)).userList

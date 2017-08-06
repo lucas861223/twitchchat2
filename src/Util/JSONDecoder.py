@@ -1,4 +1,4 @@
-from JSONDecoderThread import JSONDecoderThread
+from InternetRelatedThread import InternetRelatedThread
 
 class JSONDecoder:
     headers = {'Accept': 'application/vnd.twitchtv.v5+json'}
@@ -7,7 +7,7 @@ class JSONDecoder:
         file = open('../setting/clientID', 'r')
         JSONDecoder.headers['Client-ID'] = file.readline()
         file.close()
-        self.jsonDecoderThread = JSONDecoderThread(JSONDecoder)
+        self.internetRelatedThread = InternetRelatedThread(JSONDecoder)
 
 
 

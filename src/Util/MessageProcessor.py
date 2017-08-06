@@ -1,12 +1,16 @@
 import re
+from CacheManager import CacheManager
 
 class MessageProcessor:
     EMOTE_PATTERN = re.compile('(\d+):(\d+-\d+,?)+')
     EMOTE_RANGE = re.compile('((\d+)-(\d+)),?')
     EMOTE_PREFIX = 'http://static-cdn.jtvnw.net/emoticons/v1/'
-    MESSAGE_PATTERN = re.compile('(\d\d:\d\d:\d\d) @badges=([^;]*);.*(bits=(\d+);.*)?color=([^;]*);.*display-name=(([^A-Za-z]*)|([^;]*));.*emotes=([^;]*);.*user-id=(\d+);.*:([^!]+)!.*#[^ ]+ :( ACTION)?(.*)')
+    MESSAGE_PATTERN = re.compile('(\d\d:\d\d:\d\d) @badges=([^;]*);.*(bits=(\d+);.*)?color=([^;]*);.*display-name=(([^A-Za-z]*)|([^;]*));.*emotes=([^;]*);.*user-id=(\d+);.*:([^!]+)!.*#[^ ]+ :(ACTION )?(.*)')
+    INTERNET_RELATED_THREAD = None
+
     def __init__(self, jsonDecoder, ):
         self.jsonDecoder = jsonDecoder
+        MessageProcessor.INTERNET_RELATED_THREAD = jsonDecoder.internetRelatedThread
         self.bitsBadge = {}
         self.subBadge = {}
 
@@ -43,8 +47,11 @@ class MessageProcessor:
                 displayName = nameLink
             displayName = '<b>' + displayName + ': </b></a>'
             finalMessage += displayName
-
-            finalMessage += MessageProcessor.insertEmote(message.group(13), message.group(9))
+            #if mentioned, elif group 12, also change user name if /me
+            userMessage = MessageProcessor.insertEmote(message.group(13), message.group(9))
+            if message.group(12) is not None:
+                userMessage = '<font color="' + user.color + '">' + userMessage + "</font>"
+            finalMessage += userMessage
             #emotes = to be done
             print(finalMessage)
             channelChat.newMessage(finalMessage)
@@ -55,11 +62,13 @@ class MessageProcessor:
             return message
         emoteArray = MessageProcessor.constructEmoteArray(emotes)
         for i in range(len(emoteArray) - 1, 0, -1):
-            message = message[0:emoteArray[i][1]-1] + '<img src="' +  MessageProcessor.EMOTE_PREFIX + emoteArray[i][0] + '/1.0">' + message[emoteArray[i][2]+1:]
+            CacheManager.prepareEmote(emoteArray[i][0], MessageProcessor.INTERNET_RELATED_THREAD)
+            message = message[0:emoteArray[i][1]-1] + '<img src="' + CacheManager.DIRECTORY + emoteArray[i][0] + '.png">' + message[emoteArray[i][2]+1:]
+        CacheManager.prepareEmote(emoteArray[0][0], MessageProcessor.INTERNET_RELATED_THREAD)
         if (emoteArray[0][1] == 0):
-            message = '<img src="' + MessageProcessor.EMOTE_PREFIX + emoteArray[0][0] + '/1.0">' + message[emoteArray[0][2] + 1:]
+            message = '<img src="' + CacheManager.DIRECTORY + emoteArray[0][0] + '.png">' + message[emoteArray[0][2] + 1:]
         else:
-            message = message[0:emoteArray[0][1] - 1] + '<img src="' + MessageProcessor.EMOTE_PREFIX + emoteArray[0][0] + '/1.0">' + message[emoteArray[0][2] + 1:]
+            message = message[0:emoteArray[0][1] - 1] + '<img src="' + CacheManager.DIRECTORY + emoteArray[0][0] + '.png">' + message[emoteArray[0][2] + 1:]
         return message
 
     @staticmethod
@@ -82,9 +91,9 @@ class MessageProcessor:
         return emoteArray
 
     def setBadgesIcon(self, badges):
-        if badges['badge_sets'].get('subscriber', None) is not None:
-            for badge in badges['badge_sets']['subscriber']['versions']:
-                self.subBadge[badge] = badges['badge_sets']['subscriber']['versions'][badge]['image_url_1x']
-        if badges['badge_sets'].get('bits', None) is not None:
-            for badge in badges['badge_sets']['bits']['versions']:
-                self.bitsBadge[badge] = badges['badge_sets']['bits']['versions'][badge]['image_url_1x']
+        if badges.get('subscriber', None) is not None:
+            for badge in badges['subscriber']:
+                self.subBadge[badge] = badges['subscriber'][badge]
+        if badges.get('bits', None) is not None:
+            for badge in badges['bits']:
+                self.bitsBadge[badge] = badges['bits'][badge]

@@ -8,6 +8,7 @@ class ChannelChat(QTextBrowser):
         self.chatTab = chatTab
         self.messageProcessor = MessageProcessor(jsonDecoder)
         self.chatThread = ChatThread(self, channelName)
+        self.channelName = channelName
         self.chatThread.start()
         self.setReadOnly(True)
         self.anchorClicked.connect(self.checkClick)

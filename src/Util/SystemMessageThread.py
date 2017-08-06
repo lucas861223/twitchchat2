@@ -9,6 +9,7 @@ class SystemMessageThread(threading.Thread):
         self.messageToBeProcessed = Queue()
         self.daemon = True
         self.setName('SystemMesageThread')
+
     def newMessage(self, message):
         self.messageToBeProcessed.put(message)
 
