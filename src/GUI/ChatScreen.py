@@ -5,12 +5,10 @@ from Util.ClientIRC import ClientIRC
 from ChatTab import ChatTab
 from Util.JSONDecoder import JSONDecoder
 from WhisperChat import WhisperChat
-import threading
-import sys
 from PyQt5.QtCore import pyqtSignal
 
 class ChatScreen(QTabWidget):
-    newWhiserSignal = pyqtSignal(str)
+    newWhisperSignal = pyqtSignal(str)
     WHISPER = re.compile('(\d\d:\d\d:\d\d) .*color=([^;]*);display-name=(([^A-Za-z]+)|([^;]+));emotes=([^;]*);.*:([^!]+).*WHISPER.*:(.*)')
     def __init__(self, parent):
         super(ChatScreen, self).__init__(parent)
@@ -25,7 +23,7 @@ class ChatScreen(QTabWidget):
         default_channel.close()
         QShortcut(QKeySequence('Ctrl+Tab'), self, self.nextTab)
         QShortcut(QKeySequence('Ctrl+W'), self, self.closeTab)
-        self.newWhiserSignal.connect(self.newWhisper)
+        self.newWhisperSignal.connect(self.newWhisper)
 
     def joinChannel(self, channelName):
         chatTab = self.tabs.get('#' + channelName, None)

@@ -7,7 +7,7 @@ class SystemMessageProcessor:
     HOST_MODE = re.compile('.*HOSTTARGET #([^ ]+) :([^ ]+)')
     JOIN_MESSAGE = re.compile(':([^!]+)!.* JOIN #(.*)$')
     PART_MESSAGE = re.compile(':([^!]+)!.* PART #(.*)$')
-    USERSTATE = re.compile('@badges=([^;]+);.*color=(#[^;]+);.*display-name=(#[^;]+);.*emote-sets=(#[^;]+);.*mod==(#[^;]+);.*subscriber==(#[^;]+);.*USERSTATE #(.*)')
+    USERSTATE = re.compile('@badges=([^;]+);.*color=(#[^;]+);.*display-name=(#[^;]+);.*emote-sets=(#[^;]+);.*mod=(#[^;]+);.*subscriber==(#[^;]+);.*USERSTATE #(.*)')
     ROOMSTATE = re.compile('@broadcaster-lang=([^;]+)?;.*emote-only=([01]);.*followers-only=([^;]+);.*r9k=([01]);.*room-id=([^;]+);.*slow=([^;]+);.*subs-only=([01]).*ROOMSTATE #(.*)')
     NOTICE = re.compile('@msg-id=([^ ]+) .*NOTICE #([^ ]+) :(.*)')
     NAME_LIST = re.compile('.* 353 .* #(.*) :(.*)')
@@ -32,7 +32,7 @@ class SystemMessageProcessor:
             chatTab = self.chatScreen.tabs.get('#' + result.group(2))
             chatTab.userList.addUser(result.group(1))
         elif ' WHISPER ' in message:
-            self.chatScreen.newWhiserSignal.emit(message)
+            self.chatScreen.newWhisperSignal.emit(message)
         elif ' USERSTATE ' in message:
             result = re.search(SystemMessageProcessor.USERSTATE, message)
             print(message)

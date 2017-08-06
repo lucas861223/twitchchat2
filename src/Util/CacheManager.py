@@ -38,6 +38,7 @@ class CacheManager:
                 badges['bits'][badge] = CacheManager.DIRECTORY + channel + badge + ".png"
                 CacheManager.downloadImage(json['badge_sets']['bits']['versions'][badge]['image_url_1x'], channel, badge)
         return badges
+
     @staticmethod
     def prepareEmote(emoteID, internetRelatedThread):
         internetRelatedThread.addJob(['get_emote', emoteID])

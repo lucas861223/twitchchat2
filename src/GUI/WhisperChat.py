@@ -27,6 +27,7 @@ class WhisperChat(QTextBrowser):
 
     def newMessage(self, message):
         self.append(message)
+
     def newSentMessage(self, message):
         finalMessage = '<font color="#00BFFF">[' + time.strftime('%H:%M:%S') + ']</font>'\
                        + '<a href="' + self.clientIRC.nickname + '" style="text-decoration:none" '\
