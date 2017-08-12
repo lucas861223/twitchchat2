@@ -39,11 +39,12 @@ class SystemMessageProcessor:
         elif ' ROOMSTATE ' in message:
             print(message)
             result = re.search(SystemMessageProcessor.ROOMSTATE, message)
-            chatTab = self.chatScreen.tabs.get('#' + result.group(8))
-            chatTab.setRoomState(result.group(1), result.group(2), result.group(3), result.group(4),
-                                 result.group(5), result.group(6), result.group(7))
-            #change later
-            self.internetRelatedThread.addJob(['set_badges', chatTab.channelChat, result.group(5)])
+            if result is not None:
+                chatTab = self.chatScreen.tabs.get('#' + result.group(8))
+                chatTab.setRoomState(result.group(1), result.group(2), result.group(3), result.group(4),
+                                     result.group(5), result.group(6), result.group(7))
+                #change later
+                self.internetRelatedThread.addJob(['set_badges', chatTab.channelChat, result.group(5)])
         elif ' +o ' in message:
             result = re.search(SystemMessageProcessor.SYSTEM_MODDING, message)
             userList = self.chatScreen.tabs.get('#' + result.group(1)).userList

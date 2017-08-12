@@ -7,6 +7,8 @@ class EntryBox(QLineEdit):
         super(EntryBox, self).__init__(parent)
         self.chatScreen = chatScreen
         self.returnPressed.connect(self.send)
+        self.setFont(self.chatScreen.font)
+
 
     def send(self):
         channelName = self.chatScreen.widget(self.chatScreen.currentIndex()).channelName

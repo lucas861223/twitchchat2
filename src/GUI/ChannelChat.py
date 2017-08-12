@@ -18,6 +18,7 @@ class ChannelChat(QTextBrowser):
         self.lastSent = ''
         self.verticalScrollBar().rangeChanged.connect(self.scrollBar)
         self.verticalScrollBar().sliderReleased.connect(self.shouldKeepScrolling)
+        self.setFont(self.chatTab.clientIRC.chatScreen.font)
         #add wheel event
 
 

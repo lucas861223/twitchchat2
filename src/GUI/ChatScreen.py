@@ -1,6 +1,6 @@
 import re
 from PyQt5.QtWidgets import QShortcut, QTabWidget
-from PyQt5.QtGui import QKeySequence
+from PyQt5.QtGui import QKeySequence, QFont
 from Util.ClientIRC import ClientIRC
 from ChatTab import ChatTab
 from Util.JSONDecoder import JSONDecoder
@@ -12,6 +12,9 @@ class ChatScreen(QTabWidget):
     WHISPER = re.compile('(\d\d:\d\d:\d\d) .*color=([^;]*);display-name=(([^A-Za-z]+)|([^;]+));emotes=([^;]*);.*:([^!]+).*WHISPER.*:(.*)')
     def __init__(self, parent):
         super(ChatScreen, self).__init__(parent)
+        file = open('../setting/MainSetting', 'r')
+        self.font = QFont(file.readline()[:-1], int(file.readline()[:-1]), -1, False)
+        file.close()
         self.jsonDecoder = JSONDecoder()
         self.tabs = {}
         self.clientIRC = ClientIRC(self)

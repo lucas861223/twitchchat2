@@ -8,6 +8,7 @@ class ChatTab(QWidget):
         super(ChatTab, self).__init__()
         userList = UserList(self)
         self.userList = userList
+        self.clientIRC = clientIRC
         channelChat = ChannelChat(self, channelName, jsonDecoder)
         layout = QHBoxLayout()
         layout.setContentsMargins(0, 0, 0, 0)
@@ -21,7 +22,6 @@ class ChatTab(QWidget):
         splitter.setChildrenCollapsible(False)
         layout.addWidget(splitter)
         self.jsonDecoder = jsonDecoder
-        self.clientIRC = clientIRC
         self.clientIRC.joinChannel(channelName)
         self.setLayout(layout)
         self.channelChat = channelChat

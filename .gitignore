@@ -2,3 +2,5 @@
 src/setting/*
 src/lib/PyQt4_gpl_win-4.12/doc/*
 src/lib/PyQt4_gpl_win-4.12/examples/*
+cache/*
+src/Commands/*

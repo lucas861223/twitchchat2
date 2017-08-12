@@ -1,4 +1,5 @@
 import re
+import html
 from CacheManager import CacheManager
 
 class MessageProcessor:
@@ -8,6 +9,8 @@ class MessageProcessor:
     MESSAGE_PATTERN = re.compile('(\d\d:\d\d:\d\d) @badges=([^;]*);.*(bits=(\d+);.*)?color=([^;]*);.*display-name=(([^A-Za-z]*)|([^;]*));.*emotes=([^;]*);.*user-id=(\d+);.*:([^!]+)!.*#[^ ]+ :(ACTION )?(.*)')
     INTERNET_RELATED_THREAD = None
 
+
+    HTML_ESCAPE_TABLE = {"&": "&amp;", '"': "&quot;", "'": "&apos;", ">": "&gt;", "<": "&lt;", }
     def __init__(self, jsonDecoder, ):
         self.jsonDecoder = jsonDecoder
         MessageProcessor.INTERNET_RELATED_THREAD = jsonDecoder.internetRelatedThread
@@ -59,17 +62,17 @@ class MessageProcessor:
     @staticmethod
     def insertEmote(message, emotes):
         if emotes == '':
-            return message
+            return html.escape(message, MessageProcessor.HTML_ESCAPE_TABLE)
+        finalMessage = ''
         emoteArray = MessageProcessor.constructEmoteArray(emotes)
-        for i in range(len(emoteArray) - 1, 0, -1):
-            CacheManager.prepareEmote(emoteArray[i][0], MessageProcessor.INTERNET_RELATED_THREAD)
-            message = message[0:emoteArray[i][1]-1] + '<img src="' + CacheManager.DIRECTORY + emoteArray[i][0] + '.png">' + message[emoteArray[i][2]+1:]
-        CacheManager.prepareEmote(emoteArray[0][0], MessageProcessor.INTERNET_RELATED_THREAD)
-        if (emoteArray[0][1] == 0):
-            message = '<img src="' + CacheManager.DIRECTORY + emoteArray[0][0] + '.png">' + message[emoteArray[0][2] + 1:]
-        else:
-            message = message[0:emoteArray[0][1] - 1] + '<img src="' + CacheManager.DIRECTORY + emoteArray[0][0] + '.png">' + message[emoteArray[0][2] + 1:]
-        return message
+        slicingIndex = 0
+        for emote in emoteArray:
+            CacheManager.prepareEmote(emote[0], MessageProcessor.INTERNET_RELATED_THREAD)
+            finalMessage += html.escape(message[slicingIndex : emote[1]], MessageProcessor.HTML_ESCAPE_TABLE)
+            finalMessage += '<img src="' + CacheManager.DIRECTORY + emote[0] + '.png">'
+            slicingIndex = emote[2]+1
+        finalMessage += html.escape(message[slicingIndex:], MessageProcessor.HTML_ESCAPE_TABLE)
+        return finalMessage
 
     @staticmethod
     def constructEmoteArray(emote):
