@@ -8,19 +8,23 @@ class MessageProcessor:
     EMOTE_PREFIX = 'http://static-cdn.jtvnw.net/emoticons/v1/'
     MESSAGE_PATTERN = re.compile('(\d\d:\d\d:\d\d) @badges=([^;]*);.*(bits=(\d+);.*)?color=([^;]*);.*display-name=(([^A-Za-z]*)|([^;]*));.*emotes=([^;]*);.*user-id=(\d+);.*:([^!]+)!.*#[^ ]+ :(ACTION )?(.*)')
     INTERNET_RELATED_THREAD = None
-
+    IMAGE_SIZE = ""
+    BADGE_SIZE =""
 
     HTML_ESCAPE_TABLE = {"&": "&amp;", '"': "&quot;", "'": "&apos;", ">": "&gt;", "<": "&lt;", }
-    def __init__(self, jsonDecoder, ):
+    def __init__(self, jsonDecoder, imgSize):
         self.jsonDecoder = jsonDecoder
         MessageProcessor.INTERNET_RELATED_THREAD = jsonDecoder.internetRelatedThread
         self.bitsBadge = {}
         self.subBadge = {}
+        #to be changed to using image cache later
+        MessageProcessor.IMAGE_SIZE = 'height="' + str(int(imgSize*2)) + '"'
+        MessageProcessor.BADGE_SIZE = 'height="' + str(int(imgSize*1.5)) + '"'
 
     def processMessage(self, response, channelChat, userList):
         message = re.search(MessageProcessor.MESSAGE_PATTERN, response)
         print(response)
-        if message is not None:
+        if message:
             finalMessage = '[' + message.group(1) + '] '
             nameLink = message.group(11)
             user = userList.nickList.get(nameLink, None)
@@ -29,7 +33,7 @@ class MessageProcessor:
                 user = userList.nickList.get(nameLink)
             if user.hasSpoken == False:
                 user.hasSpoken = True
-                userList.updateUser(user.nick, message.group(2), self.subBadge, self.bitsBadge)
+                userList.updateUser(user.nick, message.group(2), self.subBadge, self.bitsBadge, MessageProcessor.BADGE_SIZE)
                 user.updateUserColor(message.group(5))
             else:
                 if user.badges != message.group(2):
@@ -38,11 +42,11 @@ class MessageProcessor:
             bits = 'group 3, to be done'
             finalMessage += '<a href="' + nameLink + '" style="text-decoration:none" '
             if message.group(5):
-                if user.color != message.group(5):
+                if user.color != message.group(5) and message.group(5) != "000000":
                     user.updateUserColor(message.group(5))
             finalMessage += 'style="color:' + user.color + '">'
-            if message.group(6) is not None:
-                if message.group(7) is not None:
+            if message.group(6):
+                if message.group(7):
                     displayName = message.group(7) + ' (' + nameLink + ')'
                 else:
                     displayName = message.group(8)
@@ -69,7 +73,7 @@ class MessageProcessor:
         for emote in emoteArray:
             CacheManager.prepareEmote(emote[0], MessageProcessor.INTERNET_RELATED_THREAD)
             finalMessage += html.escape(message[slicingIndex : emote[1]], MessageProcessor.HTML_ESCAPE_TABLE)
-            finalMessage += '<img src="' + CacheManager.DIRECTORY + emote[0] + '.png">'
+            finalMessage += '<img ' + MessageProcessor.IMAGE_SIZE + ' src="' + CacheManager.DIRECTORY + emote[0] + '.png">'
             slicingIndex = emote[2]+1
         finalMessage += html.escape(message[slicingIndex:], MessageProcessor.HTML_ESCAPE_TABLE)
         return finalMessage

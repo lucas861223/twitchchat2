@@ -6,7 +6,7 @@ class ChannelChat(QTextBrowser):
     def __init__(self, chatTab, channelName, jsonDecoder):
         super(ChannelChat, self).__init__(chatTab)
         self.chatTab = chatTab
-        self.messageProcessor = MessageProcessor(jsonDecoder)
+        self.messageProcessor = MessageProcessor(jsonDecoder, self.chatTab.clientIRC.chatScreen.font.pointSizeF()/12*16)
         self.chatThread = ChatThread(self, channelName)
         self.channelName = channelName
         self.chatThread.start()
@@ -19,6 +19,9 @@ class ChannelChat(QTextBrowser):
         self.verticalScrollBar().rangeChanged.connect(self.scrollBar)
         self.verticalScrollBar().sliderReleased.connect(self.shouldKeepScrolling)
         self.setFont(self.chatTab.clientIRC.chatScreen.font)
+        self.document().setDefaultStyleSheet("background-color: yellow")
+        with open('../setting/ChatCSS', 'r') as cssFile:
+            self.setStyleSheet(cssFile.read())
         #add wheel event
 
 
@@ -26,6 +29,7 @@ class ChannelChat(QTextBrowser):
         print(link.toString())
 
     def newMessage(self, message):
+        #self.textCursor().insertHtml(message)
         self.append(message)
 
     def shouldKeepScrolling(self):

@@ -17,10 +17,10 @@ class UserList(QListWidget):
             self.insertItem(self.indexOfUserInsert(userListEntry), userListEntry)
             self.nickList[nick] = userListEntry
 
-    def updateUser(self, nick, badges, subBadge, bitsBadge):
+    def updateUser(self, nick, badges, subBadge, bitsBadge, badgeSize):
         user = self.nickList[nick]
         self.removeUser(user, False)
-        user.updateUserBadge(badges, subBadge, bitsBadge)
+        user.updateUserBadge(badges, subBadge, bitsBadge, badgeSize)
         self.insertItem(self.indexOfUserInsert(user), user)
 
     def removeUser(self, user, part):
@@ -29,6 +29,9 @@ class UserList(QListWidget):
             self.nickList.pop(user.nick)
 
     def reIndexUserForSystemModding(self, nick):
+        user = self.nickList.get(nick, None)
+        if user is None:
+            self.addUser(nick)
         user = self.nickList[nick]
         if '@' not in user.userName:
             self.removeUser(user, False)

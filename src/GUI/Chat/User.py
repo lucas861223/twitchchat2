@@ -16,53 +16,59 @@ class UserListEntry(QListWidgetItem):
         self.modSet = False
         self.badges = ''
 
-    def updateUserBadge(self, badges, subBadge, bitsBadge):
+    def updateUserBadge(self, badges, subBadge, bitsBadge, height):
         self.userName = self.nick
-        self.badgesImage = ''
+        imagePrefix = '<img ' + height + ' src="'
+        self.badgesImage = ""
         if 'turbo' in badges:
             self.userName = '+' + self.userName
-            self.badgesImage = '<img src="../Icon/turbo.png">' + self.badgesImage
+            self.badgesImage = imagePrefix +  '../Icon/turbo.png">' + self.badgesImage
         if 'premium' in badges:
             self.userName = '+' + self.userName
-            self.badgesImage = '<img src="../Icon/premium.png">' + self.badgesImage
+            self.badgesImage = imagePrefix +  '../Icon/premium.png">' + self.badgesImage
         if 'partner' in badges:
-            self.badgesImage = '<img src="../Icon/partner.png">' + self.badgesImage
+            self.badgesImage = imagePrefix +  '../Icon/partner.png">' + self.badgesImage
         if 'bits' in badges:
             self.userName = '$' + self.userName
             amount = re.search(re.compile('bits/(\d+)'), badges).group(1)
             if amount in bitsBadge:
-                self.badgesImage = '<img src="' + bitsBadge[amount] + '">' + self.badgesImage
+                self.badgesImage = imagePrefix + + bitsBadge[amount] + '">' + self.badgesImage
             else:
-                self.badgesImage = '<img src="../Icon/bits ' + amount + '.png">' + self.badgesImage
+                self.badgesImage = imagePrefix +  '../Icon/bits ' + amount + '.png">' + self.badgesImage
         if 'subscriber' in badges:
             self.userName = '%' + self.userName
             if len(subBadge) > 0:
-                self.badgesImage = '<img src="' + subBadge[re.search(re.compile('subscriber/(\d+)'), badges).group(1)] + '">' + self.badgesImage
+                self.badgesImage = imagePrefix +  subBadge[re.search(re.compile('subscriber/(\d+)'), badges).group(1)] + '">' + self.badgesImage
             else:
-                self.badgesImage = '<img src="../Icon/subscriber.png">' + self.badgesImage
+                self.badgesImage = imagePrefix +  '../Icon/subscriber.png">' + self.badgesImage
         if 'moderator' in badges:
             self.userName = '@' + self.userName
-            self.badgesImage = '<img src="../Icon/moderator.png">' + self.badgesImage
+            self.badgesImage = imagePrefix + '../Icon/moderator.png">' + self.badgesImage
         if 'global_mod' in badges:
             self.userName = '*' + self.userName
-            self.badgesImage = '<img src="../Icon/globalmod.png">' + self.badgesImage
+            self.badgesImage = imagePrefix +  '../Icon/globalmod.png">' + self.badgesImage
         if 'admin' in badges:
             self.userName = '!' + self.userName
-            self.badgesImage = '<img src="../Icon/admin.png">' + self.badgesImage
+            self.badgesImage = imagePrefix +  './Icon/admin.png">' + self.badgesImage
         if 'staff' in badges:
             self.userName = '&' + self.userName
-            self.badgesImage = '<img src="../Icon/staff.png">' + self.badgesImage
+            self.badgesImage = imagePrefix +  '../Icon/staff.png">' + self.badgesImage
         if 'broadcaster' in badges:
             self.userName = '~' + self.userName
-            self.badgesImage = '<img src="../Icon/broadcaster.png">' + self.badgesImage
+            self.badgesImage = imagePrefix +  '../Icon/broadcaster.png">' + self.badgesImage
         self.setText(self.userName)
         self.calculatePoint()
         self.badges = badges
 
     def updateUserColor(self, color):
         if color:
-            self.randomColor = False
-            self.color = color
+            #change it to check back ground color
+            if color == "#000000":
+                self.randomColor = False
+                self.color = "#808080"
+            else:
+                self.randomColor = False
+                self.color = color
         else:
             self.randomColor = True
             self.color = random.choice(UserListEntry.DEFAULT_COLOR)
