@@ -7,6 +7,7 @@ class SettingDialog(QDialog):
     def __init__(self, mainWindow):
         super(SettingDialog, self).__init__()
         self.setWindowFlags(Qt.WindowCloseButtonHint)
+        self.setAttribute(Qt.WA_DeleteOnClose)
         self.mainWindow = mainWindow
         self.setWindowTitle('Settings')
         position = self.mainWindow.getPopUpPosition(600, 510)
@@ -33,6 +34,7 @@ class SettingDialog(QDialog):
         self.layout.addWidget(MainWidget(self))
         self.settingList.addItem("Colors")
         self.layout.addWidget(ColorsWidget(self))
+
 
     def switchSettingPage(self):
         self.layout.setCurrentIndex(self.settingList.currentRow())

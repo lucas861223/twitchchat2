@@ -8,6 +8,7 @@ class ChatTab(QWidget):
         super(ChatTab, self).__init__()
         userList = UserList(self)
         self.userList = userList
+        self.setAttribute(Qt.WA_DeleteOnClose)
         self.clientIRC = clientIRC
         channelChat = ChannelChat(self, channelName, jsonDecoder)
         layout = QHBoxLayout()

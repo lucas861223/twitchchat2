@@ -45,6 +45,7 @@ class ChatScreen(QTabWidget):
         chatTab = self.tabs.get(channelName, None)
         chatTab.channelChat.chatThread.processMessage(message)
 
+
     def nextTab(self):
         if self.currentIndex() == self.count() - 1:
             self.setCurrentIndex(0)
@@ -56,14 +57,14 @@ class ChatScreen(QTabWidget):
             if '#' in self.widget(self.currentIndex()).channelName:
                 self.clientIRC.leaveChannel(self.widget(self.currentIndex()).channelName)
             self.tabs.pop(self.widget(self.currentIndex()).channelName)
-            if self.currentIndex() == 0:
-                self.setCurrentIndex(1)
-                self.widget(0).close()
-                self.removeTab(0)
+            if self.currentIndex() + 1 == self.count():
+                self.setCurrentIndex(self.count() - 2)
+                self.widget(self.count() - 1).close()
+                self.removeTab(self.count() - 1)
             else:
-                self.setCurrentIndex(self.currentIndex() - 1)
-                self.widget(self.currentIndex() + 1).close()
-                self.removeTab(self.currentIndex() + 1)
+                self.setCurrentIndex(self.currentIndex() + 1)
+                self.widget(self.currentIndex() - 1).close()
+                self.removeTab(self.currentIndex() - 1)
 
     def newWhisperChat(self, nick):
         whisperChat = WhisperChat(self, nick, self.clientIRC)

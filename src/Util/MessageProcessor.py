@@ -63,6 +63,7 @@ class MessageProcessor:
             print(finalMessage)
             channelChat.newMessage(finalMessage)
 
+
     @staticmethod
     def insertEmote(message, emotes):
         if emotes == '':

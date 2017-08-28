@@ -1,7 +1,9 @@
 from PyQt5.QtWidgets import QTextBrowser
+from PyQt5.QtCore import Qt
 import random
 from Chat.User import  UserListEntry
 import time
+
 
 class WhisperChat(QTextBrowser):
     def __init__(self, chatScreen, whisperer, clientIRC):

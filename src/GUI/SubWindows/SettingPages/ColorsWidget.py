@@ -16,5 +16,4 @@ class ColorsWidget(QWidget):
         self.setLayout(layout)
 
     def saveSetting(self):
-        print("what")
         pass

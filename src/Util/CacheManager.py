@@ -18,6 +18,8 @@ class CacheManager:
         with open(CacheManager.DIRECTORY + subFolder + fileName + ".png", 'wb') as f:
             r.raw.decode_content = True
             shutil.copyfileobj(r.raw, f)
+            #get dimension
+            #send signal maybe
 
     @staticmethod
     def getChatBadges(channel, json):

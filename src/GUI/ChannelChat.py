@@ -32,6 +32,7 @@ class ChannelChat(QTextBrowser):
         #self.textCursor().insertHtml(message)
         self.append(message)
 
+
     def shouldKeepScrolling(self):
         if self.verticalScrollBar().value() == self.verticalScrollBar().maximum():
             self.scrollToBottom = True

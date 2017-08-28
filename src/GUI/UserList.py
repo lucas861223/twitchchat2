@@ -32,7 +32,7 @@ class UserList(QListWidget):
         user = self.nickList.get(nick, None)
         if user is None:
             self.addUser(nick)
-        user = self.nickList[nick]
+            user = self.nickList[nick]
         if '@' not in user.userName:
             self.removeUser(user, False)
             user.setMod()

@@ -4,6 +4,7 @@ from PyQt5.QtCore import Qt
 class JoinChannelDialog(QDialog):
     def __init__(self, chatUI):
         super(JoinChannelDialog, self).__init__()
+        self.setAttribute(Qt.WA_DeleteOnClose)
         self.chatUI = chatUI
         self.setWindowFlags(Qt.WindowCloseButtonHint)
         self.setWindowTitle('Join Channel')

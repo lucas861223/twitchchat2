@@ -22,6 +22,7 @@ class SystemMessageProcessor:
         self.internetRelatedThread.start()
 
     def processMessage(self, message):
+        print(message)
         if ' PART ' in message:
             result = re.search(SystemMessageProcessor.PART_MESSAGE, message)
             if result.group(1) + '\n' != self.chatScreen.clientIRC.nickname:
@@ -35,9 +36,7 @@ class SystemMessageProcessor:
             self.chatScreen.newWhisperSignal.emit(message)
         elif ' USERSTATE ' in message:
             result = re.search(SystemMessageProcessor.USERSTATE, message)
-            print(message)
         elif ' ROOMSTATE ' in message:
-            print(message)
             result = re.search(SystemMessageProcessor.ROOMSTATE, message)
             if result is not None:
                 chatTab = self.chatScreen.tabs.get('#' + result.group(8))
@@ -57,7 +56,6 @@ class SystemMessageProcessor:
                     userList.addUser(nick)
         elif ' HOSTTARGET ' in message:
             result = re.search(SystemMessageProcessor.HOST_MODE, message)
-            print(result.group(1) + ' is hosting ' + result.group(2))
         elif 'GLOBALUSERSTATE' in message:
             result = re.search(SystemMessageProcessor.GLOBALUSERSTATE, message)
             if result.group(1):

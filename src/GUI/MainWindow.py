@@ -1,7 +1,7 @@
 import sys
 import ctypes
 from PyQt5.QtWidgets import QMainWindow, QApplication
-from PyQt5.QtCore import QPoint
+from PyQt5.QtCore import QPoint, Qt
 from CentralWidget import CentralWidget
 from MenuBar import MenuBar
 from CacheManager import CacheManager
@@ -13,6 +13,7 @@ class MainWindow(QMainWindow):
             os.mkdir(CacheManager.DIRECTORY)
         user32 = ctypes.windll.user32
         super().__init__()
+        self.setAttribute(Qt.WA_DeleteOnClose)
         self.setWindowTitle('Twitch chat')
         self.left = user32.GetSystemMetrics(0) - 900
         self.top = 40
