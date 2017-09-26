@@ -9,7 +9,6 @@ class EntryBox(QLineEdit):
         self.returnPressed.connect(self.send)
         self.setFont(self.chatScreen.font)
 
-
     def send(self):
         channelName = self.chatScreen.widget(self.chatScreen.currentIndex()).channelName
         self.setText(self.text().strip())

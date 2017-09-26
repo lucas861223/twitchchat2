@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QAction, QMenuBar
 from SubWindows.JoinChannelDialog import JoinChannelDialog
 from SubWindows.SettingDialog import SettingDialog
 from SubWindows.BotDialog import BotDialog
+from Util.Bot import Bot
 
 class MenuBar(QMenuBar):
     def __init__(self, parent):
@@ -50,9 +51,8 @@ class MenuBar(QMenuBar):
 
     def initializeBot(self):
         self.botRunning = not self.botRunning
-
         if self.botRunning:
-            print("test?!")
+            self.bot = Bot(self.mainWindow.centralWidget.chatUI.chatScreen.clientIRC)
         else:
             print("okay")
 

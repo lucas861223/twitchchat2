@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QDialog, QPushButton, QLabel, QTreeView, QLineEdit, QGridLayout, QTextEdit, QFileSystemModel
+from PyQt5.QtWidgets import QCheckBox, QDialog, QPushButton, QLabel, QTreeView, QLineEdit, QGridLayout, QTextEdit, QFileSystemModel
 from PyQt5.QtCore import Qt
 from pathlib import Path
 import os.path
@@ -20,6 +20,7 @@ class BotDialog(QDialog):
         self.commandsTreeView.hideColumn(3)
         self.commandsTreeView.hideColumn(2)
         self.commandsTreeView.hideColumn(1)
+        self.commandsTreeView.doubleClicked.connect(self.editCommand)
         layout.addWidget(self.commandsTreeView, 2, 1, 6, 3)
         self.commandsTreeView.setHeaderHidden(True)
         self.commandsTreeView.doubleClicked.connect(self.editCommand)
@@ -43,9 +44,9 @@ class BotDialog(QDialog):
         layout.addWidget(editCommandButton, 8, 2)
         layout.addWidget(deleteCommandButton, 8, 3)
 
-        layout.addWidget(QLabel('Command:'), 2, 4)
-        self.commandName = QLineEdit(self)
-        layout.addWidget(self.commandName, 2, 5, 1, 4)
+        layout.addWidget(QLabel('Command:'), 2, 4, 1, 1)
+        self.commandName = QTextEdit(self)
+        layout.addWidget(self.commandName, 3, 4, 1, 5)
 
         subscriberTemplateButton = QPushButton("Subscriber")
         subscriberTemplateButton.clicked.connect(self.subTemplate)
@@ -58,9 +59,11 @@ class BotDialog(QDialog):
         layout.addWidget(followerTemplateButton, 1, 6)
         layout.addWidget(EmptyTemplateButton, 1, 7, 1, 2)
 
-        layout.addWidget(QLabel('Response:'), 3, 4, 1, 5)
+        layout.addWidget(QLabel('Response:'), 4, 4, 1, 2)
+        self.enabledCheckBox = QCheckBox("Enabled")
+        layout.addWidget(self.enabledCheckBox, 4, 7, 1, 2)
         self.responseEditor = QTextEdit(self)
-        layout.addWidget(self.responseEditor, 4, 4, 4, 5)
+        layout.addWidget(self.responseEditor, 5, 4, 3, 5)
 
         saveButton = QPushButton("Save")
         saveButton.clicked.connect(self.saveCommand)
@@ -126,7 +129,9 @@ class BotDialog(QDialog):
         arr = self.commandsTreeView.selectionModel().selectedIndexes()
         if len(arr) is not 0:
             if arr[0].parent().data() != 'Commands':
-                os.remove(self.COMMAND_FOLDER_PATH + arr[0].parent().data() + '\\' + arr[0].data())
+                filePath = self.COMMAND_FOLDER_PATH + arr[0].parent().data() + '\\' + arr[0].data()
+                if os.path.exists(filePath):
+                    os.remove(filePath)
 
     def addCommand(self):
         arr = self.commandsTreeView.selectionModel().selectedIndexes()
@@ -138,6 +143,7 @@ class BotDialog(QDialog):
                 self.file.close()
             self.file = open(self.COMMAND_FOLDER_PATH + channel + '\\NewCommand', 'w')
             self.commandName.setText("NewCommand")
+            self.enabledCheckBox.setChecked(True)
             self.responseEditor.clear()
             self.commandName.setReadOnly(False)
 
@@ -148,36 +154,40 @@ class BotDialog(QDialog):
                 if self.file is not None:
                     self.file.close()
                 self.file = open(self.COMMAND_FOLDER_PATH + arr[0].parent().data() + '\\' + arr[0].data(), 'r+')
-                lines = sum(1 for _ in self.file)
-                self.file.seek(0)
-                self.commandName.setText(self.file.readline())
-                if (BotDialog.isDefaultCommand(self.commandName.text())):
-                    self.commandName.setReadOnly(True)
-                else:
-                    self.commandName.setReadOnly(False)
-                if lines >= 2:
-                    self.responseEditor.setText(self.file.readline())
+                self.fillFormFromFile()
 
+    def fillFormFromFile(self):
+        self.file.seek(0)
+        lines = sum(1 for _ in self.file)
+        if lines > 0:
+            self.file.seek(0)
+            checkState = self.file.readline()
+            if checkState == 'On\n':
+                self.enabledCheckBox.setChecked(True)
+            else:
+                self.enabledCheckBox.setChecked(False)
+            self.commandName.setText(self.file.readline()[0:-1])
+            if (BotDialog.isDefaultCommand(self.commandName.toPlainText())):
+                self.commandName.setReadOnly(True)
+            else:
+                self.commandName.setReadOnly(False)
+            if lines > 2:
+                self.responseEditor.setText(self.file.readline())
+        else:
+            self.emptyTemplate()
+            self.commandName.setText("NewCommand")
+            self.enabledCheckBox.setChecked(True)
 
     def resetCommand(self):
         if self.file.name[self.file.name.rfind('\\') + 1:] == "NewCommand":
             self.commandName.clear()
             self.responseEditor.clear()
         elif self.file is not None:
-            self.file.seek(0)
-            lines = sum(1 for _ in self.file)
-            self.file.seek(0)
-            self.commandName.setText(self.file.readline()[0:-1])
-            if (BotDialog.isDefaultCommand(self.commandName.text())):
-                self.commandName.setReadOnly(True)
-            else:
-                self.commandName.setReadOnly(False)
-            if lines >= 2:
-                self.responseEditor.setText(self.file.readline())
+            self.fillFormFromFile()
 
     def saveCommand(self):
-        if self.file is not None and self.commandName.text() != "":
-            fileName = self.commandName.text()
+        if self.file is not None and self.commandName.toPlainText() != "":
+            fileName = self.commandName.toPlainText()
             if ' ' in fileName:
                 fileName = fileName[0:fileName.index(' ')]
             currentFileName = self.file.name[self.file.name.rfind('\\') + 1:]
@@ -191,16 +201,20 @@ class BotDialog(QDialog):
 
             if  currentFileName == fileName:
                 self.file.seek(0)
-                self.file.write(self.commandName.text() + '\n')
+                if self.enabledCheckBox.isChecked():
+                    self.file.write('On\n')
+                else:
+                    self.file.write('Off\n')
+                self.file.write(self.commandName.toPlainText() + '\n')
                 self.file.write(self.responseEditor.toPlainText())
                 self.file.truncate()
 
     def closeEvent(self, event):
         if self.file is not None:
             self.file.close()
-        for x in os.walk(BotDialog.COMMAND_FOLDER_PATH):
-            if os.path.exists(x[0] + "\\NewCommand"):
-                os.remove(x[0] + "\\NewCommand")
+        for files in os.walk(BotDialog.COMMAND_FOLDER_PATH):
+            if os.path.exists(files[0] + "\\NewCommand"):
+                os.remove(files[0] + "\\NewCommand")
         event.accept()
 
     @staticmethod
