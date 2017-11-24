@@ -37,7 +37,7 @@ class MessageProcessor:
                 user.updateUserColor(message.group(5))
             else:
                 if user.badges != message.group(2):
-                    userList.updateUser(user.nick, message.group(2))
+                    userList.updateUser(user.nick, message.group(2), self.subBadge, self.bitsBadge, MessageProcessor.BADGE_SIZE)
             finalMessage += user.badgesImage
             bits = 'group 3, to be done'
             finalMessage += '<a href="' + nameLink + '" style="text-decoration:none" '
@@ -74,7 +74,7 @@ class MessageProcessor:
         for emote in emoteArray:
             CacheManager.prepareEmote(emote[0], MessageProcessor.INTERNET_RELATED_THREAD)
             finalMessage += html.escape(message[slicingIndex : emote[1]], MessageProcessor.HTML_ESCAPE_TABLE)
-            finalMessage += '<img ' + MessageProcessor.IMAGE_SIZE + ' src="' + CacheManager.DIRECTORY + emote[0] + '.png">'
+            finalMessage += '<img ' + MessageProcessor.IMAGE_SIZE + ' src="' + CacheManager.DIRECTORY + emote[0] + '.png" alt="' + message[emote[1]:emote[2]+1] + '">'
             slicingIndex = emote[2]+1
         finalMessage += html.escape(message[slicingIndex:], MessageProcessor.HTML_ESCAPE_TABLE)
         return finalMessage

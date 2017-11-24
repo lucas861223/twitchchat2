@@ -8,13 +8,13 @@ class JoinedChannelsMonitor:
 
     def joinChannel(self, channelName):
         self.joinedChannels.append(channelName)
-        self.notifySubscribers(True, channelName)
+        self.notifyChannelsChanged(True, channelName)
 
     def leaveChannel(self, channelName):
-        self.joinedChannels.remove(channelName)
-        self.notifySubscribers(False, channelName)
+        self.joinedChannels.remove(channelName[1:])
+        self.notifyChannelsChanged(False, channelName)
 
-    def notifySubscribers(self, join, channelName):
+    def notifyChannelsChanged(self, join, channelName):
         for object in self.subscriber:
             object.notifyChannelsChanged(join, channelName)
 

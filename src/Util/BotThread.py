@@ -5,7 +5,7 @@ import socket
 import re
 
 class BotThread(threading.Thread):
-    MESSAGE_PATTERN = re.compile('@badges=([^;]*);.*(bits=(\d+);.*)?.*display-name=(([^A-Za-z]*)|([^;]*));.*user-id=(\d+);.*:([^!]+)!.*#([^ ]+) :(ACTION )?(.*)')
+    MESSAGE_PATTERN = re.compile('@badges=([^;]*);.*(bits=(\d+);.*)?.*display-name=(?P<displayName>([^A-Za-z]*)|([^;]*));.*user-id=(\d+);.*:(?P<user>[^!]+)!.*#(?P<channel>[^ ]+) :(ACTION )?(.*)')
     def __init__(self, clientIRC, commands):
         super().__init__(target=self.run)
         self.setDaemon(True)
@@ -19,13 +19,15 @@ class BotThread(threading.Thread):
         self.isHoldingMessage = False
         self.joinedChannel = clientIRC.joinedChannel
         self.joinedChannel.subscribe(self)
-        self.subMessage = re.compile('.*display-name=(?P<displayName>[^;]*).*;login=(?P<id>[^;]*).*;msg-id=(?P<messageId>[^;]*)(;msg-param-months=(?P<month>[\d]+))?(;msg-param-sub-plan-name=(?P<subPlanName>[^;]+))?(;msg-param-sub-plan=(?P<subPlan>[\d]+))?.*;.* USERNOTICE #(?P<channelName>[^ ]+).*')
+        self.subMessage = re.compile('.*display-name=(?P<displayName>[^;]*).*;login=(?P<id>[^;]*).*;msg-id=(?P<messageId>[^;]*)(;msg-param-months=(?P<month>[\d]+))?.*;msg-param-sub-plan-name=(?P<subPlanName>[^;]+)(;msg-param-sub-plan=(?P<subPlan>[\d]+))?.*;.* USERNOTICE #(?P<channelName>[^ ]+).*')
         for channel in self.joinedChannel.getJoinedChannel():
             self.notifyChannelsChanged(True, channel)
         self.start()
 
     def deActivateBot(self):
         self.isRunning = False
+        for channelName in self.joinedChannel.getJoinedChannel():
+            self.notifyChannelsChanged(False, channelName)
         self.join()
         self.stop()
 
@@ -61,17 +63,20 @@ class BotThread(threading.Thread):
         components = re.search(BotThread.MESSAGE_PATTERN, message)
         if components.group(11).startswith("!"):
             if self.commands[0].get(components.group(9), None):
-                for command in self.commands[0][components.group(8)]:
+                for command in self.commands[0][components.group(9)]:
                     if re.search(command[0], message):
-                        self.sendReply(command[0], command[1], message)
+                        self.sendReply(self.executeCommand(command[0], command[1], message))
 
     def checkSubMessage(self, message):
         for command in self.commands[1]:
             if '#' + command in message:
-                self.sendReply(self.subMessage, self.commands[1][command], message)
+                self.sendReply(self.executeCommand(self.subMessage, self.commands[1][command], message))
 
-    def sendReply(self, commandFormat, commandReply, message):
-        self.clientIRC.sendMessage(re.sub(commandFormat, commandReply, message) + ' \r\n')
+    def sendReply(self, message):
+        self.clientIRC.sendMessage(message + ' \r\n')
+
+    def executeCommand(self, command, reply, message):
+        return re.sub(command, reply, message)
 
     def stop(self):
         sock = self.receiveSocket
@@ -83,4 +88,7 @@ class BotThread(threading.Thread):
 
     def notifyChannelsChanged(self, join, channelName):
         if join:
-            self.clientIRC.joinChannelWithSocket(self.receiveSocket, channelName)
+            if self.commands[1].get(channelName, None) or self.commands[0].get(channelName, None):
+                self.clientIRC.joinChannelWithSocket(self.receiveSocket, channelName)
+        else:
+            self.clientIRC.leaveChannelWithSocket(self.receiveSocket, channelName)

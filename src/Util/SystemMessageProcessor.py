@@ -27,7 +27,8 @@ class SystemMessageProcessor:
             result = re.search(SystemMessageProcessor.PART_MESSAGE, message)
             if result.group(1) + '\n' != self.chatScreen.clientIRC.nickname:
                 chatTab = self.chatScreen.tabs.get('#' + result.group(2))
-                chatTab.userList.removeUser(chatTab.userList.nickList[result.group(1)], True)
+                if chatTab.userList.nickList.get(result.group(1), None):
+                    chatTab.userList.removeUser(chatTab.userList.nickList[result.group(1)], True)
         elif ' JOIN ' in message:
             result = re.search(SystemMessageProcessor.JOIN_MESSAGE, message)
             chatTab = self.chatScreen.tabs.get('#' + result.group(2))

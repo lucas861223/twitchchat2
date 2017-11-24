@@ -95,7 +95,6 @@ class ClientIRC:
         socket.send('NICK {}\r\n'.format(self.nickname).encode('utf-8'))
         return socket
 
-
     def sendMessage(self, message):
         self.sendSocket.send(message.encode('utf-8'))
 
@@ -105,6 +104,7 @@ class ClientIRC:
 
     def leaveChannelWithSocket(self, socket, channelName):
         socket.send('PART {}\r\n'.format(channelName).encode('utf-8'))
+
 
     def joinChannel(self, channelName):
         self.joinChannelWithSocket(self.receiveSocket, channelName)

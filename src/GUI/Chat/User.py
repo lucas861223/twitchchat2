@@ -22,40 +22,40 @@ class UserListEntry(QListWidgetItem):
         self.badgesImage = ""
         if 'turbo' in badges:
             self.userName = '+' + self.userName
-            self.badgesImage = imagePrefix +  '../Icon/turbo.png">' + self.badgesImage
+            self.badgesImage = imagePrefix + '../Icon/turbo.png">' + self.badgesImage
         if 'premium' in badges:
             self.userName = '+' + self.userName
-            self.badgesImage = imagePrefix +  '../Icon/premium.png">' + self.badgesImage
+            self.badgesImage = imagePrefix + '../Icon/premium.png">' + self.badgesImage
         if 'partner' in badges:
-            self.badgesImage = imagePrefix +  '../Icon/partner.png">' + self.badgesImage
+            self.badgesImage = imagePrefix + '../Icon/partner.png">' + self.badgesImage
         if 'bits' in badges:
             self.userName = '$' + self.userName
             amount = re.search(re.compile('bits/(\d+)'), badges).group(1)
             if amount in bitsBadge:
-                self.badgesImage = imagePrefix + + bitsBadge[amount] + '">' + self.badgesImage
+                self.badgesImage = imagePrefix + bitsBadge[amount] + '">' + self.badgesImage
             else:
-                self.badgesImage = imagePrefix +  '../Icon/bits ' + amount + '.png">' + self.badgesImage
+                self.badgesImage = imagePrefix + '../Icon/bits ' + amount + '.png">' + self.badgesImage
         if 'subscriber' in badges:
             self.userName = '%' + self.userName
             if len(subBadge) > 0:
-                self.badgesImage = imagePrefix +  subBadge[re.search(re.compile('subscriber/(\d+)'), badges).group(1)] + '">' + self.badgesImage
+                self.badgesImage = imagePrefix + subBadge[re.search(re.compile('subscriber/(\d+)'), badges).group(1)] + '">' + self.badgesImage
             else:
-                self.badgesImage = imagePrefix +  '../Icon/subscriber.png">' + self.badgesImage
+                self.badgesImage = imagePrefix + '../Icon/subscriber.png">' + self.badgesImage
         if 'moderator' in badges:
             self.userName = '@' + self.userName
             self.badgesImage = imagePrefix + '../Icon/moderator.png">' + self.badgesImage
         if 'global_mod' in badges:
             self.userName = '*' + self.userName
-            self.badgesImage = imagePrefix +  '../Icon/globalmod.png">' + self.badgesImage
+            self.badgesImage = imagePrefix + '../Icon/globalmod.png">' + self.badgesImage
         if 'admin' in badges:
             self.userName = '!' + self.userName
-            self.badgesImage = imagePrefix +  './Icon/admin.png">' + self.badgesImage
+            self.badgesImage = imagePrefix + './Icon/admin.png">' + self.badgesImage
         if 'staff' in badges:
             self.userName = '&' + self.userName
-            self.badgesImage = imagePrefix +  '../Icon/staff.png">' + self.badgesImage
+            self.badgesImage = imagePrefix + '../Icon/staff.png">' + self.badgesImage
         if 'broadcaster' in badges:
             self.userName = '~' + self.userName
-            self.badgesImage = imagePrefix +  '../Icon/broadcaster.png">' + self.badgesImage
+            self.badgesImage = imagePrefix + '../Icon/broadcaster.png">' + self.badgesImage
         self.setText(self.userName)
         self.calculatePoint()
         self.badges = badges

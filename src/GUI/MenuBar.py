@@ -54,7 +54,7 @@ class MenuBar(QMenuBar):
         if self.botRunning:
             self.bot = Bot(self.mainWindow.centralWidget.chatUI.chatScreen.clientIRC)
         else:
-            print("okay")
+            self.bot.shutDownBot()
 
     def joinChannel(self):
         JoinChannelDialog(self.mainWindow.centralWidget.chatUI)

@@ -38,12 +38,11 @@ class Bot():
         except Exception as e:
             print(e.args)
             self.shutDownBot()
-        pass
 
     def compileCommandPattern(self, command, extraParameters):
-        commandPattern = '.*tmi.twitch.tv PRIVMSG.*:'
+        commandPattern = '@badges=([^;]*);.*(bits=(\d+);.*)?.*display-name=(?P<displayName>([^A-Za-z]*)|([^;]*));.*user-id=(\d+);.*:(?P<user>[^!]+)!.*.tmi.twitch.tv PRIVMSG #(?P<channel>[^ ]+) :'
         commandPattern += re.sub('@(?P<variableName>[^ ]+)@', '(?P<\\g<variableName>>[^ ]+)', command[:-1])
-        return re.compile(commandPattern)
+        return re.compile(commandPattern + ".*")
 
     def compileResponsePattern(self, channelName, responsePattern):
         response = 'PRIVMSG #' + channelName + " :"

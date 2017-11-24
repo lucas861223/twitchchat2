@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QDialog, QHBoxLayout, QStackedLayout, QListWidget, Q
 from PyQt5.QtCore import Qt
 from SettingPages.ColorsWidget import ColorsWidget
 from SettingPages.MainWidget import MainWidget
+from SettingPages.MacrosWidget import MacrosWidget
 
 class SettingDialog(QDialog):
     def __init__(self, mainWindow):
@@ -22,7 +23,6 @@ class SettingDialog(QDialog):
         self.layout = QStackedLayout()
         settingContent.setLayout(self.layout)
         self.setUpPages()
-
         self.settingList.itemSelectionChanged.connect(self.switchSettingPage)
 
         layout.addWidget(settingContent, 9)
@@ -34,6 +34,8 @@ class SettingDialog(QDialog):
         self.layout.addWidget(MainWidget(self))
         self.settingList.addItem("Colors")
         self.layout.addWidget(ColorsWidget(self))
+        self.settingList.addItem("Macros")
+        self.layout.addWidget(MacrosWidget(self))
 
 
     def switchSettingPage(self):
