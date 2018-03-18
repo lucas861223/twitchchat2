@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QLineEdit
 import re
+import random
 
 class EntryBox(QLineEdit):
     whisperSentFormat = '/w ([^ ]+) (.*)'
@@ -8,6 +9,7 @@ class EntryBox(QLineEdit):
         self.chatScreen = chatScreen
         self.returnPressed.connect(self.send)
         self.setFont(self.chatScreen.font)
+        self.rainbow = False
 
     def send(self):
         channelName = self.chatScreen.widget(self.chatScreen.currentIndex()).channelName
@@ -21,6 +23,10 @@ class EntryBox(QLineEdit):
                     whisperChat = self.chatScreen.newWhisperChat(whisperReciver)
                 whisperChat.newSentMessage(result.group(2))
                 self.chatScreen.clientIRC.sendMessage('PRIVMSG #jtv :/w ' + whisperReciver + ' ' + result.group(2) + '\r\n')
+        elif self.text().startswith('/rainbow'):
+            if not self.rainbow:
+                self.chatScreen.clientIRC.sendMessage('PRIVMSG #jtv :/color #000000\r\n')
+            self.rainbow = not self.rainbow
         elif '#' in channelName:
             self.chatScreen.clientIRC.sendMessage('PRIVMSG ' + channelName + " :" + self.text() + '\r\n')
         else:
@@ -28,3 +34,14 @@ class EntryBox(QLineEdit):
             whisperChat = self.chatScreen.tabs[channelName]
             whisperChat.newSentMessage(self.text())
         self.setText('')
+        if self.rainbow:
+            color = self.randomColor()
+            print(color)
+            self.chatScreen.clientIRC.sendMessage('PRIVMSG #jtv :/color ' + color + '\r\n')
+
+    def randomColor(self):
+        letters = '0123456789ABCDEF'
+        color = '#'
+        for x in range(0, 6):
+            color += random.choice(letters)
+        return color

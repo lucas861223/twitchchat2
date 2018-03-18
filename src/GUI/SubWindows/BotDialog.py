@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QCheckBox, QDialog, QPushButton, QLabel, QTreeView, QLineEdit, QGridLayout, QTextEdit, QFileSystemModel
+from PyQt5.QtWidgets import QCheckBox, QComboBox, QDialog, QPushButton, QLabel, QTreeView, QLineEdit, QGridLayout, QTextEdit, QFileSystemModel
 from PyQt5.QtCore import Qt
 from pathlib import Path
 import os.path
@@ -40,13 +40,27 @@ class BotDialog(QDialog):
         editCommandButton.clicked.connect(self.editCommand)
         deleteCommandButton = QPushButton("Delete")
         deleteCommandButton.clicked.connect(self.deleteCommand)
-        layout.addWidget(addCommandButton, 8, 1)
-        layout.addWidget(editCommandButton, 8, 2)
-        layout.addWidget(deleteCommandButton, 8, 3)
+        layout.addWidget(addCommandButton, 9, 1)
+        layout.addWidget(editCommandButton, 9, 2)
+        layout.addWidget(deleteCommandButton, 9, 3)
 
         layout.addWidget(QLabel('Command:'), 2, 4, 1, 1)
         self.commandName = QTextEdit(self)
         layout.addWidget(self.commandName, 3, 4, 1, 5)
+
+        self.permissionGroup = QComboBox(self)
+        layout.addWidget(self.permissionGroup, 4, 4, 1, 1)
+        self.permissionGroup.addItems(["Twitch only", "streamer only", "mods", "subs", "everyone", "specific only"])
+        #remove from list
+        self.permissionGroup.model().item(0).setEnabled(False)
+        self.permissionGroup.setCurrentIndex(4)
+        self.permissionGroup.activated[str].connect(self.changePermissionGroup)
+        self.exceptionLabel = QLabel('Exception:')
+        self.exceptionLabel.setAlignment(Qt.AlignRight)
+        layout.addWidget(self.exceptionLabel, 4, 5, 1, 1)
+        self.exceptionUsersLineEdit = QLineEdit(self)
+        self.exceptionUsersLineEdit.setEnabled(False)
+        layout.addWidget(self.exceptionUsersLineEdit, 4, 6, 1, 3)
 
         subscriberTemplateButton = QPushButton("Subscriber")
         subscriberTemplateButton.clicked.connect(self.subTemplate)
@@ -59,11 +73,11 @@ class BotDialog(QDialog):
         layout.addWidget(followerTemplateButton, 1, 6)
         layout.addWidget(EmptyTemplateButton, 1, 7, 1, 2)
 
-        layout.addWidget(QLabel('Response:'), 4, 4, 1, 2)
+        layout.addWidget(QLabel('Response:'), 5, 4, 1, 2)
         self.enabledCheckBox = QCheckBox("Enabled")
-        layout.addWidget(self.enabledCheckBox, 4, 7, 1, 2)
+        layout.addWidget(self.enabledCheckBox, 5, 7, 1, 2)
         self.responseEditor = QTextEdit(self)
-        layout.addWidget(self.responseEditor, 5, 4, 3, 5)
+        layout.addWidget(self.responseEditor, 6, 4, 3, 5)
 
         saveButton = QPushButton("Save")
         saveButton.clicked.connect(self.saveCommand)
@@ -71,16 +85,17 @@ class BotDialog(QDialog):
         resetButton.clicked.connect(self.resetCommand)
         cancelButton = QPushButton("Cancel")
         cancelButton.clicked.connect(self.close)
-        layout.addWidget(saveButton, 8, 4)
-        layout.addWidget(resetButton, 8, 5)
-        layout.addWidget(cancelButton, 8, 7, 1, 2)
+        layout.addWidget(saveButton, 9, 4)
+        layout.addWidget(resetButton, 9, 5)
+        layout.addWidget(cancelButton, 9, 7, 1, 2)
 
         layout.setRowStretch(1, 1)
         layout.setRowStretch(2, 1)
         layout.setRowStretch(3, 1)
         layout.setRowStretch(4, 1)
-        layout.setRowStretch(5, 20)
-        layout.setRowStretch(8, 1)
+        layout.setRowStretch(5, 1)
+        layout.setRowStretch(6, 20)
+        layout.setRowStretch(9, 1)
         self.setLayout(layout)
         #make it able to import data from another folder
         position = self.mainWindow.getPopUpPosition(870, 480)
@@ -96,12 +111,20 @@ class BotDialog(QDialog):
 
     def followerTemplate(self):
         self.commandName.clear()
+        self.permissionGroup.setCurrentIndex(5)
+        self.permissionGroup.setEnabled(False)
+        self.exceptionUsersLineEdit.setText("")
+        self.exceptionUsersLineEdit.setEnabled(False)
         self.commandName.setText("_follower_ @user@ has just followed @channel@")
         self.commandName.setReadOnly(True)
         self.responseEditor.clear()
 
     def subTemplate(self):
         self.commandName.clear()
+        self.permissionGroup.setCurrentIndex(5)
+        self.permissionGroup.setEnabled(False)
+        self.exceptionUsersLineEdit.setText("")
+        self.exceptionUsersLineEdit.setEnabled(False)
         self.commandName.setText("_new_sub_ @user@ has just subscribed to @channel@ for @month@ in a row, with @tier@")
         self.commandName.setReadOnly(True)
         self.responseEditor.clear()
@@ -109,6 +132,10 @@ class BotDialog(QDialog):
     def emptyTemplate(self):
         self.commandName.clear()
         self.commandName.setReadOnly(False)
+        self.permissionGroup.setCurrentIndex(4)
+        self.permissionGroup.setEnabled(True)
+        self.exceptionUsersLineEdit.setText("")
+        self.exceptionUsersLineEdit.setEnabled(False)
         self.responseEditor.clear()
 
     def addChannel(self):
@@ -124,6 +151,22 @@ class BotDialog(QDialog):
         if len(arr) is not 0:
             if arr[0].parent().data() == 'Commands':
                 shutil.rmtree(self.COMMAND_FOLDER_PATH + arr[0].data())
+
+    def changePermissionGroup(self, group):
+        if group == 'everyone':
+            self.exceptionUsersLineEdit.setText("")
+            self.exceptionUsersLineEdit.setEnabled(False)
+        elif self.file:
+            self.file.seek(0)
+            self.file.readline()
+            self.file.readline()
+            self.file.readline()
+            self.exceptionUsersLineEdit.setEnabled(True)
+            self.exceptionUsersLineEdit.setText(self.file.readline()[:-1])
+        else:
+            self.exceptionUsersLineEdit.setEnabled(True)
+            self.exceptionUsersLineEdit.setText("")
+
 
     def deleteCommand(self):
         arr = self.commandsTreeView.selectionModel().selectedIndexes()
@@ -144,6 +187,10 @@ class BotDialog(QDialog):
             self.file = open(self.COMMAND_FOLDER_PATH + channel + '\\NewCommand', 'w')
             self.commandName.setText("NewCommand")
             self.enabledCheckBox.setChecked(True)
+            self.permissionGroup.setEnabled(True)
+            self.permissionGroup.setCurrentIndex(4)
+            self.exceptionUsersLineEdit.setText("")
+            self.exceptionUsersLineEdit.setEnabled(False)
             self.responseEditor.clear()
             self.commandName.setReadOnly(False)
 
@@ -171,8 +218,19 @@ class BotDialog(QDialog):
                 self.commandName.setReadOnly(True)
             else:
                 self.commandName.setReadOnly(False)
-            if lines > 2:
-                self.responseEditor.setText(self.file.readline())
+            self.permissionGroup.setEnabled(True)
+            self.permissionGroup.setCurrentIndex(int(self.file.readline()[0:-1]))
+            if self.permissionGroup.currentIndex() == 4 or self.permissionGroup.currentIndex() == 0:
+                self.exceptionUsersLineEdit.setText("")
+                self.exceptionUsersLineEdit.setEnabled(False)
+                if self.permissionGroup.currentIndex() == 0:
+                    self.permissionGroup.setEnabled(False)
+                self.file.readline()
+            else:
+                self.exceptionUsersLineEdit.setEnabled(True)
+                self.exceptionUsersLineEdit.setText(self.file.readline()[0:-1])
+            if lines > 4:
+                self.responseEditor.setText(str('').join(self.file.readlines()))
         else:
             self.emptyTemplate()
             self.commandName.setText("NewCommand")
@@ -182,6 +240,10 @@ class BotDialog(QDialog):
         if self.file.name[self.file.name.rfind('\\') + 1:] == "NewCommand":
             self.commandName.clear()
             self.responseEditor.clear()
+            self.permissionGroup.setEnabled(True)
+            self.permissionGroup.setCurrentIndex(4)
+            self.exceptionUsersLineEdit.setText("")
+            self.exceptionUsersLineEdit.setEnabled(False)
         elif self.file is not None:
             self.fillFormFromFile()
 
@@ -206,6 +268,8 @@ class BotDialog(QDialog):
                 else:
                     self.file.write('Off\n')
                 self.file.write(self.commandName.toPlainText() + '\n')
+                self.file.write(str(self.permissionGroup.currentIndex()) + '\n')
+                self.file.write(self.exceptionUsersLineEdit.text() + '\n')
                 self.file.write(self.responseEditor.toPlainText())
                 self.file.truncate()
 

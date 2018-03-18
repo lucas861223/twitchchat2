@@ -19,7 +19,7 @@ class Macros():
                     lines = open(os.path.join(directory_path, file), 'r').readlines()
                     macro = lines[0]
                     response = self.compileResponsePattern(directory, lines[2])
-                    command = self.compileCommandPattern(command, lines[3:])
+                    command = self.compileCommandPattern(command, lines[3:] + '(| )')
                     if not self.commands[0].get(directory, None):
                         self.commands[0][directory] = []
                     entry = len(self.commands[0][directory])

@@ -1,11 +1,14 @@
 import requests
 import threading
 from queue import Queue
+from time import sleep
 import socket
 import re
 
 class BotThread(threading.Thread):
-    MESSAGE_PATTERN = re.compile('@badges=([^;]*);.*(bits=(\d+);.*)?.*display-name=(?P<displayName>([^A-Za-z]*)|([^;]*));.*user-id=(\d+);.*:(?P<user>[^!]+)!.*#(?P<channel>[^ ]+) :(ACTION )?(.*)')
+    TEMP_PATTERN = re.compile('liaaaGiggle (?P<name>([^ ]+)) just cheered with (?P<amount>([\d]+)), and has cheered a total of (?P<totalAmount>([\d]+))! liaaaGiggle')
+    TEMP_PATTERN2 = re.compile('liaaaPanda (?P<name>([^ ]+)), Thank you for the donation of (?P<donation>([\d\.]+)) USD! liaaaPanda')
+    MESSAGE_PATTERN = re.compile('@badges=([^;]*);(bits=(\d+).*)?color=[^;]*;.*display-name=(?P<displayName>([^A-Za-z]*)|([^;]*));.*user-id=(\d+);.*:(?P<user>[^!]+)!.*#(?P<channel>[^ ]+) :(ACTION )?(.*)')
     def __init__(self, clientIRC, commands):
         super().__init__(target=self.run)
         self.setDaemon(True)
@@ -49,13 +52,13 @@ class BotThread(threading.Thread):
                 for message in rawMessage.split('\r\n'):
                     channelMessage = re.search(self.channelMessagePattern, message)
                     if channelMessage:
+                        print(message)
                         self.checkChannelMessage(message)
                     #not doing whisper yet
                     elif ' USERNOTICE ' in message:
                         self.checkSubMessage(message)
                     elif message.startswith('PING'):
                         self.receiveSocket.send((message.replace('PING', 'PONG') + '\r\n').encode('utf-8'))
-
             except OSError:
                 pass
     #change to react to ! only
@@ -65,8 +68,17 @@ class BotThread(threading.Thread):
             if self.commands[0].get(components.group(9), None):
                 for command in self.commands[0][components.group(9)]:
                     if re.search(command[0], message):
-                        self.sendReply(self.executeCommand(command[0], command[1], message))
-
+                        for lines in command[2].split('\n'):
+                            self.sendReply(self.executeCommand(command[0], lines, message))
+                            sleep(0.1)
+                            continue
+                    if command[1]:
+                        if re.search(command[1], message):
+                            for lines in command[2].split('\n'):
+                                self.sendReply(self.executeCommand(command[0], lines, message))
+                                sleep(0.1)
+                                continue
+                            
     def checkSubMessage(self, message):
         for command in self.commands[1]:
             if '#' + command in message:

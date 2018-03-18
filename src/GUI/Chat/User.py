@@ -28,13 +28,13 @@ class UserListEntry(QListWidgetItem):
             self.badgesImage = imagePrefix + '../Icon/premium.png">' + self.badgesImage
         if 'partner' in badges:
             self.badgesImage = imagePrefix + '../Icon/partner.png">' + self.badgesImage
-        if 'bits' in badges:
+        if 'bits/' in badges:
             self.userName = '$' + self.userName
-            amount = re.search(re.compile('bits/(\d+)'), badges).group(1)
+            amount = re.search(re.compile('.*bits/(\d+)'), badges)
             if amount in bitsBadge:
-                self.badgesImage = imagePrefix + bitsBadge[amount] + '">' + self.badgesImage
+                self.badgesImage = imagePrefix + bitsBadge[amount.group(1)] + '">' + self.badgesImage
             else:
-                self.badgesImage = imagePrefix + '../Icon/bits ' + amount + '.png">' + self.badgesImage
+                self.badgesImage = imagePrefix + '../Icon/bits ' + amount.group(1) + '.png">' + self.badgesImage
         if 'subscriber' in badges:
             self.userName = '%' + self.userName
             if len(subBadge) > 0:

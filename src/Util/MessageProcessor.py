@@ -6,7 +6,7 @@ class MessageProcessor:
     EMOTE_PATTERN = re.compile('(\d+):(\d+-\d+,?)+')
     EMOTE_RANGE = re.compile('((\d+)-(\d+)),?')
     EMOTE_PREFIX = 'http://static-cdn.jtvnw.net/emoticons/v1/'
-    MESSAGE_PATTERN = re.compile('(\d\d:\d\d:\d\d) @badges=([^;]*);.*(bits=(\d+);.*)?color=([^;]*);.*display-name=(([^A-Za-z]*)|([^;]*));.*emotes=([^;]*);.*user-id=(\d+);.*:([^!]+)!.*#[^ ]+ :(ACTION )?(.*)')
+    MESSAGE_PATTERN = re.compile('(\d\d:\d\d:\d\d) @badges=([^;]*);(bits=(\d+).*)?color=([^;]*);.*display-name=(([^A-Za-z]*)|([^;]*));.*emotes=([^;]*);.*user-id=(\d+);.*:([^!]+)!.*#[^ ]+ :(ACTION )?(.*)')
     INTERNET_RELATED_THREAD = None
     IMAGE_SIZE = ""
     BADGE_SIZE =""
