@@ -20,6 +20,13 @@
       <sourceFolder url="file://$MODULE_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/lib/PyQt4_gpl_win-4.12/sip" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/lib/regex-2018.02.21" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/lib/regex-2018.02.21/build" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/lib/regex-2018.02.21/docs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/lib/regex-2018.02.21/regex_2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/lib/regex-2018.02.21/regex_3" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/lib/regex-2018.02.21/tools" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/lib/regex-2018.02.21/regex_3/regex.egg-info" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.5.2 (C:\Users\lucas\AppData\Local\Programs\Python\Python35-32\python.exe)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

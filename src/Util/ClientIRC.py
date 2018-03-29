@@ -3,11 +3,10 @@ import threading
 import time
 import re
 from Util.SystemMessageProcessor import SystemMessageProcessor
-from Util.JoinedChannelsMonitor import JoinedChannelsMonitor
 
 
 class ClientIRC:
-    def __init__(self, chatScreen):
+    def __init__(self, chatScreen, bot):
         file = open('../setting/login', 'r')
         self.nickname = file.readline()
         self.password = file.readline()
@@ -16,12 +15,12 @@ class ClientIRC:
         self.sendSocket = socket.socket()
         self.receiveSocketRunning = False
         self.chatScreen = chatScreen
-        self.systemMessageProcessor = SystemMessageProcessor(self.chatScreen)
+        self.systemMessageProcessor = SystemMessageProcessor(self.chatScreen, bot.messageQueue)
         self.systemMessageThread = self.systemMessageProcessor.systemMessageThread
         self.isHoldingMessage = False
         self.heldMessage = ''
         self.channelMessagePattern = re.compile('.*PRIVMSG (#[^ ]*) :')
-        self.joinedChannel = JoinedChannelsMonitor()
+        bot.connectIRC(self)
 
     def start(self):
         self.activateSocket(self.receiveSocket)
@@ -100,15 +99,12 @@ class ClientIRC:
 
     def leaveChannel(self, channelName):
         self.leaveChannelWithSocket(self.receiveSocket, channelName)
-        self.joinedChannel.leaveChannel(channelName)
 
     def leaveChannelWithSocket(self, socket, channelName):
         socket.send('PART {}\r\n'.format(channelName).encode('utf-8'))
 
-
     def joinChannel(self, channelName):
         self.joinChannelWithSocket(self.receiveSocket, channelName)
-        self.joinedChannel.joinChannel(channelName)
 
     def joinChannelWithSocket(self, socket, channelName):
         socket.send('JOIN #{}\r\n'.format(channelName).encode('utf-8'))

@@ -2,17 +2,29 @@ from BotThread import BotThread
 import re
 import os.path
 from pathlib import Path
-
+from queue import Queue
 
 class Bot():
     SPECIFIC_USER_SPLIT = re.compile("[ ,]+")
     COMMAND_FOLDER_PATH = str(Path(__file__).parent.parent) + "\\Commands\\"
-    def __init__(self, clientIRC):
-        self.initializeCommands()
-        self.botThread = BotThread(clientIRC, self.commands)
+    def __init__(self):
+        self.commands = None
+        self.clientIRC = None
+        self.botThread = None
+        self.messageQueue = Queue()
+
+    def connectIRC(self, clientIRC):
+        self.clientIRC = clientIRC
 
     def shutDownBot(self):
-        self.botThread.deActivateBot()
+        self.botThread.deActivateBotThread()
+        del(self.botThread)
+
+    def startBot(self):
+        self.messageQueue.queue.clear()
+        self.initializeCommands()
+        self.botThread = BotThread(self.clientIRC, self.messageQueue)
+        self.botThread.activateBotThread(self.commands)
 
     def initializeCommands(self):
         self.commands = [{}, {}]
@@ -47,7 +59,6 @@ class Bot():
     def compileCommandPattern(self, command, userGroup, specificUser):
         commands = []
         commandPattern = ''
-        exceptions = specificUser != '' and not userGroup == '4' and not userGroup == '4'
         if userGroup == '1':
             commandPattern += '@badges=broadcaster/1'
         commandPattern += '.*(bits=(\d+);.*)?.*display-name=(?P<displayName>([^A-Za-z]*)|([^;]*));.*'
@@ -58,7 +69,7 @@ class Bot():
             commandPattern += 'subscriber=1;'
         commandPattern += ".*;.*user-id=(\d+);.*!(?P<user>[^@]+)@"
         if specificUser != '' and userGroup == '5':
-            commandPattern += str("|").join(Bot.SPECIFIC_USER_SPLIT.split(specificUser))
+            commandPattern += "(" + str("|").join(Bot.SPECIFIC_USER_SPLIT.split(specificUser)) + ")"
         elif specificUser != '' and not userGroup == '4':
             #need a better solution
             temp = ".*(bits=(\d+);.*)?.*display-name=(?P<displayName>([^A-Za-z]*)|([^;]*));.*user-id=(\d+);.*!(?P<user>[^@]+)@(" + str("|").join(Bot.SPECIFIC_USER_SPLIT.split(specificUser)) + ")\.tmi\.twitch\.tv PRIVMSG #(?P<channel>[^ ]+) :" + re.sub('@(?P<variableName>[^ ]+)@', '(?P<\\g<variableName>>[^ ]+)', command[:-1] + '( |$)') + ".*"
@@ -66,6 +77,7 @@ class Bot():
             commandPattern += ".*"
         else:
             commandPattern += ".*"
+
         commandPattern += "\.tmi\.twitch\.tv PRIVMSG #(?P<channel>[^ ]+) :"
         commandPattern += re.sub('@(?P<variableName>[^ ]+)@', '(?P<\\g<variableName>>[^ ]+)', command[:-1] + '( |$)')
         commandPattern = re.sub("\.\*(\.\*)+", ".*", commandPattern)

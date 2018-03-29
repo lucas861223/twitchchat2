@@ -2,6 +2,7 @@ from UserList import UserList
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QSplitter, QHBoxLayout, QWidget
 from ChannelChat import ChannelChat
+import threading
 
 class ChatTab(QWidget):
     def __init__(self, channelName, clientIRC, jsonDecoder):

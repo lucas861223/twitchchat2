@@ -7,7 +7,7 @@ class ChannelChat(QTextBrowser):
     def __init__(self, chatTab, channelName, jsonDecoder):
         super(ChannelChat, self).__init__(chatTab)
         self.chatTab = chatTab
-        self.messageProcessor = MessageProcessor(jsonDecoder, self.chatTab.clientIRC.chatScreen.font.pointSizeF()/12*16)
+        self.messageProcessor = MessageProcessor(jsonDecoder, self.chatTab.clientIRC.chatScreen.font.pointSizeF()/12*16, self.chatTab.clientIRC.chatScreen.bot.messageQueue)
         self.chatThread = ChatThread(self, channelName)
         self.channelName = channelName
         self.chatThread.start()
@@ -32,7 +32,6 @@ class ChannelChat(QTextBrowser):
     def newMessage(self, message):
         #self.textCursor().insertHtml(message)
         self.append(message)
-
 
     def shouldKeepScrolling(self):
         if self.verticalScrollBar().value() == self.verticalScrollBar().maximum():

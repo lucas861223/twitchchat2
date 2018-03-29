@@ -5,38 +5,50 @@ import random
 
 class SystemMessageProcessor:
     HOST_MODE = re.compile('.*HOSTTARGET #([^ ]+) :([^ ]+)')
-    JOIN_MESSAGE = re.compile(':([^!]+)!.* JOIN #(.*)$')
-    PART_MESSAGE = re.compile(':([^!]+)!.* PART #(.*)$')
-    USERSTATE = re.compile('@badges=([^;]+);.*color=(#[^;]+);.*display-name=(#[^;]+);.*emote-sets=(#[^;]+);.*mod=(#[^;]+);.*subscriber==(#[^;]+);.*USERSTATE #(.*)')
+    JOIN_MESSAGE = re.compile(':(?P<username>[^!]+)!.* JOIN #(?P<channel>.*)$')
+    PART_MESSAGE = re.compile(':(?P<username>[^!]+)!.* PART #(?P<channel>.*)$')
+    SUB_MESSAGE = re.compile('.*display-name=(?P<displayName>[^;]*).*;login=(?P<id>[^;]*).*;msg-id=(?P<messageId>[^;]*);msg-param-months=(?P<month>[\d]+).*;msg-param-sub-plan-name=(?P<subPlanName>[^;]+);msg-param-sub-plan=(?P<subPlan>[^;]+).* USERNOTICE #(?P<channelName>[^ ]+).*')
     ROOMSTATE = re.compile('@broadcaster-lang=([^;]+)?;.*emote-only=([01]);.*followers-only=([^;]+);.*r9k=([01]);.*room-id=([^;]+);.*slow=([^;]+);.*subs-only=([01]).*ROOMSTATE #(.*)')
     NOTICE = re.compile('@msg-id=([^ ]+) .*NOTICE #([^ ]+) :(.*)')
     NAME_LIST = re.compile('.* 353 .* #(.*) :(.*)')
     SYSTEM_MODDING = re.compile(':jtv MODE #(.*) \+o (.*)')
     GLOBALUSERSTATE = re.compile('color=([^;]*);display-name=([^;]*).*user-id=([\d]+)')
 
-    def __init__(self, chatScreen):
+    def __init__(self, chatScreen, botQueue):
         self.chatScreen = chatScreen
         self.internetRelatedThread = chatScreen.jsonDecoder.internetRelatedThread
         self.systemMessageThread = SystemMessageThread(self, self.chatScreen)
         self.systemMessageThread.start()
         self.internetRelatedThread.start()
+        self.botQueue = botQueue
 
     def processMessage(self, message):
         print(message)
+        parsedResult = []
         if ' PART ' in message:
+            parsedResult.append("Part")
             result = re.search(SystemMessageProcessor.PART_MESSAGE, message)
-            if result.group(1) + '\n' != self.chatScreen.clientIRC.nickname:
-                chatTab = self.chatScreen.tabs.get('#' + result.group(2))
-                if chatTab.userList.nickList.get(result.group(1), None):
-                    chatTab.userList.removeUser(chatTab.userList.nickList[result.group(1)], True)
+            parsedResult.append(result)
+            if result.group('username') + '\n' != self.chatScreen.clientIRC.nickname:
+                chatTab = self.chatScreen.tabs.get('#' + result.group('channel'))
+                if chatTab.userList.nickList.get(result.group('username'), None):
+                    chatTab.userList.removeUser(chatTab.userList.nickList[result.group('username')], True)
         elif ' JOIN ' in message:
+            parsedResult.append("Join")
             result = re.search(SystemMessageProcessor.JOIN_MESSAGE, message)
-            chatTab = self.chatScreen.tabs.get('#' + result.group(2))
-            chatTab.userList.addUser(result.group(1))
+            parsedResult.append(result)
+            chatTab = self.chatScreen.tabs.get('#' + result.group('channel'))
+            chatTab.userList.addUser(result.group('username'))
         elif ' WHISPER ' in message:
             self.chatScreen.newWhisperSignal.emit(message)
         elif ' USERSTATE ' in message:
-            result = re.search(SystemMessageProcessor.USERSTATE, message)
+            pass
+        elif ' USERNOTICE ' in message:
+            result = re.search(SystemMessageProcessor.SUB_MESSAGE, message)
+            if result:
+                parsedResult.append("Sub")
+                parsedResult.append(result)
+
         elif ' ROOMSTATE ' in message:
             result = re.search(SystemMessageProcessor.ROOMSTATE, message)
             if result is not None:
@@ -73,6 +85,9 @@ class SystemMessageProcessor:
             self.chatScreen.clientIRC.userID = result.group(3)
         else:
             print(message)
+
+        if parsedResult:
+            self.botQueue.put(parsedResult)
 
 
 

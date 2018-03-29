@@ -21,7 +21,7 @@ class BotDialog(QDialog):
         self.commandsTreeView.hideColumn(2)
         self.commandsTreeView.hideColumn(1)
         self.commandsTreeView.doubleClicked.connect(self.editCommand)
-        layout.addWidget(self.commandsTreeView, 2, 1, 6, 3)
+        layout.addWidget(self.commandsTreeView, 2, 1, 7, 3)
         self.commandsTreeView.setHeaderHidden(True)
         self.commandsTreeView.doubleClicked.connect(self.editCommand)
         addChannelButton = QPushButton("Add Channel")
@@ -162,7 +162,11 @@ class BotDialog(QDialog):
             self.file.readline()
             self.file.readline()
             self.exceptionUsersLineEdit.setEnabled(True)
-            self.exceptionUsersLineEdit.setText(self.file.readline()[:-1])
+            exceptionUsers = self.file.readline()
+            if exceptionUsers:
+                self.exceptionUsersLineEdit.setText(exceptionUsers[:-1])
+            else:
+                self.exceptionUsersLineEdit.setText("")
         else:
             self.exceptionUsersLineEdit.setEnabled(True)
             self.exceptionUsersLineEdit.setText("")
@@ -283,5 +287,4 @@ class BotDialog(QDialog):
 
     @staticmethod
     def isDefaultCommand(commandName):
-        if commandName[0] == "_":
-            return True
+        return commandName[0] == "_"

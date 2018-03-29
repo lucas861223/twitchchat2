@@ -6,13 +6,13 @@ class MessageProcessor:
     EMOTE_PATTERN = re.compile('(\d+):(\d+-\d+,?)+')
     EMOTE_RANGE = re.compile('((\d+)-(\d+)),?')
     EMOTE_PREFIX = 'http://static-cdn.jtvnw.net/emoticons/v1/'
-    MESSAGE_PATTERN = re.compile('(\d\d:\d\d:\d\d) @badges=([^;]*);(bits=(\d+).*)?color=([^;]*);.*display-name=(([^A-Za-z]*)|([^;]*));.*emotes=([^;]*);.*user-id=(\d+);.*:([^!]+)!.*#[^ ]+ :(ACTION )?(.*)')
+    MESSAGE_PATTERN = re.compile('(?P<time>\d\d:\d\d:\d\d) @badges=(?P<badges>[^;]*);(?P<bits>bits=(?P<bitsAmount>\d+).*)?color=(?P<color>[^;]*);.*display-name=(?P<displayname>(?P<displaynameOtherLanguage>[^A-Za-z]*)|(?P<displaynameCapitalization>[^;]*));.*emotes=(?P<emotes>[^;]*);.*user-id=(?P<userID>\d+);.*:(?P<username>[^!]+)!.*#(?P<channel>[^ ]+) :(?P<action>ACTION )?(?P<message>.*)')
     INTERNET_RELATED_THREAD = None
     IMAGE_SIZE = ""
     BADGE_SIZE =""
 
     HTML_ESCAPE_TABLE = {"&": "&amp;", '"': "&quot;", "'": "&apos;", ">": "&gt;", "<": "&lt;", }
-    def __init__(self, jsonDecoder, imgSize):
+    def __init__(self, jsonDecoder, imgSize, botQueue):
         self.jsonDecoder = jsonDecoder
         MessageProcessor.INTERNET_RELATED_THREAD = jsonDecoder.internetRelatedThread
         self.bitsBadge = {}
@@ -20,43 +20,45 @@ class MessageProcessor:
         #to be changed to using image cache later
         MessageProcessor.IMAGE_SIZE = 'height="' + str(int(imgSize*2)) + '"'
         MessageProcessor.BADGE_SIZE = 'height="' + str(int(imgSize*1.5)) + '"'
+        self.botQueue = botQueue
 
     def processMessage(self, response, channelChat, userList):
         message = re.search(MessageProcessor.MESSAGE_PATTERN, response)
         print(response)
         if message:
-            finalMessage = '[' + message.group(1) + '] '
-            nameLink = message.group(11)
+            self.botQueue.put(['message', message])
+            finalMessage = '[' + message.group('time') + '] '
+            nameLink = message.group('username')
             user = userList.nickList.get(nameLink, None)
             if user is None:
                 userList.addUser(nameLink)
                 user = userList.nickList.get(nameLink)
             if user.hasSpoken == False:
                 user.hasSpoken = True
-                userList.updateUser(user.nick, message.group(2), self.subBadge, self.bitsBadge, MessageProcessor.BADGE_SIZE)
-                user.updateUserColor(message.group(5))
+                userList.updateUser(user.nick, message.group('badges'), self.subBadge, self.bitsBadge, MessageProcessor.BADGE_SIZE)
+                user.updateUserColor(message.group('color'))
             else:
-                if user.badges != message.group(2):
-                    userList.updateUser(user.nick, message.group(2), self.subBadge, self.bitsBadge, MessageProcessor.BADGE_SIZE)
+                if user.badges != message.group('badges'):
+                    userList.updateUser(user.nick, message.group('badges'), self.subBadge, self.bitsBadge, MessageProcessor.BADGE_SIZE)
             finalMessage += user.badgesImage
             bits = 'group 3, to be done'
             finalMessage += '<a href="' + nameLink + '" style="text-decoration:none" '
-            if message.group(5):
-                if user.color != message.group(5) and message.group(5) != "000000":
-                    user.updateUserColor(message.group(5))
+            if message.group('color'):
+                if user.color != message.group('color') and message.group('color') != "000000":
+                    user.updateUserColor(message.group('color'))
             finalMessage += 'style="color:' + user.color + '">'
-            if message.group(6):
-                if message.group(7):
-                    displayName = message.group(7) + ' (' + nameLink + ')'
+            if message.group('displayname'):
+                if message.group('displaynameOtherLanguage'):
+                    displayName = message.group('displaynameOtherLanguage') + ' (' + nameLink + ')'
                 else:
-                    displayName = message.group(8)
+                    displayName = message.group('displaynameCapitalization')
             else:
                 displayName = nameLink
             displayName = '<b>' + displayName + ': </b></a>'
             finalMessage += displayName
             #if mentioned, elif group 12, also change user name if /me
-            userMessage = MessageProcessor.insertEmote(message.group(13), message.group(9))
-            if message.group(12) is not None:
+            userMessage = MessageProcessor.insertEmote(message.group('message'), message.group('emotes'))
+            if message.group('action') is not None:
                 userMessage = '<font color="' + user.color + '">' + userMessage + "</font>"
             finalMessage += userMessage
             #emotes = to be done

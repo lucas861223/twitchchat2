@@ -6,19 +6,23 @@ from ChatTab import ChatTab
 from Util.JSONDecoder import JSONDecoder
 from WhisperChat import WhisperChat
 from PyQt5.QtCore import pyqtSignal
+from Util.Bot import Bot
 
 class ChatScreen(QTabWidget):
     newWhisperSignal = pyqtSignal(str)
     WHISPER = re.compile('(\d\d:\d\d:\d\d) .*color=([^;]*);display-name=(([^A-Za-z]+)|([^;]+));emotes=([^;]*);.*:([^!]+).*WHISPER.*:(.*)')
     def __init__(self, parent):
         super(ChatScreen, self).__init__(parent)
+        self.showMessage = True
         file = open('../setting/MainSetting', 'r')
         self.font = QFont(file.readline()[:-1], int(file.readline()[:-1]), -1, False)
         file.close()
         self.jsonDecoder = JSONDecoder()
         self.tabs = {}
-        self.clientIRC = ClientIRC(self)
+        self.bot = Bot()
+        self.clientIRC = ClientIRC(self, self.bot)
         self.clientIRC.start()
+        self.bot.connectIRC(self.clientIRC)
         self.setAutoFillBackground(True)
         default_channel = open('../setting/default_channel', 'r')
         for line in default_channel:
@@ -34,6 +38,7 @@ class ChatScreen(QTabWidget):
             chatTab = ChatTab(channelName, self.clientIRC, self.jsonDecoder)
             self.tabs['#' + channelName] = chatTab
             self.setCurrentIndex(self.addTab(chatTab, '#' + channelName))
+            chatTab.channelChat.setUpdatesEnabled(self.showMessage)
         else:
             index = 0
             for index in range(0, self.count()):
@@ -45,6 +50,10 @@ class ChatScreen(QTabWidget):
         chatTab = self.tabs.get(channelName, None)
         chatTab.channelChat.chatThread.processMessage(message)
 
+    def hideMessage(self):
+        self.showMessage = not self.showMessage
+        for chatTab in self.tabs:
+            self.tabs.get(chatTab).channelChat.setUpdatesEnabled(self.showMessage)
 
     def nextTab(self):
         if self.currentIndex() == self.count() - 1:
