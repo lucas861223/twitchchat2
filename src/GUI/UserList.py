@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QListWidget
-from Chat.User import *
+from GUI.Chat.User import *
 
 
 class UserList(QListWidget):

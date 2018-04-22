@@ -1,8 +1,8 @@
 from PyQt5.QtWidgets import QDialog, QHBoxLayout, QStackedLayout, QListWidget, QWidget
 from PyQt5.QtCore import Qt
-from SettingPages.ColorsWidget import ColorsWidget
-from SettingPages.MainWidget import MainWidget
-from SettingPages.MacrosWidget import MacrosWidget
+from GUI.SubWindows.SettingPages.ColorsWidget import ColorsWidget
+from GUI.SubWindows.SettingPages.MainWidget import MainWidget
+from GUI.SubWindows.SettingPages.MacrosWidget import MacrosWidget
 
 class SettingDialog(QDialog):
     def __init__(self, mainWindow):

@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout
-from EntryBox import EntryBox
-from ChatUI import ChatUI
+from GUI.EntryBox import EntryBox
+from GUI.ChatUI import ChatUI
 
 class CentralWidget(QWidget):
     def __init__(self, parent):

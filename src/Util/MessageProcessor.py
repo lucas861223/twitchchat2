@@ -1,6 +1,6 @@
 import re
 import html
-from CacheManager import CacheManager
+from Util.CacheManager import CacheManager
 
 class MessageProcessor:
     EMOTE_PATTERN = re.compile('(\d+):(\d+-\d+,?)+')

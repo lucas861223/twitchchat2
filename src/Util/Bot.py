@@ -1,4 +1,4 @@
-from BotThread import BotThread
+from Util.BotThread import BotThread
 import re
 import os.path
 from pathlib import Path
@@ -36,20 +36,20 @@ class Bot():
                 for file in files[0]:
                     lines = open(os.path.join(directory_path, file), 'r').readlines()
                     if 'On' in lines[0]:
-                        command = lines[1]
+                        commandName = lines[1][:-1]
                         response = self.compileResponsePattern(directory, lines[4:])
-                        if not command.startswith('_'):
-                            command = self.compileCommandPattern(command, lines[2][:-1], lines[3][:-1])
+                        if not commandName.startswith('_'):
+                            command = self.compileCommandPattern(commandName, lines[2][:-1], lines[3][:-1])
                             if not self.commands[0].get(directory, None):
-                                self.commands[0][directory] = []
-                            entry = len(self.commands[0][directory])
-                            self.commands[0][directory].append([])
-                            self.commands[0][directory][entry].append(command[0])
+                                self.commands[0][directory] = {}
+                            commandName = commandName[1:].split(' ', 1)[0]
+                            self.commands[0][directory][commandName] = []
+                            self.commands[0][directory][commandName].append(command[0])
                             if len(command) > 1:
-                                self.commands[0][directory][entry].append(command[1])
+                                self.commands[0][directory][commandName].append(command[1])
                             else:
-                                self.commands[0][directory][entry].append(None)
-                            self.commands[0][directory][entry].append(response)
+                                self.commands[0][directory][commandName].append(None)
+                            self.commands[0][directory][commandName].append(response)
                         else:
                             self.commands[1][directory] = response
         except Exception as e:
@@ -58,10 +58,14 @@ class Bot():
 
     def compileCommandPattern(self, command, userGroup, specificUser):
         commands = []
-        commandPattern = ''
+        commandPattern = '.*'
+        if len(command.split(" ", 1)) > 1:
+            command = ' ' + command.split(' ', 1)[-1]
+        else:
+            command = ''
         if userGroup == '1':
-            commandPattern += '@badges=broadcaster/1'
-        commandPattern += '.*(bits=(\d+);.*)?.*display-name=(?P<displayName>([^A-Za-z]*)|([^;]*));.*'
+            commandPattern += '@badges=broadcaster/1.*'
+        commandPattern += '(bits=(\d+);.*)?.*display-name=(?P<displayName>([^A-Za-z]*)|([^;]*));.*'
         if userGroup == '2':
             commandPattern += 'mod=1;'
         commandPattern += ".*"
@@ -72,14 +76,14 @@ class Bot():
             commandPattern += "(" + str("|").join(Bot.SPECIFIC_USER_SPLIT.split(specificUser)) + ")"
         elif specificUser != '' and not userGroup == '4':
             #need a better solution
-            temp = ".*(bits=(\d+);.*)?.*display-name=(?P<displayName>([^A-Za-z]*)|([^;]*));.*user-id=(\d+);.*!(?P<user>[^@]+)@(" + str("|").join(Bot.SPECIFIC_USER_SPLIT.split(specificUser)) + ")\.tmi\.twitch\.tv PRIVMSG #(?P<channel>[^ ]+) :" + re.sub('@(?P<variableName>[^ ]+)@', '(?P<\\g<variableName>>[^ ]+)', command[:-1] + '( |$)') + ".*"
+            temp = ".*(bits=(\d+);.*)?.*display-name=(?P<displayName>([^A-Za-z]*)|([^;]*));.*user-id=(\d+);.*!(?P<user>[^@]+)@(" + str("|").join(Bot.SPECIFIC_USER_SPLIT.split(specificUser)) + ")\.tmi\.twitch\.tv PRIVMSG #(?P<channel>[^ ]+) :" + re.sub('@(?P<variableName>[^ ]+)@', '(?P<\\g<variableName>>[^ ]+)', '![^ ]+' + command + '( |$)') + ".*"
             commands.append(re.compile(temp))
             commandPattern += ".*"
         else:
             commandPattern += ".*"
 
         commandPattern += "\.tmi\.twitch\.tv PRIVMSG #(?P<channel>[^ ]+) :"
-        commandPattern += re.sub('@(?P<variableName>[^ ]+)@', '(?P<\\g<variableName>>[^ ]+)', command[:-1] + '( |$)')
+        commandPattern += re.sub('@(?P<variableName>[^ ]+)@', '(?P<\\g<variableName>>[^ ]+)', '![^ ]+' + command + '( |$)')
         commandPattern = re.sub("\.\*(\.\*)+", ".*", commandPattern)
         commands.append(re.compile(commandPattern + ".*"))
         return commands

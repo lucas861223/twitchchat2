@@ -8,7 +8,7 @@ class MainWidget(QWidget):
         self.isChanged = False
         layout = QVBoxLayout()
 
-        file = open('../setting/MainSetting', 'r')
+        file = open('setting/MainSetting', 'r')
         chatFontGroupBox = QGroupBox(self)
         chatFontGroupBox.setTitle("Chat Font")
         chatFontLayout = QGridLayout()
@@ -47,7 +47,7 @@ class MainWidget(QWidget):
 
     def saveSetting(self):
         if self.isChanged:
-            file = open('../setting/MainSetting', 'w')
+            file = open('setting/MainSetting', 'w')
             file.truncate()
             file.write(self.chatFont.text() + '\n')
             file.write(self.chatFontSize.text() + '\n')

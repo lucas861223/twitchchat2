@@ -157,14 +157,19 @@ class BotDialog(QDialog):
             self.exceptionUsersLineEdit.setText("")
             self.exceptionUsersLineEdit.setEnabled(False)
         elif self.file:
-            self.file.seek(0)
-            self.file.readline()
-            self.file.readline()
-            self.file.readline()
             self.exceptionUsersLineEdit.setEnabled(True)
-            exceptionUsers = self.file.readline()
-            if exceptionUsers:
-                self.exceptionUsersLineEdit.setText(exceptionUsers[:-1])
+            self.file.seek(0)
+            lines = sum(1 for _ in self.file)
+            if lines > 2:
+                self.file.seek(0)
+                self.file.readline()
+                self.file.readline()
+                self.file.readline()
+                exceptionUsers = self.file.readline()
+                if exceptionUsers:
+                    self.exceptionUsersLineEdit.setText(exceptionUsers[:-1])
+                else:
+                    self.exceptionUsersLineEdit.setText("")
             else:
                 self.exceptionUsersLineEdit.setText("")
         else:
@@ -177,6 +182,10 @@ class BotDialog(QDialog):
         if len(arr) is not 0:
             if arr[0].parent().data() != 'Commands':
                 filePath = self.COMMAND_FOLDER_PATH + arr[0].parent().data() + '\\' + arr[0].data()
+                if filePath == self.file.name:
+                    self.file.close()
+                    self.emptyTemplate()
+                    self.file = None
                 if os.path.exists(filePath):
                     os.remove(filePath)
 

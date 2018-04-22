@@ -1,7 +1,5 @@
-import requests
 import threading
 from time import sleep
-import socket
 import re
 
 class BotThread(threading.Thread):
@@ -31,8 +29,9 @@ class BotThread(threading.Thread):
 
     def run(self):
         while self.isRunning:
+
             message = self.messageQueue.get()
-            if message[0] == 'message':
+            if message[0] == 'message' and message[1].group('message').startswith("!"):
                 self.checkChannelMessage(message[1])
             elif message[0] == 'Part':
                 pass
@@ -43,38 +42,34 @@ class BotThread(threading.Thread):
 
     #change to react to ! only
     def checkChannelMessage(self, message):
-        if message.group('message').startswith("!"):
-            if self.commands[0].get(message.group('channel'), None):
-                for command in self.commands[0][message.group('channel')]:
-                    if re.search(command[0], message.string):
+        if self.commands[0].get(message.group('channel'), None):
+            if self.commands[0][message.group('channel')].get(message.group('message').split(' ', 1)[0][1:].lower(), None):
+                command = self.commands[0][message.group('channel')].get(message.group('message').split(' ', 1)[0][1:].lower(), None)
+                if re.search(command[0], message.string):
+                    print(command[0])
+                    for lines in command[2].split('\n'):
+                        self.sendReply(self.executeCommand(command[0], lines, message.string))
+                        sleep(0.1)
+                elif command[1]:
+                    if re.search(command[1], message.string):
                         for lines in command[2].split('\n'):
                             self.sendReply(self.executeCommand(command[0], lines, message.string))
                             sleep(0.1)
-                            continue
-                    if command[1]:
-                        if re.search(command[1], message.string):
-                            for lines in command[2].split('\n'):
-                                self.sendReply(self.executeCommand(command[0], lines, message.string))
-                                sleep(0.1)
-                                continue
-            # print(components.group('channel') is "lucas861223")
-            # if components.group('channel') == "lucas861223":
-            #     if components.group(11).startswith("!點名"):
-            #         if not self.students.get(components.group("displayName")):
-            #             self.students[components.group("displayName")] = self.studentCount
-            #             self.sendReply('PRIVMSG #lucas861223 :' + components.group("displayName") + '你是第' + str(self.studentCount) + '號')
-            #             self.studentCount = self.studentCount + 1
-            #         else:
-            #             self.sendReply(
-            #                 'PRIVMSG #lucas861223 :' + components.group("displayName") + '你是第' + str(self.students.get(components.group("displayName"))) + '號')
-            #         print(self.students)
+        # print(components.group('channel') is "lucas861223")
+        # if components.group('channel') == "lucas861223":
+        #     if components.group(11).startswith("!點名"):
+        #         if not self.students.get(components.group("displayName")):
+        #             self.students[components.group("displayName")] = self.studentCount
+        #             self.sendReply('PRIVMSG #lucas861223 :' + components.group("displayName") + '你是第' + str(self.studentCount) + '號')
+        #             self.studentCount = self.studentCount + 1
+        #         else:
+        #             self.sendReply(
+        #                 'PRIVMSG #lucas861223 :' + components.group("displayName") + '你是第' + str(self.students.get(components.group("displayName"))) + '號')
+        #         print(self.students)
 
     def checkSubMessage(self, message):
-        print("aaaaaaaaaaaaaaaaaa")
         if self.commands[1].get(message.group("channelName"), None):
-            print("bbbbbbbbbbbbbbbbbbbb")
             for lines in self.commands[1][message.group("channelName")].split('\n'):
-                print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                 self.sendReply(self.executeCommand(self.subMessage, lines, message.string))
                 print(lines)
                 sleep(0.1)

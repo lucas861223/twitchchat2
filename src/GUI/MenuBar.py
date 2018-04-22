@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QAction, QMenuBar
-from SubWindows.JoinChannelDialog import JoinChannelDialog
-from SubWindows.SettingDialog import SettingDialog
-from SubWindows.BotDialog import BotDialog
+from GUI.SubWindows.JoinChannelDialog import JoinChannelDialog
+from GUI.SubWindows.SettingDialog import SettingDialog
+from GUI.SubWindows.BotDialog import BotDialog
 
 class MenuBar(QMenuBar):
     def __init__(self, parent):

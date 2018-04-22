@@ -1,7 +1,7 @@
 import requests
 import threading
 from queue import Queue
-from CacheManager import CacheManager
+from Util.CacheManager import CacheManager
 
 class InternetRelatedThread(threading.Thread):
 

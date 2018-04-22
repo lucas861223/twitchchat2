@@ -1,6 +1,5 @@
 from PyQt5.QtWidgets import QDialog, QPushButton, QLabel, QLineEdit, QWidget, QHBoxLayout, QVBoxLayout
-from ChatScreen import ChatScreen
-from PyQt5.QtCore import Qt
+from GUI.ChatScreen import ChatScreen
 
 class ChatUI(QWidget):
     def __init__(self, parent):

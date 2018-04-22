@@ -5,7 +5,7 @@ import requests
 class CacheManager:
     EMOTE_PREFIX = "http://static-cdn.jtvnw.net/emoticons/v1/"
     #use setting file
-    DIRECTORY = "../../cache/"
+    DIRECTORY = "cache/"
 
     @staticmethod
     def getEmoteImage(emoteID):

@@ -2,9 +2,9 @@ import sys
 import ctypes
 from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.QtCore import QPoint, Qt
-from CentralWidget import CentralWidget
-from MenuBar import MenuBar
-from CacheManager import CacheManager
+from GUI.CentralWidget import CentralWidget
+from GUI.MenuBar import MenuBar
+from Util.CacheManager import CacheManager
 import os.path
 
 class MainWindow(QMainWindow):

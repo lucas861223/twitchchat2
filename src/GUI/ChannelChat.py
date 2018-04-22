@@ -1,7 +1,6 @@
 from Util.MessageProcessor import MessageProcessor
-from Chat.ChatThread import ChatThread
+from GUI.Chat.ChatThread import ChatThread
 from PyQt5.QtWidgets import QTextBrowser
-from PyQt5.QtGui import QWheelEvent
 
 class ChannelChat(QTextBrowser):
     def __init__(self, chatTab, channelName, jsonDecoder):
@@ -22,7 +21,7 @@ class ChannelChat(QTextBrowser):
         self.verticalScrollBar().valueChanged.connect(self.shouldKeepScrolling)
         self.setFont(self.chatTab.clientIRC.chatScreen.font)
         self.document().setDefaultStyleSheet("background-color: yellow")
-        with open('../setting/ChatCSS', 'r') as cssFile:
+        with open('setting/ChatCSS', 'r') as cssFile:
             self.setStyleSheet(cssFile.read())
         #add wheel event
 

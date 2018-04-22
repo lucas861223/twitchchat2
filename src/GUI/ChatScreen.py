@@ -2,9 +2,9 @@ import re
 from PyQt5.QtWidgets import QShortcut, QTabWidget
 from PyQt5.QtGui import QKeySequence, QFont
 from Util.ClientIRC import ClientIRC
-from ChatTab import ChatTab
+from GUI.ChatTab import ChatTab
 from Util.JSONDecoder import JSONDecoder
-from WhisperChat import WhisperChat
+from GUI.WhisperChat import WhisperChat
 from PyQt5.QtCore import pyqtSignal
 from Util.Bot import Bot
 
@@ -14,7 +14,7 @@ class ChatScreen(QTabWidget):
     def __init__(self, parent):
         super(ChatScreen, self).__init__(parent)
         self.showMessage = True
-        file = open('../setting/MainSetting', 'r')
+        file = open('setting/MainSetting', 'r')
         self.font = QFont(file.readline()[:-1], int(file.readline()[:-1]), -1, False)
         file.close()
         self.jsonDecoder = JSONDecoder()
@@ -24,7 +24,7 @@ class ChatScreen(QTabWidget):
         self.clientIRC.start()
         self.bot.connectIRC(self.clientIRC)
         self.setAutoFillBackground(True)
-        default_channel = open('../setting/default_channel', 'r')
+        default_channel = open('setting/default_channel', 'r')
         for line in default_channel:
             self.joinChannel(line.replace('\n', ''))
         default_channel.close()

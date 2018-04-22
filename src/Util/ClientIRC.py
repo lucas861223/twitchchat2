@@ -7,7 +7,7 @@ from Util.SystemMessageProcessor import SystemMessageProcessor
 
 class ClientIRC:
     def __init__(self, chatScreen, bot):
-        file = open('../setting/login', 'r')
+        file = open('setting/login', 'r')
         self.nickname = file.readline()
         self.password = file.readline()
         file.close()

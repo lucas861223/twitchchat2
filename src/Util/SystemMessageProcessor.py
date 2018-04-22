@@ -1,6 +1,6 @@
 import re
-from SystemMessageThread import SystemMessageThread
-from User import UserListEntry
+from Util.SystemMessageThread import SystemMessageThread
+from GUI.Chat.User import UserListEntry
 import random
 
 class SystemMessageProcessor:

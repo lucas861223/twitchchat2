@@ -1,7 +1,7 @@
-from UserList import UserList
+from GUI.UserList import UserList
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QSplitter, QHBoxLayout, QWidget
-from ChannelChat import ChannelChat
+from GUI.ChannelChat import ChannelChat
 import threading
 
 class ChatTab(QWidget):
