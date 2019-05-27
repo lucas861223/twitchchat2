@@ -6,7 +6,7 @@ class MessageProcessor:
     EMOTE_PATTERN = re.compile('(\d+):(\d+-\d+,?)+')
     EMOTE_RANGE = re.compile('((\d+)-(\d+)),?')
     EMOTE_PREFIX = 'http://static-cdn.jtvnw.net/emoticons/v1/'
-    MESSAGE_PATTERN = re.compile('(?P<time>\d\d:\d\d:\d\d) @badges=(?P<badges>[^;]*);(?P<bits>bits=(?P<bitsAmount>\d+).*)?color=(?P<color>[^;]*);.*display-name=(?P<displayname>(?P<displaynameOtherLanguage>[^A-Za-z]*)|(?P<displaynameCapitalization>[^;]*));.*emotes=(?P<emotes>[^;]*);.*user-id=(?P<userID>\d+);.*:(?P<username>[^!]+)!.*#(?P<channel>[^ ]+) :(?P<action>ACTION )?(?P<message>.*)')
+    MESSAGE_PATTERN = re.compile('(?P<time>\d\d:\d\d:\d\d).*badges=(?P<badges>[^;]*);(?P<bits>bits=(?P<bitsAmount>\d+).*)?color=(?P<color>[^;]*);.*display-name=(?P<displayname>(?P<displaynameOtherLanguage>[^A-Za-z]*)|(?P<displaynameCapitalization>[^;]*));.*emotes=(?P<emotes>[^;]*);.*user-id=(?P<userID>\d+);.*:(?P<username>[^!]+)!.*#(?P<channel>[^ ]+) :(?P<action> ACTION )?(?P<message>.*)')
     INTERNET_RELATED_THREAD = None
     IMAGE_SIZE = ""
     BADGE_SIZE =""
@@ -25,6 +25,7 @@ class MessageProcessor:
     def processMessage(self, response, channelChat, userList):
         message = re.search(MessageProcessor.MESSAGE_PATTERN, response)
         print(response)
+        print(message)
         if message:
             self.botQueue.put(['message', message])
             finalMessage = '[' + message.group('time') + '] '

@@ -2,90 +2,749 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2bf0855-7775-4ef6-92a0-4877b7faea62" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/CentralWidget.py" afterPath="$PROJECT_DIR$/src/GUI/CentralWidget.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/ChannelChat.py" afterPath="$PROJECT_DIR$/src/GUI/ChannelChat.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/Chat/User.py" afterPath="$PROJECT_DIR$/src/GUI/Chat/User.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/ChatScreen.py" afterPath="$PROJECT_DIR$/src/GUI/ChatScreen.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/ChatTab.py" afterPath="$PROJECT_DIR$/src/GUI/ChatTab.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/ChatUI.py" afterPath="$PROJECT_DIR$/src/GUI/ChatUI.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/MainWindow.py" afterPath="$PROJECT_DIR$/src/GUI/MainWindow.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/MenuBar.py" afterPath="$PROJECT_DIR$/src/GUI/MenuBar.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/SubWindows/BotDialog.py" afterPath="$PROJECT_DIR$/src/GUI/SubWindows/BotDialog.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/SubWindows/SettingDialog.py" afterPath="$PROJECT_DIR$/src/GUI/SubWindows/SettingDialog.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/SubWindows/SettingPages/MacrosWidget.py" afterPath="$PROJECT_DIR$/src/GUI/SubWindows/SettingPages/MacrosWidget.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/SubWindows/SettingPages/MainWidget.py" afterPath="$PROJECT_DIR$/src/GUI/SubWindows/SettingPages/MainWidget.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/UserList.py" afterPath="$PROJECT_DIR$/src/GUI/UserList.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/WhisperChat.py" afterPath="$PROJECT_DIR$/src/GUI/WhisperChat.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Util/Bot.py" afterPath="$PROJECT_DIR$/src/Util/Bot.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Util/BotThread.py" afterPath="$PROJECT_DIR$/src/Util/BotThread.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Util/CacheManager.py" afterPath="$PROJECT_DIR$/src/Util/CacheManager.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Util/ClientIRC.py" afterPath="$PROJECT_DIR$/src/Util/ClientIRC.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Util/InternetRelatedThread.py" afterPath="$PROJECT_DIR$/src/Util/InternetRelatedThread.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Util/JSONDecoder.py" afterPath="$PROJECT_DIR$/src/Util/JSONDecoder.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Util/MessageProcessor.py" afterPath="$PROJECT_DIR$/src/Util/MessageProcessor.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Util/SystemMessageProcessor.py" afterPath="$PROJECT_DIR$/src/Util/SystemMessageProcessor.py" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/TwitchChat.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TwitchChat.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Util/MessageProcessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/MessageProcessor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/AddToPath.nsh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/ChangeLog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/NEWS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/PyQt4-Qt4.nsi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/PyQt4-Qt5.nsi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/StrSlash.nsh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/THANKS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/configure-ng.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/configure.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang.qrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/cs_cs.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/cs_cs.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/da_da.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/da_da.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/de_ch.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/de_ch.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/de_de.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/de_de.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/en_gb.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/en_gb.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/en_us.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/en_us.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/es_es.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/es_es.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/et_et.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/et_et.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/fi_fi.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/fi_fi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/fr_ca.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/fr_ca.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/fr_fr.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/fr_fr.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/hu_hu.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/hu_hu.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/it_it.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/it_it.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/nl_nl.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/nl_nl.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/no_no.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/no_no.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/pl_pl.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/pl_pl.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/pt_pt.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/pt_pt.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/sv_sv.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/sv_sv.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/tr_tr.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/lang/tr_tr.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/lang/mainwindow.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/pymodeltest/LICENSE.GPL" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/pymodeltest/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/pymodeltest/modeltest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/sandbox/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/contrib/sandbox/sandbox.pyw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/dbus/dbus.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/dbus/dbus.sbf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/dbus/helper.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/designer/designer.pro-in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/designer/pluginloader.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/designer/pluginloader.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/elementtree/ElementPath.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/elementtree/ElementTree.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/elementtree/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pylupdate/fetchtr.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pylupdate/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pylupdate/merge.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pylupdate/metatranslator.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pylupdate/metatranslator.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pylupdate/numberh.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pylupdate/proparser.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pylupdate/proparser.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pylupdate/pylupdate.sbf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pylupdate/sametexth.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pylupdate/simtexth.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pylupdate/simtexth.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pylupdate/translator.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pylupdate/translator.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyqtconfig.py.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyrcc/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyrcc/pyrcc.sbf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyrcc/rcc.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyrcc/rcc.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/Compiler/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/Compiler/compiler.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/Compiler/indenter.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/Compiler/misc.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/Compiler/proxy_metaclass.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/Compiler/qobjectcreator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/Compiler/qtproxies.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/Loader/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/Loader/loader.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/Loader/qobjectcreator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/driver.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/exceptions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/icon_cache.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/objcreator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/port_v2/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/port_v2/as_string.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/port_v2/ascii_upper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/port_v2/invoke.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/port_v2/load_plugin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/port_v2/proxy_base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/port_v2/string_io.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/port_v3/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/port_v3/as_string.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/port_v3/ascii_upper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/port_v3/invoke.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/port_v3/load_plugin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/port_v3/proxy_base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/port_v3/string_io.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/properties.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/pyuic.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/uiparser.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/widget-plugins/phonon.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/widget-plugins/qaxcontainer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/widget-plugins/qscintilla.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/widget-plugins/qtdeclarative.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/pyuic/uic/widget-plugins/qtwebkit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_api.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_chimera.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_chimera.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_chimera_signature.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_chimera_storage.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_classinfo.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_classinfo.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_init.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_misc.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_misc.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_namespace.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_post_init.cpp.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_public_api.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_public_api.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_pyqtboundsignal.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_pyqtboundsignal.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_pyqtconfigure.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_pyqtmethodproxy.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_pyqtmethodproxy.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_pyqtproperty.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_pyqtproperty.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_pyqtproxy.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_pyqtproxy.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_pyqtpyobject.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_pyqtpyobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_pyqtsignal.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_pyqtsignal.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_pyqtslot.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_qabstracteventdispatcher.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_qmetaobject.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_qmetaobject_helpers.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_qmetaobjectbuilder.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_qobject_getattr.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_qobject_helpers.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_qobject_helpers.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_qpynullvariant.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_qpynullvariant.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_qstring.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_qstringlist.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_qtlib.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_qtlib.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_qvariant.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_qvariant_value.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_sip.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_sip_helpers.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_sip_helpers.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_types.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtCore/qpycore_types.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDBus/qpydbus.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDBus/qpydbus_api.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDBus/qpydbus_chimera_helpers.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDBus/qpydbus_chimera_helpers.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDBus/qpydbus_post_init.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDBus/qpydbuspendingreply.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDBus/qpydbuspendingreply.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDBus/qpydbusreply.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDBus/qpydbusreply.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDeclarative/qpydeclarative.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDeclarative/qpydeclarative_api.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDeclarative/qpydeclarative_chimera_helpers.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDeclarative/qpydeclarative_chimera_helpers.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDeclarative/qpydeclarative_listwrapper.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDeclarative/qpydeclarative_listwrapper.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDeclarative/qpydeclarative_post_init.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDeclarative/qpydeclarativelistproperty.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDeclarative/qpydeclarativelistproperty.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDeclarative/qpydeclarativepropertyvaluesource.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDesigner/qpydesigner.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDesigner/qpydesignercontainerextension.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDesigner/qpydesignercustomwidgetcollectionplugin.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDesigner/qpydesignercustomwidgetplugin.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDesigner/qpydesignermembersheetextension.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDesigner/qpydesignerpropertysheetextension.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtDesigner/qpydesignertaskmenuextension.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtGui/qpygui.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtGui/qpytextobject.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtOpenGL/qpyopengl.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtOpenGL/qpyopengl_api.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtOpenGL/qpyopengl_attribute_array.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/qpy/QtOpenGL/qpyopengl_uniform_value_array.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QAxContainer/QAxContainermod.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QAxContainer/qaxbase.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QAxContainer/qaxobject.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QAxContainer/qaxwidget.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtAssistant/QtAssistantmod.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtAssistant/qassistantclient.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/QtCoremod.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qabstractanimation.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qabstracteventdispatcher.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qabstractfileengine.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qabstractitemmodel.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qabstractnativeeventfilter.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qabstractstate.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qabstracttransition.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qanimationgroup.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qbasictimer.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qbitarray.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qbuffer.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qbytearray.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qbytearraymatcher.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qchar.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qcoreapplication.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qcoreevent.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qcryptographichash.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qdatastream.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qdatetime.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qdir.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qdiriterator.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qeasingcurve.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qelapsedtimer.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qeventloop.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qeventtransition.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qfile.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qfiledevice.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qfileinfo.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qfilesystemwatcher.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qfinalstate.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qfsfileengine.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qglobal.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qhash.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qhistorystate.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qiodevice.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qlibrary.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qlibraryinfo.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qline.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qlist.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qlocale.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qmap.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qmargins.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qmetaobject.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qmetatype.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qmimedata.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qmutex.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qnamespace.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qnumeric.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qobject.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qobjectcleanuphandler.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qobjectdefs.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qpair.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qparallelanimationgroup.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qpauseanimation.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qpluginloader.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qpoint.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qprocess.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qpropertyanimation.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qpynullvariant.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qreadwritelock.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qrect.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qregexp.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qresource.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qrunnable.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qsemaphore.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qsequentialanimationgroup.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qset.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qsettings.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qsharedmemory.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qsignalmapper.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qsignaltransition.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qsize.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qsocketnotifier.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qstate.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qstatemachine.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qstring.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qstringlist.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qstringmatcher.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qsystemsemaphore.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qtemporaryfile.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qtextboundaryfinder.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qtextcodec.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qtextstream.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qthread.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qthreadpool.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qtimeline.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qtimer.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qtranslator.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qurl.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qurlquery.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/quuid.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qvariant.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qvariantanimation.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qvector.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qwaitcondition.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qwineventnotifier.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtCore/qxmlstream.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDBus/QtDBusmod.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDBus/qdbusabstractadaptor.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDBus/qdbusabstractinterface.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDBus/qdbusargument.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDBus/qdbusconnection.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDBus/qdbusconnectioninterface.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDBus/qdbuserror.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDBus/qdbusextratypes.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDBus/qdbusinterface.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDBus/qdbusmessage.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDBus/qdbuspendingcall.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDBus/qdbusservicewatcher.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDBus/qdbusunixfiledescriptor.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDBus/qpydbuspendingreply.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDBus/qpydbusreply.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDeclarative/QtDeclarativemod.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDeclarative/qdeclarativecomponent.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDeclarative/qdeclarativecontext.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDeclarative/qdeclarativeengine.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDeclarative/qdeclarativeerror.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDeclarative/qdeclarativeexpression.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDeclarative/qdeclarativeextensionplugin.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDeclarative/qdeclarativeimageprovider.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDeclarative/qdeclarativeitem.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDeclarative/qdeclarativelist.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDeclarative/qdeclarativenetworkaccessmanagerfactory.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDeclarative/qdeclarativeparserstatus.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDeclarative/qdeclarativeproperty.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDeclarative/qdeclarativepropertymap.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDeclarative/qdeclarativepropertyvaluesource.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDeclarative/qdeclarativescriptstring.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDeclarative/qdeclarativeview.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDeclarative/qpydeclarativelistproperty.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDeclarative/qpydeclarativepropertyvaluesource.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/QtDesignermod.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/abstractactioneditor.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/abstractformbuilder.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/abstractformeditor.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/abstractformwindow.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/abstractformwindowcursor.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/abstractformwindowmanager.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/abstractobjectinspector.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/abstractpropertyeditor.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/abstractwidgetbox.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/container.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/customwidget.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/default_extensionfactory.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/extension.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/formbuilder.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/membersheet.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/propertysheet.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/qextensionmanager.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/qpydesignercontainerextension.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/qpydesignercustomwidgetcollectionplugin.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/qpydesignercustomwidgetplugin.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/qpydesignermembersheetextension.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/qpydesignerpropertysheetextension.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/qpydesignertaskmenuextension.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtDesigner/taskmenu.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/QtGuimod.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/opengl_types.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qabstractbutton.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qabstractitemdelegate.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qabstractitemview.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qabstractprintdialog.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qabstractproxymodel.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qabstractscrollarea.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qabstractslider.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qabstractspinbox.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qabstracttextdocumentlayout.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qaction.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qactiongroup.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qapplication.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qbitmap.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qboxlayout.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qbrush.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qbuttongroup.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qcalendarwidget.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qcheckbox.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qclipboard.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qcolor.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qcolordialog.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qcolumnview.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qcombobox.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qcommandlinkbutton.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qcommonstyle.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qcompleter.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qcursor.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qdatawidgetmapper.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qdatetimeedit.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qdesktopservices.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qdesktopwidget.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qdial.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qdialog.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qdialogbuttonbox.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qdirmodel.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qdockwidget.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qdrag.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qdrawutil.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qerrormessage.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qevent.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qfiledialog.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qfileiconprovider.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qfilesystemmodel.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qfocusframe.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qfont.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qfontcombobox.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qfontdatabase.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qfontdialog.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qfontinfo.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qfontmetrics.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qformlayout.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qframe.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qgenericmatrix.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qgesture.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qgesturerecognizer.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qglyphrun.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qgraphicsanchorlayout.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qgraphicseffect.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qgraphicsgridlayout.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qgraphicsitem.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qgraphicsitemanimation.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qgraphicslayout.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qgraphicslayoutitem.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qgraphicslinearlayout.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qgraphicsproxywidget.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qgraphicsscene.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qgraphicssceneevent.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qgraphicstransform.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qgraphicsview.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qgraphicswidget.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qgridlayout.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qgroupbox.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qguiapplication.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qheaderview.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qicon.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qiconengine.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qidentityproxymodel.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qimage.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qimageiohandler.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qimagereader.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qimagewriter.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qinputcontext.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qinputcontextfactory.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qinputdialog.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qitemdelegate.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qitemeditorfactory.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qitemselectionmodel.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qkeyeventtransition.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qkeysequence.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qlabel.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qlayout.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qlayoutitem.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qlcdnumber.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qlineedit.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qlistview.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qlistwidget.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qmainwindow.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qmatrix.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qmatrix4x4.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qmdiarea.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qmdisubwindow.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qmenu.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qmenubar.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qmessagebox.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qmime.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qmouseeventtransition.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qmovie.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qpagedpaintdevice.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qpagesetupdialog.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qpaintdevice.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qpaintengine.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qpainter.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qpainterpath.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qpalette.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qpen.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qpicture.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qpixmap.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qpixmapcache.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qplaintextedit.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qpolygon.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qprintdialog.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qprintengine.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qprinter.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qprinterinfo.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qprintpreviewdialog.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qprintpreviewwidget.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qprogressbar.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qprogressdialog.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qproxymodel.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qpushbutton.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qpytextobject.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qquaternion.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qradiobutton.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qrawfont.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qregion.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qrgb.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qrubberband.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qscreen.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qscrollarea.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qscrollbar.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qsessionmanager.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qshortcut.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qsizegrip.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qsizepolicy.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qslider.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qsortfilterproxymodel.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qsound.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qspinbox.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qsplashscreen.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qsplitter.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qstackedlayout.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qstackedwidget.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qstandarditemmodel.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qstatictext.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qstatusbar.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qstringlistmodel.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qstyle.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qstyleditemdelegate.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qstylefactory.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qstyleoption.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qstylepainter.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qsyntaxhighlighter.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qsystemtrayicon.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtabbar.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtableview.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtablewidget.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtabwidget.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtextbrowser.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtextcursor.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtextdocument.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtextdocumentfragment.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtextdocumentwriter.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtextedit.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtextformat.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtextlayout.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtextlist.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtextobject.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtextoption.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtexttable.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtoolbar.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtoolbox.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtoolbutton.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtooltip.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtouchdevice.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtransform.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtreeview.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtreewidget.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qtreewidgetitemiterator.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qundogroup.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qundostack.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qundoview.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qvalidator.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qvector2d.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qvector3d.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qvector4d.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qwhatsthis.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qwidget.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qwidgetaction.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qwindowdefs.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qwizard.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qworkspace.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qx11embed_x11.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtGui/qx11info_x11.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtHelp/QtHelpmod.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtHelp/qhelpcontentwidget.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtHelp/qhelpengine.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtHelp/qhelpenginecore.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtHelp/qhelpindexwidget.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtHelp/qhelpsearchengine.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtHelp/qhelpsearchquerywidget.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtHelp/qhelpsearchresultwidget.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtMultimedia/QtMultimediamod.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtMultimedia/qabstractvideobuffer.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtMultimedia/qabstractvideosurface.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtMultimedia/qaudio.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtMultimedia/qaudiodeviceinfo.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtMultimedia/qaudioformat.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtMultimedia/qaudioinput.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtMultimedia/qaudiooutput.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtMultimedia/qvideoframe.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtMultimedia/qvideosurfaceformat.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/QtNetworkmod.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qabstractnetworkcache.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qabstractsocket.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qauthenticator.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qdnslookup.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qftp.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qhostaddress.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qhostinfo.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qhttp.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qhttpmultipart.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qlocalserver.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qlocalsocket.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qnetworkaccessmanager.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qnetworkconfigmanager.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qnetworkconfiguration.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qnetworkcookie.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qnetworkcookiejar.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qnetworkdiskcache.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qnetworkinterface.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qnetworkproxy.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qnetworkreply.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qnetworkrequest.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qnetworksession.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qssl.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qsslcertificate.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qsslcertificateextension.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qsslcipher.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qsslconfiguration.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qsslerror.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qsslkey.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qsslsocket.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qtcpserver.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qtcpsocket.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qudpsocket.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtNetwork/qurlinfo.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtOpenGL/QtOpenGLmod.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtOpenGL/qgl.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtOpenGL/qglbuffer.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtOpenGL/qglcolormap.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtOpenGL/qglframebufferobject.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtOpenGL/qglpixelbuffer.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtOpenGL/qglshaderprogram.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtScript/QtScriptmod.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtScript/qscriptclass.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtScript/qscriptclasspropertyiterator.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtScript/qscriptcontext.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtScript/qscriptcontextinfo.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtScript/qscriptengine.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtScript/qscriptengineagent.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtScript/qscriptstring.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtScript/qscriptvalue.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtScript/qscriptvalueiterator.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtScriptTools/QtScriptToolsmod.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtScriptTools/qscriptenginedebugger.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtSql/QtSqlmod.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtSql/qsql.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtSql/qsqldatabase.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtSql/qsqldriver.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtSql/qsqlerror.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtSql/qsqlfield.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtSql/qsqlindex.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtSql/qsqlquery.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtSql/qsqlquerymodel.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtSql/qsqlrecord.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtSql/qsqlrelationaldelegate.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtSql/qsqlrelationaltablemodel.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtSql/qsqlresult.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtSql/qsqltablemodel.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtSvg/QtSvgmod.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtSvg/qgraphicssvgitem.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtSvg/qsvggenerator.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtSvg/qsvgrenderer.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtSvg/qsvgwidget.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtTest/QtTestmod.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtTest/qtestcase.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtTest/qtestkeyboard.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtTest/qtestmouse.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtTest/qtestsystem.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtWebKit/QtWebKitmod.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtWebKit/qgraphicswebview.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtWebKit/qwebdatabase.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtWebKit/qwebelement.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtWebKit/qwebframe.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtWebKit/qwebhistory.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtWebKit/qwebhistoryinterface.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtWebKit/qwebinspector.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtWebKit/qwebkitglobal.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtWebKit/qwebkitversion.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtWebKit/qwebpage.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtWebKit/qwebpluginfactory.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtWebKit/qwebsecurityorigin.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtWebKit/qwebsettings.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtWebKit/qwebview.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtXml/QtXmlmod.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtXml/qdom.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtXml/qxml.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtXml/qxmlstream.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtXmlPatterns/QtXmlPatternsmod.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtXmlPatterns/qabstractmessagehandler.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtXmlPatterns/qabstracturiresolver.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtXmlPatterns/qabstractxmlnodemodel.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtXmlPatterns/qabstractxmlreceiver.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtXmlPatterns/qsimplexmlnodemodel.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtXmlPatterns/qsourcelocation.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtXmlPatterns/qxmlformatter.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtXmlPatterns/qxmlname.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtXmlPatterns/qxmlnamepool.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtXmlPatterns/qxmlquery.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtXmlPatterns/qxmlresultitems.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtXmlPatterns/qxmlschema.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtXmlPatterns/qxmlschemavalidator.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/QtXmlPatterns/qxmlserializer.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/phonon/abstractaudiooutput.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/phonon/abstractvideooutput.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/phonon/audiooutput.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/phonon/backendcapabilities.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/phonon/effect.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/phonon/effectparameter.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/phonon/effectwidget.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/phonon/mediacontroller.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/phonon/medianode.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/phonon/mediaobject.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/phonon/mediasource.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/phonon/objectdescription.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/phonon/path.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/phonon/phononmod.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/phonon/phononnamespace.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/phonon/seekslider.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/phonon/videoplayer.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/phonon/videowidget.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/phonon/volumeslider.sip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/PyQt4_gpl_win-4.12/sip/pyqt-gpl.sip" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="Bot.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Util/Bot.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUI/Chat/ChatThread.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="23" column="17" lean-forward="false" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#36#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CacheManager.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Util/CacheManager.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="552">
-              <caret line="24" column="23" lean-forward="false" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SystemMessageProcessor.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Util/SystemMessageProcessor.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="2" column="14" lean-forward="false" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SystemMessageThread.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Util/SystemMessageThread.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="256">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -93,13 +752,94 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChatScreen.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GUI/ChatScreen.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Util/CacheManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="228">
+              <caret line="12" column="47" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUI/SubWindows/SettingDialog.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="627">
+              <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#86#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUI/SubWindows/SettingPages/MacrosWidget.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#117#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Util/MessageProcessor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-247">
+              <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUI/ChatScreen.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="17" column="85" selection-start-line="17" selection-start-column="85" selection-end-line="17" selection-end-column="85" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUI/ChannelChat.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="8" column="60" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="113" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Util/ClientIRC.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1244">
+              <caret line="11" column="37" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -117,10 +857,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>self.sen</find>
-      <find>clientIRC</find>
-      <find>PART</find>
-      <find>roomstat</find>
       <find>roomstate</find>
       <find>joinedChannel</find>
       <find>string()</find>
@@ -147,6 +883,10 @@
       <find>..</find>
       <find>../</find>
       <find>changepermission</find>
+      <find>setting</find>
+      <find>css</find>
+      <find>text</find>
+      <find>font</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\lucas\Python Workspace\TwitchChat\src</dir>
@@ -173,13 +913,11 @@
         <option value="$PROJECT_DIR$/src/Util/JoinedChannelsMonitor.py" />
         <option value="$PROJECT_DIR$/src/GUI/SubWindows/BotDialog.py" />
         <option value="$PROJECT_DIR$/src/Util/ClientIRC.py" />
-        <option value="$PROJECT_DIR$/src/Util/CacheManager.py" />
         <option value="$PROJECT_DIR$/src/Main.py" />
         <option value="$PROJECT_DIR$/src/GUI/MainWindow.py" />
         <option value="$PROJECT_DIR$/src/GUI/CentralWidget.py" />
         <option value="$PROJECT_DIR$/src/GUI/SubWindows/SettingDialog.py" />
         <option value="$PROJECT_DIR$/src/GUI/ChannelChat.py" />
-        <option value="$PROJECT_DIR$/src/GUI/ChatScreen.py" />
         <option value="$PROJECT_DIR$/src/GUI/ChatTab.py" />
         <option value="$PROJECT_DIR$/src/GUI/ChatUI.py" />
         <option value="$PROJECT_DIR$/src/GUI/MenuBar.py" />
@@ -188,115 +926,69 @@
         <option value="$PROJECT_DIR$/src/Util/BotThread.py" />
         <option value="$PROJECT_DIR$/src/Util/InternetRelatedThread.py" />
         <option value="$PROJECT_DIR$/src/Util/JSONDecoder.py" />
-        <option value="$PROJECT_DIR$/src/Util/MessageProcessor.py" />
         <option value="$PROJECT_DIR$/src/Util/SystemMessageProcessor.py" />
         <option value="$PROJECT_DIR$/src/Util/Bot.py" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/Util/MessageProcessor.py" />
+        <option value="$PROJECT_DIR$/src/GUI/ChatScreen.py" />
+        <option value="$PROJECT_DIR$/src/Util/CacheManager.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-11" />
-    <option name="y" value="-11" />
-    <option name="width" value="1942" />
-    <option name="height" value="1042" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="23" />
+    <option name="y" value="33" />
+    <option name="width" value="1943" />
+    <option name="height" value="1043" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TwitchChat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TwitchChat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TwitchChat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TwitchChat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TwitchChat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TwitchChat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TwitchChat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TwitchChat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TwitchChat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GUI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
+          <expand>
+            <path>
+              <item name="TwitchChat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TwitchChat" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TwitchChat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TwitchChat" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TwitchChat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TwitchChat" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="GUI" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TwitchChat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TwitchChat" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TwitchChat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TwitchChat" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Util" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/src/setting/default_channel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -311,43 +1003,8 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.Main">
-    <configuration default="false" name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
+    <configuration name="BotThread" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TwitchChat" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/Main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="MainWindow" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/GUI" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="TwitchChat" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/GUI/MainWindow.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="BotThread" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -358,14 +1015,17 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="TwitchChat" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/Util/BotThread.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
-      <method />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
-    <configuration default="false" name="ChatScreen" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="ChatScreen" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TwitchChat" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -376,17 +1036,59 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="TwitchChat" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/GUI/ChatScreen.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
-      <method />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
-    <configuration default="true" type="CompoundRunConfigurationType" factoryName="Compound Run Configuration">
-      <method />
+    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TwitchChat" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/Main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="MainWindow" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TwitchChat" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/GUI" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/GUI/MainWindow.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="TwitchChat" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -397,82 +1099,54 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="TwitchChat" />
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
-      <method />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration default="true" type="Tox" factoryName="Tox">
+      <module name="TwitchChat" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs />
       <option name="SDK_HOME" value="C:\Users\lucas\AppData\Local\Programs\Python\Python35-32\python.exe" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <myArguments>
-        <array />
-      </myArguments>
-      <myRunOnlyEnvs>
-        <array />
-      </myRunOnlyEnvs>
-      <module name="TwitchChat" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Doctests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="TwitchChat" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method />
+      <method v="2" />
     </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
+      <module name="TwitchChat" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs />
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="TwitchChat" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;.&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method />
+      <method v="2" />
     </configuration>
-    <list size="4">
-      <item index="0" class="java.lang.String" itemvalue="Python.Main" />
-      <item index="1" class="java.lang.String" itemvalue="Python.MainWindow" />
-      <item index="2" class="java.lang.String" itemvalue="Python.BotThread" />
-      <item index="3" class="java.lang.String" itemvalue="Python.ChatScreen" />
+    <list>
+      <item itemvalue="Python.Main" />
+      <item itemvalue="Python.MainWindow" />
+      <item itemvalue="Python.BotThread" />
+      <item itemvalue="Python.ChatScreen" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.Main" />
-        <item index="1" class="java.lang.String" itemvalue="Python.ChatScreen" />
-        <item index="2" class="java.lang.String" itemvalue="Python.MainWindow" />
-        <item index="3" class="java.lang.String" itemvalue="Python.BotThread" />
+      <list>
+        <item itemvalue="Python.Main" />
+        <item itemvalue="Python.ChatScreen" />
+        <item itemvalue="Python.MainWindow" />
+        <item itemvalue="Python.BotThread" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -497,54 +1171,138 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28725702" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32660332" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5665083" sideWeight="0.23218143" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32541567" sideWeight="0.48922414" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32065907" sideWeight="0.76781857" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32779098" sideWeight="0.49784017" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6698337" sideWeight="0.49568033" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897863" sideWeight="0.49784017" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43942994" sideWeight="0.48434126" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.14266843" />
+      <window_info id="Structure" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.23218143" side_tool="true" weight="0.5665083" />
+      <window_info anchor="bottom" id="Version Control" order="1" sideWeight="0.49784017" weight="0.15864022" />
+      <window_info anchor="bottom" id="Python Console" order="2" sideWeight="0.49568033" weight="0.66855526" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="3" sideWeight="0.49784017" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Find" order="5" sideWeight="0.48922414" weight="0.32478634" />
+      <window_info anchor="bottom" id="Debug" order="6" sideWeight="0.48434126" weight="0.43874645" />
+      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="9" sideWeight="0.76781857" weight="0.3186969" />
+      <window_info anchor="bottom" id="TODO" order="10" weight="0.32577905" />
+      <window_info anchor="right" id="Data View" order="0" />
+      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32660332" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5665083" sideWeight="0.23218143" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32065907" sideWeight="0.76781857" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32779098" sideWeight="0.49784017" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6698337" sideWeight="0.49568033" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897863" sideWeight="0.49784017" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28725702" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32541567" sideWeight="0.48922414" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43942994" sideWeight="0.48434126" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.14266843" />
+      <window_info id="Structure" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.23218143" side_tool="true" weight="0.5665083" />
+      <window_info anchor="bottom" id="Version Control" order="1" sideWeight="0.49784017" weight="0.15864022" />
+      <window_info anchor="bottom" id="Python Console" order="2" sideWeight="0.49568033" weight="0.66855526" />
+      <window_info anchor="bottom" id="Terminal" order="3" sideWeight="0.49784017" weight="0.3286119" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Find" order="5" sideWeight="0.48922414" weight="0.32541567" />
+      <window_info anchor="bottom" id="Debug" order="6" sideWeight="0.48434126" weight="0.43942994" />
+      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="9" sideWeight="0.76781857" visible="true" weight="0.3186969" />
+      <window_info anchor="bottom" id="TODO" order="10" weight="0.32577905" />
+      <window_info anchor="right" id="Data View" order="0" />
+      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
     </layout-to-restore>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/GUI/SubWindows/BotDialog.py</url>
+          <line>93</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/GUI/SubWindows/BotDialog.py</url>
+          <line>81</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/GUI/ChannelChat.py</url>
+          <line>32</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/Util/MessageProcessor.py</url>
+          <line>50</line>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/Util/MessageProcessor.py</url>
+          <line>46</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/Util/MessageProcessor.py</url>
+          <line>56</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/Util/MessageProcessor.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/Util/MessageProcessor.py</url>
+          <line>43</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/Util/MessageProcessor.py</url>
+          <line>29</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/Util/MessageProcessor.py</url>
+          <line>31</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/Util/MessageProcessor.py</url>
+          <line>33</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/Util/MessageProcessor.py</url>
+          <line>37</line>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -552,243 +1310,55 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="10" />
     </breakpoint-manager>
-    <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cache/itsliaaa/10000.png" />
-    <entry file="file://$PROJECT_DIR$/cache/itsliaaa/5000.png" />
     <entry file="file://$PROJECT_DIR$/cache/itsliaaa/24.png" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35-32/Lib/site-packages/requests/sessions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="504" column="0" lean-forward="true" selection-start-line="309" selection-start-column="0" selection-end-line="721" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35-32/Lib/site-packages/requests/api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35-32/Lib/site-packages/requests/adapters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="866">
-          <caret line="503" column="0" lean-forward="false" selection-start-line="503" selection-start-column="0" selection-end-line="503" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Commands/arcanefox/_new_sub_">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Commands/lucas861223/!lucas">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="20" lean-forward="true" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35-32/Lib/threading.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="913" column="0" lean-forward="false" selection-start-line="913" selection-start-column="0" selection-end-line="913" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35-32/Lib/re.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="172" column="0" lean-forward="false" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydev_run_in_console.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35-32/Lib/site-packages/requests/sessions.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35-32/Lib/site-packages/requests/api.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35-32/Lib/site-packages/requests/adapters.py" />
+    <entry file="file://$PROJECT_DIR$/src/Commands/arcanefox/_new_sub_" />
+    <entry file="file://$PROJECT_DIR$/src/Commands/lucas861223/!lucas" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35-32/Lib/threading.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35-32/Lib/re.py" />
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydev_run_in_console.py" />
     <entry file="file://$PROJECT_DIR$/src/GUI/MainUI.py" />
     <entry file="file://$PROJECT_DIR$/src/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-401">
-          <caret line="53" column="28" lean-forward="false" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
+          <caret line="53" column="28" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Util/JoinedChannelsMonitor.py" />
-    <entry file="file://$PROJECT_DIR$/src/Commands/lucas861223/!square">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="10" lean-forward="true" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Commands/lucas861223/!hi">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="6" lean-forward="true" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Commands/lucas861223/!what">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Commands/itsliaaa/_new_sub_">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Commands/itsliaaa/!test">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Commands/itsliaaa/NewCommand">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-69">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="11" lean-forward="false" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/Chat/ChatThread.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/Chat/User.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/SubWindows/BotDialog.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4071">
-          <caret line="177" column="0" lean-forward="false" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#142#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Commands/lucas861223/!square" />
+    <entry file="file://$PROJECT_DIR$/src/Commands/lucas861223/!hi" />
+    <entry file="file://$PROJECT_DIR$/src/Commands/lucas861223/!what" />
+    <entry file="file://$PROJECT_DIR$/src/Commands/itsliaaa/_new_sub_" />
+    <entry file="file://$PROJECT_DIR$/src/Commands/itsliaaa/!test" />
+    <entry file="file://$PROJECT_DIR$/src/Commands/itsliaaa/NewCommand" />
+    <entry file="file://$PROJECT_DIR$/src/GUI/setup.py" />
     <entry file="file://$PROJECT_DIR$/src/GUI/SubWindows/JoinChannelDialog.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
           <folding>
             <element signature="e#0#93#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/SubWindows/SettingDialog.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="29" lean-forward="true" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#86#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/SubWindows/SettingPages/ColorsWidget.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state>
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/SubWindows/SettingPages/MacrosWidget.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#117#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/CentralWidget.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="29" lean-forward="true" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/ChannelChat.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/ChatUI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
-          <caret line="1" column="9" lean-forward="false" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/ChatTab.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
+          <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -802,28 +1372,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/MainWindow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/MenuBar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="19" lean-forward="false" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/UserList.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-138">
-          <caret line="0" column="22" lean-forward="true" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
+          <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -838,44 +1390,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Util/BotThread.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state>
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Util/SystemMessageProcessor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="14" lean-forward="false" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Util/ClientIRC.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="21" lean-forward="false" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Util/Logger.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Util/JSONDecoder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        <state>
           <folding />
         </state>
       </provider>
@@ -883,7 +1407,7 @@
     <entry file="file://$PROJECT_DIR$/src/Util/InternetRelatedThread.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
-          <caret line="3" column="10" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -891,35 +1415,6 @@
     <entry file="file://$PROJECT_DIR$/src/Util/Macros.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Util/MessageProcessor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="10" lean-forward="false" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Util/SystemMessageThread.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/ChatScreen.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -928,29 +1423,201 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Util/Bot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="23" column="17" lean-forward="false" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+        <state relative-caret-position="361">
+          <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Util/CacheManager.py">
+    <entry file="file://$PROJECT_DIR$/src/Util/SystemMessageThread.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="24" column="23" lean-forward="false" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+        <state>
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Util/SystemMessageProcessor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitattributes">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Util/JSONDecoder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/MainWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/CentralWidget.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/SubWindows/SettingPages/MacrosWidget.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#117#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/SubWindows/SettingDialog.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#86#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/MenuBar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/ChatTab.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/SubWindows/BotDialog.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="293" column="52" lean-forward="true" selection-start-line="293" selection-start-column="52" selection-end-line="293" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#142#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/Chat/User.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/Chat/ChatThread.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Util/ClientIRC.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1244">
+          <caret line="11" column="37" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/ChannelChat.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="8" column="60" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="113" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/ChatScreen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="17" column="85" selection-start-line="17" selection-start-column="85" selection-end-line="17" selection-end-column="85" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Util/CacheManager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="47" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Util/MessageProcessor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-247">
+          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
         </state>
       </provider>
     </entry>
