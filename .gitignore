@@ -7,3 +7,4 @@ cache/*
 src/Commands/*
 src/test.py
 src/cache/*
+.idea/*
