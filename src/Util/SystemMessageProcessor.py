@@ -8,7 +8,7 @@ class SystemMessageProcessor:
     JOIN_MESSAGE = re.compile(':(?P<username>[^!]+)!.* JOIN #(?P<channel>.*)$')
     PART_MESSAGE = re.compile(':(?P<username>[^!]+)!.* PART #(?P<channel>.*)$')
     SUB_MESSAGE = re.compile('.*display-name=(?P<displayName>[^;]*).*;login=(?P<id>[^;]*).*;msg-id=(?P<messageId>[^;]*);msg-param-months=(?P<month>[\d]+).*;msg-param-sub-plan-name=(?P<subPlanName>[^;]+);msg-param-sub-plan=(?P<subPlan>[^;]+).* USERNOTICE #(?P<channelName>[^ ]+).*')
-    ROOMSTATE = re.compile('@broadcaster-lang=([^;]+)?;.*emote-only=([01]);.*followers-only=([^;]+);.*r9k=([01]);.*room-id=([^;]+);.*slow=([^;]+);.*subs-only=([01]).*ROOMSTATE #(.*)')
+    ROOMSTATE = re.compile('(@broadcaster-lang=([^;]+)?;)?.*emote-only=([01]);.*followers-only=([^;]+);.*r9k=([01]);.*room-id=([^;]+);.*slow=([^;]+);.*subs-only=([01]).*ROOMSTATE #(.*)')
     NOTICE = re.compile('@msg-id=([^ ]+) .*NOTICE #([^ ]+) :(.*)')
     NAME_LIST = re.compile('.* 353 .* #(.*) :(.*)')
     SYSTEM_MODDING = re.compile(':jtv MODE #(.*) \+o (.*)')
@@ -52,11 +52,11 @@ class SystemMessageProcessor:
         elif ' ROOMSTATE ' in message:
             result = re.search(SystemMessageProcessor.ROOMSTATE, message)
             if result is not None:
-                chatTab = self.chatScreen.tabs.get('#' + result.group(8))
-                chatTab.setRoomState(result.group(1), result.group(2), result.group(3), result.group(4),
-                                     result.group(5), result.group(6), result.group(7))
+                chatTab = self.chatScreen.tabs.get('#' + result.group(9))
+                # chatTab.setRoomState(result.group(1), result.group(2), result.group(3), result.group(4),
+                #                      result.group(5), result.group(6), result.group(7))
                 #change later
-                self.internetRelatedThread.addJob(['set_badges', chatTab.channelChat, result.group(5)])
+                self.internetRelatedThread.addJob(['set_badges', chatTab.channelChat, result.group(6)])
         elif ' +o ' in message:
             result = re.search(SystemMessageProcessor.SYSTEM_MODDING, message)
             userList = self.chatScreen.tabs.get('#' + result.group(1)).userList

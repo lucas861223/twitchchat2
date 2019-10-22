@@ -5,7 +5,7 @@ from Util.CacheManager import CacheManager
 class MessageProcessor:
     EMOTE_PATTERN = re.compile('(\d+):(\d+-\d+,?)+')
     EMOTE_RANGE = re.compile('((\d+)-(\d+)),?')
-    EMOTE_PREFIX = 'http://static-cdn.jtvnw.net/emoticons/v1/'
+    EMOTE_PREFIX = 'http://static-cdn.jtvnw.net/emoticons/v3/'
     MESSAGE_PATTERN = re.compile('(?P<time>\d\d:\d\d:\d\d).*badges=(?P<badges>[^;]*);(?P<bits>bits=(?P<bitsAmount>\d+).*)?color=(?P<color>[^;]*);.*display-name=(?P<displayname>(?P<displaynameOtherLanguage>[^A-Za-z]*)|(?P<displaynameCapitalization>[^;]*));.*emotes=(?P<emotes>[^;]*);.*user-id=(?P<userID>\d+);.*:(?P<username>[^!]+)!.*#(?P<channel>[^ ]+) :(?P<action> ACTION )?(?P<message>.*)')
     INTERNET_RELATED_THREAD = None
     IMAGE_SIZE = ""
@@ -34,7 +34,7 @@ class MessageProcessor:
             if user is None:
                 userList.addUser(nameLink)
                 user = userList.nickList.get(nameLink)
-            if user.hasSpoken == False:
+            if not user.hasSpoken:
                 user.hasSpoken = True
                 userList.updateUser(user.nick, message.group('badges'), self.subBadge, self.bitsBadge, MessageProcessor.BADGE_SIZE)
                 user.updateUserColor(message.group('color'))
@@ -87,7 +87,7 @@ class MessageProcessor:
         #add bttv and frankerz later
         emoteArray = []
         result = re.search(MessageProcessor.EMOTE_PATTERN, emote)
-        while(result != None):
+        while result:
             emoteAndRanges = result.group(0)
             index = 0
             ranges = re.split(MessageProcessor.EMOTE_RANGE, emoteAndRanges)
