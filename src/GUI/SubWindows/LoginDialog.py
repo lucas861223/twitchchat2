@@ -1,10 +1,12 @@
-from PyQt5.QtWidgets import QDialog, QPushButton, QLabel, QLineEdit, QHBoxLayout, QVBoxLayout
+from PyQt5.QtWidgets import QDialog, QPushButton, QLabel , QVBoxLayout
 from PyQt5.QtCore import Qt
 import webbrowser
 import urllib.parse
 import http.server
 import requests
 from os import path
+
+
 class LoginDialog(QDialog):
     authorizationTokenURL = "https://api.twitch.tv/kraken/oauth2/authorize?client_id=w07tun6ja438fsymn61ei88tm8kw7q&redirect_uri=http://127.0.0.1:60202&response_type=code&force_verify=true&scope=chat:edit+chat:read+whispers:read+whispers:edit+user_subscriptions+user_follows_edit+user_blocks_edit&claims={\"id_token\":{\"email_verified\":null}}'"
     oauthTokenURL = "https://id.twitch.tv/oauth2/token?client_id=w07tun6ja438fsymn61ei88tm8kw7q&client_secret=8k0lki8kgnimfoq76x39xtp2e890a8&code=REPLACE&grant_type=authorization_code&redirect_uri=http://127.0.0.1:60202"
@@ -32,8 +34,11 @@ class LoginDialog(QDialog):
         self.label = QLabel()
         self.updateUsername()
         loginButton = QPushButton()
-        loginButton.setText('Create New Login')
-        loginButton.clicked.connect(self.getOauthToken)
+        loginButton.setText('Create new login with default browser')
+        loginButton.clicked.connect(self.getOauthTokenWithBrowser)
+        # loginLinkButton = QPushButton()
+        # loginLinkButton.setText('Copy link to clipboard')
+        # loginLinkButton.clicked.connect(self.getOauthTokenWithCopiedLink)
         self.connectButton = QPushButton()
         self.connectButton.setText('Connect')
         self.connectButton.clicked.connect(self.connect)
@@ -41,6 +46,7 @@ class LoginDialog(QDialog):
 
         layout.addWidget(self.label, 1)
         layout.addWidget(loginButton, 1)
+        # layout.addWidget(loginLinkButton, 1)
         layout.addWidget(self.connectButton, 1)
 
         self.setLayout(layout)
@@ -106,23 +112,29 @@ class LoginDialog(QDialog):
         self.clientIRC.password = self.oauthToken
         self.close()
 
-    def getOauthToken(self):
+    def getOauthTokenWithBrowser(self):
         webbrowser.open(self.authorizationTokenURL)
+        self.getOauthToken()
+
+    def getOauthToken(self):
         self.server = http.server.HTTPServer(("127.0.0.1", 60202), Handler)
+        self.server.success = False
         self.server.handle_request()
+
         if self.server.success:
             response = requests.post(self.oauthTokenURL.replace("REPLACE", self.server.token))
             self.oauthToken = response.json()['access_token']
             self.refreshToken = response.json()['refresh_token']
-            self.expires_in = response.json()['expires_in']
             response = requests.get(self.VALIDATE_URL, headers={"Authorization": "OAuth " + self.oauthToken})
             self.nickname = response.json()['login']
             self.hasLogin = True
-            LoginDialog.writeLoginFile()
+            LoginDialog.writeLoginFile(self.nickname, self.oauthToken, self.refreshToken)
             self.connectButton.setEnabled(True)
             self.updateUsername()
         else:
             self.hasLogin = False
+            self.connectButton.setDisabled(True)
+            self.updateUsername()
         self.server.server_close()
 
 

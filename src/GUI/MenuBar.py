@@ -20,14 +20,15 @@ class MenuBar(QMenuBar):
 
 
     def setUpMainAction(self):
+        loginAction = QAction('&Login', self)
+        loginAction.triggered.connect(self.openLogin)
+        self.fileMenu.addAction(loginAction)
         settingAction = QAction('&Settings', self)
         settingAction.triggered.connect(self.openSettings)
-        settingAction = QAction('&Login', self)
-        settingAction.triggered.connect(self.openLogin)
         self.fileMenu.addAction(settingAction)
 
     def openLogin(self):
-        #login/out
+        self.mainWindow.centralWidget.chatUI.chatScreen.clientIRC.openLogin()
         pass
 
     def openSettings(self):
