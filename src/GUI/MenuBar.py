@@ -22,7 +22,13 @@ class MenuBar(QMenuBar):
     def setUpMainAction(self):
         settingAction = QAction('&Settings', self)
         settingAction.triggered.connect(self.openSettings)
+        settingAction = QAction('&Login', self)
+        settingAction.triggered.connect(self.openLogin)
         self.fileMenu.addAction(settingAction)
+
+    def openLogin(self):
+        #login/out
+        pass
 
     def openSettings(self):
         SettingDialog(self.mainWindow)

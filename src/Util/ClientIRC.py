@@ -2,25 +2,34 @@ import socket
 import threading
 import time
 import re
+from SubWindows.LoginDialog import LoginDialog
 from Util.SystemMessageProcessor import SystemMessageProcessor
 
 
 class ClientIRC:
     def __init__(self, chatScreen, bot):
-        file = open('setting/login', 'r')
-        self.nickname = file.readline()
-        self.password = file.readline()
-        file.close()
+        self.nickname = ""
+        self.password = ""
+        self.refreshToken = ""
+        self.refreshTimer = 0
+        self.chatScreen = chatScreen
+        if not LoginDialog.hasLoginCompleted():
+            LoginDialog(self)
+        else:
+            self.nickname, self.password, self.refreshToken = LoginDialog.getLogin()
         self.receiveSocket = socket.socket()
         self.sendSocket = socket.socket()
         self.receiveSocketRunning = False
-        self.chatScreen = chatScreen
         self.systemMessageProcessor = SystemMessageProcessor(self.chatScreen, bot.messageQueue)
         self.systemMessageThread = self.systemMessageProcessor.systemMessageThread
         self.isHoldingMessage = False
         self.heldMessage = ''
         self.channelMessagePattern = re.compile('.*PRIVMSG (#[^ ]*) :')
         bot.connectIRC(self)
+
+    def openLogin(self):
+        #login/out
+        pass
 
     def start(self):
         self.activateSocket(self.receiveSocket)

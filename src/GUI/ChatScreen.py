@@ -14,6 +14,7 @@ class ChatScreen(QTabWidget):
     def __init__(self, parent):
         super(ChatScreen, self).__init__(parent)
         self.showMessage = True
+        self.chatUI = parent
         file = open('setting/MainSetting', 'r')
         self.font = QFont(file.readline()[:-1], int(file.readline()[:-1]), -1, False)
         file.close()
