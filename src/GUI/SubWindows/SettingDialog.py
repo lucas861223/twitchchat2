@@ -3,6 +3,7 @@ from PyQt5.QtCore import Qt
 from GUI.SubWindows.SettingPages.ColorsWidget import ColorsWidget
 from GUI.SubWindows.SettingPages.MainWidget import MainWidget
 from GUI.SubWindows.SettingPages.MacrosWidget import MacrosWidget
+from GUI.SubWindows.SettingPages.NotificationWidget import  NotificationWidget
 
 class SettingDialog(QDialog):
     def __init__(self, mainWindow):
@@ -36,6 +37,8 @@ class SettingDialog(QDialog):
         self.layout.addWidget(ColorsWidget(self))
         self.settingList.addItem("Macros")
         self.layout.addWidget(MacrosWidget(self))
+        self.settingList.addItem("Notification")
+        self.layout.addWidget(NotificationWidget(self))
 
 
     def switchSettingPage(self):

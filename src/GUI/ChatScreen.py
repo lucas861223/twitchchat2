@@ -7,6 +7,7 @@ from Util.JSONDecoder import JSONDecoder
 from GUI.WhisperChat import WhisperChat
 from PyQt5.QtCore import pyqtSignal
 from Util.Bot import Bot
+from Util.NotificationManager import NotificationManager
 
 class ChatScreen(QTabWidget):
     newWhisperSignal = pyqtSignal(str)
@@ -23,6 +24,7 @@ class ChatScreen(QTabWidget):
         self.bot = Bot()
         self.clientIRC = ClientIRC(self, self.bot)
         self.clientIRC.start()
+        self.notificationManager = NotificationManager(self)
         self.bot.connectIRC(self.clientIRC)
         self.setAutoFillBackground(True)
         self.joinDefaultChannel()

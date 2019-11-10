@@ -2,7 +2,7 @@ import socket
 import threading
 import time
 import re
-from SubWindows.LoginDialog import LoginDialog
+from GUI.SubWindows.LoginDialog import LoginDialog
 from Util.SystemMessageProcessor import SystemMessageProcessor
 
 

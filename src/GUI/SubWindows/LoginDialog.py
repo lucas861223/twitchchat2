@@ -108,8 +108,7 @@ class LoginDialog(QDialog):
             self.label.setText('Currently logged in as: ' + self.nickname)
 
     def connect(self):
-        self.clientIRC.nickname = self.nickname
-        self.clientIRC.password = self.oauthToken
+        self.clientIRC.nickname, self.clientIRC.password, self.clientIRC.refreshToken = LoginDialog.readLoginFile()
         self.close()
 
     def getOauthTokenWithBrowser(self):
