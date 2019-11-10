@@ -5,7 +5,6 @@ class MainWidget(QWidget):
     def __init__(self, settingDialog):
         super(MainWidget, self).__init__(settingDialog)
         self.settingDialog = settingDialog
-        self.isChanged = False
         layout = QVBoxLayout()
 
         file = open('setting/MainSetting', 'r')
@@ -38,7 +37,6 @@ class MainWidget(QWidget):
         file.close()
 
     def chooseFont(self):
-        self.isChanged = True
         fontDialog = QFontDialog()
         fontDialog.setCurrentFont(QFont(self.chatFont.text(), int(self.chatFontSize.text()), -1, False))
         fontDialog.exec()
@@ -46,10 +44,9 @@ class MainWidget(QWidget):
         self.chatFontSize.setText(str(int(fontDialog.currentFont().pointSizeF())))
 
     def saveSetting(self):
-        if self.isChanged:
-            file = open('setting/MainSetting', 'w')
-            file.truncate()
-            file.write(self.chatFont.text() + '\n')
-            file.write(self.chatFontSize.text() + '\n')
-            file.write(self.chatLineSpacing.text())
-            file.close()
+        file = open('setting/MainSetting', 'w')
+        file.truncate()
+        file.write(self.chatFont.text() + '\n')
+        file.write(self.chatFontSize.text() + '\n')
+        file.write(self.chatLineSpacing.text())
+        file.close()

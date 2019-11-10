@@ -7,7 +7,6 @@ class NotificationWidget(QWidget):
     def __init__(self, settingDialog):
         super(NotificationWidget, self).__init__(settingDialog)
         self.settingDialog = settingDialog
-        self.isChanged = False
         layout = QVBoxLayout()
 
         file = open('setting/NotificationSetting', 'r')
@@ -90,7 +89,6 @@ class NotificationWidget(QWidget):
     def openColorPicker(self, lineEdit):
         color = QColorDialog.getColor(QColor(lineEdit.text()))
         if color.isValid() and color.name(QColor.HexRgb) != lineEdit.text():
-            self.isChanged = True
             lineEdit.setText(color.name(QColor.HexRgb))
             self.updateExample()
 
@@ -109,13 +107,11 @@ class NotificationWidget(QWidget):
     def selectAudioFile(self):
         audioFileName = QFileDialog.getOpenFileName(self, "Choose a .wav file", self.getAudioDirectory(),  "WAVE file (*.wav)")
         if audioFileName[0] != self.audioFileName:
-            self.isChanged = True
             self.audioFileName = audioFileName[0]
             self.updatePlayButton()
             self.audioFilePathLineEdit.setText(self.audioFileName)
 
     def chooseFont(self):
-        self.isChanged = True
         fontDialog = QFontDialog()
         fontDialog.setCurrentFont(QFont(self.notificationFont.text(), int(self.notificationFontSize.text()), -1, False))
         fontDialog.exec()
@@ -124,13 +120,12 @@ class NotificationWidget(QWidget):
         self.updateExampleFont(fontDialog.currentFont())
 
     def saveSetting(self):
-        if self.isChanged:
-            file = open('setting/NotificationSetting', 'w')
-            file.truncate()
-            file.write(self.notificationFont.text() + '\n')
-            file.write(self.notificationFontSize.text() + '\n')
-            file.write(self.backGroundColorLineEdit.text() + '\n')
-            file.write(self.textColorLineEdit.text() + '\n')
-            file.write(self.audioFileName + '\n')
-            file.close()
-            self.settingDialog.mainWindow.centralWidget.chatUI.chatScreen.notificationManager.updateSetting()
+        file = open('setting/NotificationSetting', 'w')
+        file.truncate()
+        file.write(self.notificationFont.text() + '\n')
+        file.write(self.notificationFontSize.text() + '\n')
+        file.write(self.backGroundColorLineEdit.text() + '\n')
+        file.write(self.textColorLineEdit.text() + '\n')
+        file.write(self.audioFileName + '\n')
+        file.close()
+        self.settingDialog.mainWindow.centralWidget.chatUI.chatScreen.notificationManager.updateSetting()

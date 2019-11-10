@@ -5,7 +5,6 @@ class MacrosWidget(QWidget):
     def __init__(self, settingDialog):
         super(MacrosWidget, self).__init__(settingDialog)
         self.settingDialog = settingDialog
-        self.isChanged = False
         layout = QGridLayout()
         file = open('setting/MacrosSetting', 'r')
         self.customMacros = QListWidget(self)
@@ -19,7 +18,6 @@ class MacrosWidget(QWidget):
         pass
 
     def saveSetting(self):
-        if self.isChanged:
-            file = open('setting/MacrosSetting', 'w')
-            file.truncate()
-            file.close()
+        file = open('setting/MacrosSetting', 'w')
+        file.truncate()
+        file.close()

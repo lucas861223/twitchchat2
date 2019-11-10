@@ -17,7 +17,7 @@ class ChatScreen(QTabWidget):
         self.showMessage = True
         self.chatUI = parent
         file = open('setting/MainSetting', 'r')
-        self.font = QFont(file.readline()[:-1], int(file.readline()[:-1]), -1, False)
+        self.font = QFont(file.readline().strip(), int(file.readline().strip()), -1, False)
         file.close()
         self.jsonDecoder = JSONDecoder()
         self.tabs = {}
@@ -35,7 +35,7 @@ class ChatScreen(QTabWidget):
     def joinDefaultChannel(self):
         default_channel = open('setting/default_channel', 'r')
         for line in default_channel:
-            self.joinChannel(line.replace('\n', ''))
+            self.joinChannel(line.strip())
         default_channel.close()
 
     def joinChannel(self, channelName):

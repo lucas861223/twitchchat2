@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QDialog, QHBoxLayout, QStackedLayout, QListWidget, QWidget
+from PyQt5.QtWidgets import QDialog, QHBoxLayout, QStackedLayout, QListWidget, QWidget, QVBoxLayout, QPushButton
 from PyQt5.QtCore import Qt
 from GUI.SubWindows.SettingPages.ColorsWidget import ColorsWidget
 from GUI.SubWindows.SettingPages.MainWidget import MainWidget
@@ -16,8 +16,9 @@ class SettingDialog(QDialog):
         self.setGeometry(position.x(), position.y(), 600, 510)
         self.setFixedHeight(510)
         self.setFixedWidth(600)
+        verticalLayout = QVBoxLayout()
         layout = QHBoxLayout()
-        layout.setContentsMargins(5,5,5,5)
+        layout.setContentsMargins(5, 5, 5, 5)
         self.settingList = QListWidget()
         layout.addWidget(self.settingList, 1)
         settingContent = QWidget(self)
@@ -26,8 +27,18 @@ class SettingDialog(QDialog):
         self.setUpPages()
         self.settingList.itemSelectionChanged.connect(self.switchSettingPage)
 
+        horizontalButtonLayout = QHBoxLayout()
+        cancelButton = QPushButton("Cancel")
+        cancelButton.clicked.connect(self.close)
+        saveButton = QPushButton("Save")
+        saveButton.clicked.connect(self.saveAll)
+        horizontalButtonLayout.addWidget(saveButton)
+        horizontalButtonLayout.addWidget(cancelButton)
+
+        verticalLayout.addLayout(layout)
+        verticalLayout.addLayout(horizontalButtonLayout)
         layout.addWidget(settingContent, 9)
-        self.setLayout(layout)
+        self.setLayout(verticalLayout)
         self.exec()
 
     def setUpPages(self):
@@ -44,7 +55,7 @@ class SettingDialog(QDialog):
     def switchSettingPage(self):
         self.layout.setCurrentIndex(self.settingList.currentRow())
 
-    def closeEvent(self, event):
+    def saveAll(self):
         for i in range(self.layout.count()-1, -1, -1):
             self.layout.widget(i).saveSetting()
-        event.accept()
+        self.accept()

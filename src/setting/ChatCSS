@@ -1,1 +1,1 @@
-QTextBrowser { background-color: whilte; color: black; }
+QTextBrowser { background-color: black; color: white; }
