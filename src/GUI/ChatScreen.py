@@ -32,11 +32,21 @@ class ChatScreen(QTabWidget):
         QShortcut(QKeySequence('Ctrl+W'), self, self.closeTabOrExit)
         self.newWhisperSignal.connect(self.newWhisper)
 
+    def parseListFromDefaultChannelFile(self):
+        try:
+            defaultChannelFile = open('setting/default_channel', 'r')
+            line = defaultChannelFile.readline().replace(" ", "")
+            defaultChannelFile.close()
+            return line.split(",")
+        except FileNotFoundError:
+            return []
+
     def joinDefaultChannel(self):
-        default_channel = open('setting/default_channel', 'r')
-        for line in default_channel:
-            self.joinChannel(line.strip())
-        default_channel.close()
+        self.joinMultipleChannel(self.parseListFromDefaultChannelFile())
+
+    def joinMultipleChannel(self, channelNameList):
+        for channelName in channelNameList:
+            self.joinChannel(channelName)
 
     def joinChannel(self, channelName):
         chatTab = self.tabs.get('#' + channelName, None)
@@ -70,7 +80,7 @@ class ChatScreen(QTabWidget):
     def closeTabOrExit(self):
         self.closeTab(True)
 
-    def popAndClostTab(self):
+    def popAndCloseTab(self):
         if '#' in self.widget(self.currentIndex()).channelName:
             self.clientIRC.leaveChannel(self.widget(self.currentIndex()).channelName)
         tab = self.tabs.pop(self.widget(self.currentIndex()).channelName)
@@ -78,7 +88,7 @@ class ChatScreen(QTabWidget):
 
     def closeTab(self, exitWhenNoTab):
         if self.count() > 1:
-            self.popAndClostTab()
+            self.popAndCloseTab()
             if self.currentIndex() + 1 == self.count():
                 self.setCurrentIndex(self.count() - 2)
                 self.widget(self.count() - 1).close()
@@ -89,7 +99,7 @@ class ChatScreen(QTabWidget):
                 self.removeTab(self.currentIndex() - 1)
         elif self.count() == 1:
             if not exitWhenNoTab:
-                self.popAndClostTab()
+                self.popAndCloseTab()
                 self.widget(self.currentIndex()).close()
                 self.removeTab(self.currentIndex())
             else:

@@ -49,14 +49,13 @@ class SystemMessageProcessor:
             if result:
                 parsedResult.append("Sub")
                 parsedResult.append(result)
-
         elif ' ROOMSTATE ' in message:
             result = re.search(SystemMessageProcessor.ROOMSTATE, message)
             if result is not None:
                 chatTab = self.chatScreen.tabs.get('#' + result.group(9))
                 # chatTab.setRoomState(result.group(1), result.group(2), result.group(3), result.group(4),
                 #                      result.group(5), result.group(6), result.group(7))
-                #change later
+                # change later
                 self.internetRelatedThread.addJob(['set_badges', chatTab.channelChat, result.group(6)])
         elif ' +o ' in message:
             result = re.search(SystemMessageProcessor.SYSTEM_MODDING, message)
@@ -77,7 +76,7 @@ class SystemMessageProcessor:
             else:
                 self.chatScreen.clientIRC.userColor = random.choice(UserListEntry.DEFAULT_COLOR)
             if result.group(2):
-                if (any(not character.isalpha() and not character.isdigit() for character in result.group(2))):
+                if any(not character.isalpha() and not character.isdigit() for character in result.group(2)):
                     self.chatScreen.clientIRC.userDisplayName = result.group(2) + ' (' + self.chatScreen.clientIRC.nickname + ')'
                 else:
                     self.chatScreen.clientIRC.userDisplayName = result.group(2)
