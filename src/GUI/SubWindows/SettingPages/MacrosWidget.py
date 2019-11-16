@@ -6,13 +6,13 @@ class MacrosWidget(QWidget):
         super(MacrosWidget, self).__init__(settingDialog)
         self.settingDialog = settingDialog
         layout = QGridLayout()
-        file = open('setting/MacrosSetting', 'r')
+        # file = open('setting/MacrosSetting', 'r')
         self.customMacros = QListWidget(self)
         self.loadMacros()
         layout.addWidget(self.customMacros)
 
         self.setLayout(layout)
-        file.close()
+        # file.close()
 
     def loadMacros(self):
         pass
