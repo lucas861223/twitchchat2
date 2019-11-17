@@ -38,7 +38,7 @@ class ClientIRC:
 
     def reconnect(self):
         old_nickName = self.nickname
-        self.nickname, self.password, self.refreshToken = GeneralLoginDialog.readLoginFile()
+        [self.nickname, self.password, self.refreshToken] = SettingManager.getSettingFileContent(SettingManager.LOGIN_FILE)
         if old_nickName != self.nickname:
             while self.chatScreen.count() > 0:
                 self.chatScreen.closeTab(False)
