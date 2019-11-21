@@ -23,7 +23,6 @@ class SystemMessageProcessor:
         self.botQueue = botQueue
 
     def processMessage(self, message):
-        print(message)
         parsedResult = []
         if ' PART ' in message:
             parsedResult.append("Part")
